@@ -22,6 +22,60 @@ styles:
       <p class="subtitle">{{ ment.sub }}</p>
     </div>
   </div>
+
+  <div class="container">
+    <section>
+
+    </section>
+    <section>
+      <h2>History</h2>
+      <ul>
+        <li>
+          <span><b>2020. 9 ~ 재직 중</b> 인터파크</span>
+          <ul>
+            <li>매월 진행하는 인터파크 인생날 진행</li>
+            <li>인터파크 도서 모바일 메인 접근성</li>
+            <li>인터파크 티켓 모바일 결제 UI 고도화 </li>
+            <li>티켓매니저 어드민</li>
+            <li>기획전 템플릿</li>
+            <li>라이브TV 영상재생 UI 작업</li>
+            <li>스토어 메인, 카테고리 UI</li>
+            <li>투어 PC 검색리스트 UI</li>
+          </ul>
+        </li>
+        <li>
+          <span><b>2016. 11 ~ 2020. 8</b> 메가존</span>
+          <ul>
+            <% [
+            { title: '돌체구스토 일렉트로마트', link: false },
+            { title: '킨더조이, 킨더크리스피 이벤트 작업', link: false },
+            { title: '커버댄스 사이트 유지보수', link: 'http://coverdance.seoul.co.kr' },
+            { title: '쌤소나이트 기획전, 이벤트, 뉴스레터, 사이트 유지보수', link: 'https://www.samsonitemall.co.kr/' },
+            { title: '스마트카라 사이트 유지보수 및 관리', link: 'https://www.smartcara.com/onlineShop' },
+            { title: '폭스바겐 투아렉 런칭 사이트', link: '있느넫...' },
+            { title: '베비언스 카브리타 마이크로 사이트', link: false },
+            { title: 'DONGINBI 싱글에센스 런칭 캠페인', link: 'https://www.pentacle.co.kr/work/304', modal: true },
+            { title: '세타필 레스토라덤(AD) 동안바디 캠페인', link: 'https://www.pentacle.co.kr/work/257', modal: true }
+          ].forEach(e => { %>
+            <li><%= e.title %></li>
+          <% }); %>
+          </ul>
+        </li>
+        <li>
+          <span><b>2016. 4 ~ 2016. 10</b> 더더함 커뮤니케이션</span>
+          <ul>
+            <% [
+              '킨텍스 원시티', '거제센트럴자이', '동천자이 2차', '화이트코리아(주)'
+            ].forEach(e => { %>
+              <li><%= e %></li>
+            <% }); %>
+          </ul>
+        </li>
+        <li><span>2015.10 - 2016.03</span> 스마트웹 / 컨텐츠개발 수료</li>
+      </ul>
+      <p>등 다수 사이트 작업</p>
+    </section>
+  </div>
 </body>
 </html>
 
