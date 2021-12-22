@@ -1,0 +1,80 @@
+# sass-lint config
+# https://github.com/sasstools/sass-lint/tree/master/docs
+
+files:
+  include: 'src/styles/**/*.scss'
+  ignore:
+    - 'src/styles/plugins/**/*'
+
+options:
+  formatter: stylish
+  merge-default-rules: false
+
+rules:
+  attribute-quotes: 2
+  border-zero: 0
+  brace-style: [2, {allow-single-line: false}]
+  class-name-format: 0
+  clean-import-paths: 0
+  declarations-before-nesting: 2
+  empty-args: 0
+  empty-line-between-blocks: 2
+  extends-before-declarations: 0
+  extends-before-mixins: 0
+  final-newline: 2
+  force-attribute-nesting: 0
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
+  function-name-format: 0
+  hex-length: 2
+  hex-notation: 2
+  id-name-format: 0
+  indentation: [2, {size: 4}]
+  leading-zero: 2
+  mixin-name-format: 0
+  mixins-before-declarations: 2
+  nesting-depth: 0
+  no-color-keyword: 0
+  no-color-literals: 0
+  no-css-comments: 0
+  no-debug: 2
+  no-duplicate-properties: 0
+  no-empty-rulesets: 2
+  no-ids: 0
+  no-important: 0
+  no-invalid-hex: 2
+  no-media-feature-vendor-prefix: 0
+  no-mergeable-selectors: 0
+  no-misspelled-properties: 0
+  no-property-vendor-prefix: 0
+  no-qualifying-elements: 0
+  no-selector-vendor-prefix: 0
+  no-trailing-whitespace: 2
+  no-trailing-zero: 2
+  no-transition-all: 0
+  no-url-domains: 0
+  no-url-protocols: 0
+  no-value-vendor-prefix: 0
+  no-warn: 2
+  one-declaration-per-line: 2
+  placeholder-in-extend: 0
+  placeholder-name-format: 0
+  property-sort-order: 0
+  property-units: [2, {global: [px, em, rem, vh, vw, vmin, vmax, deg, s, '%']}]
+  pseudo-element: 0
+  quotes: [2, {style: double}]
+  shorthand-values: 0
+  single-line-per-selector: 2
+  space-after-bang: 2
+  space-after-colon: 2
+  space-after-comma: 2
+  space-around-operator: 2
+  space-before-bang: 2
+  space-before-brace: 2
+  space-before-colon: 2
+  space-between-parens: 2
+  trailing-semicolon: 2
+  url-quotes: 2
+  variable-for-property: 0
+  variable-name-format: 0
+  zero-unit: 2

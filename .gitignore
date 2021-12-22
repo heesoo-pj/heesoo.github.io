@@ -1,0 +1,36 @@
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
+node_modules
+
+# Destination folder
+dist
+
+# Editor - Sublime Text
+*.sublime-workspace
+*.sublime-project
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# Editor - VS Code
+.vscode
+
+# Windows - Cache or config files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# MS Office temporary or backup files
+~$*.doc*
+~$*.xls*
+*.xlk

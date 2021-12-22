@@ -1,0 +1,241 @@
+{
+  "name": "pp",
+  "version": "0.0.0",
+  "description": "테스트 ",
+  "port": 1044,
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js",
+    "build": "gulp",
+    "server": "gulp server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heesoo-pj/pp.git"
+  },
+  "keywords": [
+    "pp"
+  ],
+  "author": "heesoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heesoo-pj/pp/issues"
+  },
+  "homepage": "https://github.com/heesoo-pj/pp#readme",
+  "base": {
+    "src": "src",
+    "dist": "dist",
+    "data": "data"
+  },
+  "viewport": {
+    "width": "device-width",
+    "initialScale": 1
+  },
+  "xUaCompatible": false,
+  "formatDetection": {
+    "telephone": "no",
+    "date": "no",
+    "address": "no",
+    "email": "no"
+  },
+  "dependencies": {
+    "autoprefixer": "9.7.3",
+    "del": "5.1.0",
+    "ejs": "3.0.1",
+    "express": "4.17.1",
+    "fancy-log": "1.3.3",
+    "glob": "7.1.6",
+    "gray-matter": "4.0.2",
+    "gulp": "4.0.2",
+    "gulp-connect": "5.7.0",
+    "gulp-convert-encoding": "2.0.1",
+    "gulp-data": "1.3.1",
+    "gulp-ejs": "5.0.0",
+    "gulp-eslint": "6.0.0",
+    "gulp-front-matter": "1.3.0",
+    "gulp-header": "2.0.9",
+    "gulp-htmlhint": "3.0.0",
+    "gulp-load-plugins": "2.0.1",
+    "gulp-pluck": "0.0.4",
+    "gulp-postcss": "8.0.0",
+    "gulp-prettify": "0.5.0",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "4.0.2",
+    "gulp-sass-lint": "1.4.0",
+    "js-beautify": "1.10.2",
+    "mime-types": "2.1.25",
+    "node-sass-middleware": "0.11.0",
+    "nodemon": "2.0.1",
+    "postcss-middleware": "1.1.4",
+    "yargs": "15.0.2"
+  },
+  "engines": {
+    "node": "8.x.x",
+    "npm": ">=5.1.0"
+  },
+  "languages": [
+    "ko"
+  ],
+  "browserslist": [
+    "iOS > 7",
+    "Android >= 4.1",
+    "Chrome > 40",
+    "ChromeAndroid > 50",
+    "FirefoxAndroid >= 46",
+    "OperaMobile >= 37"
+  ],
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "node_modules",
+      "dist",
+      "src"
+    ],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "js json"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true,
+      "jquery": true
+    },
+    "rules": {
+      "strict": "off",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "brace-style": [
+        "error",
+        "1tbs"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "one-var": [
+        "error",
+        "never"
+      ],
+      "comma-style": [
+        "error",
+        "last"
+      ],
+      "curly": [
+        "error",
+        "all"
+      ],
+      "eqeqeq": [
+        "error",
+        "allow-null"
+      ],
+      "key-spacing": [
+        "error",
+        {
+          "beforeColon": false,
+          "afterColon": true
+        }
+      ],
+      "comma-spacing": [
+        "error",
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "space-before-blocks": [
+        "error",
+        "always"
+      ],
+      "space-in-parens": [
+        "error",
+        "never"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ],
+      "no-trailing-spaces": "error",
+      "no-multi-spaces": [
+        "error",
+        {
+          "ignoreEOLComments": true
+        }
+      ],
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "padded-blocks": [
+        "error",
+        "never"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/**/*",
+    "src/scripts/plugins/**/*",
+    "src/scripts/libs/**/*",
+    "public/**/*",
+    "*.min.js"
+  ],
+  "htmlhint": {
+    "tagname-lowercase": true,
+    "attr-lowercase": [
+      "viewBox"
+    ],
+    "attr-value-double-quotes": true,
+    "attr-value-not-empty": false,
+    "attr-no-duplication": true,
+    "doctype-first": true,
+    "tag-pair": true,
+    "tag-self-close": false,
+    "spec-char-escape": true,
+    "id-unique": true,
+    "src-not-empty": true,
+    "title-require": true,
+    "head-script-disabled": false,
+    "alt-require": true,
+    "doctype-html5": true,
+    "id-class-value": false,
+    "style-disabled": false,
+    "inline-script-disabled": false,
+    "inline-style-disabled": false,
+    "space-tab-mixed-disabled": "space",
+    "id-class-ad-disabled": true,
+    "href-abs-or-rel": false,
+    "attr-unsafe-chars": true
+  },
+  "htmlBeautify": {
+    "end_with_newline": true,
+    "unformatted": true,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 0,
+    "indent_inner_html": true,
+    "extra_liners": [],
+    "indent_size": 2,
+    "brace_style": "collapse",
+    "wrap_line_length": 100
+  }
+}

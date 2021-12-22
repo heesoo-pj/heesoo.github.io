@@ -1,0 +1,3 @@
+- Name: velocity.js
+- Version: v1.5.0
+- Website: http://velocityjs.org/

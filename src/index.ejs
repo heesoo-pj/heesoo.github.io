@@ -1,0 +1,153 @@
+---
+groups:
+  login: 로그인
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <title>포트폴리오</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/common/common.css">
+    <link rel="stylesheet" href="/styles/index/index.css">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico">
+  </head>
+
+  <body>
+    <div class="container">
+      <div
+        id="asideCol"
+        class="asideCol col">
+
+        <div class="projectInfo expanded">
+          <div class="avatar">
+            <img
+              src="/data/images/index/avatar.png"
+              alt="<%= pkgInfo.name %>">
+          </div>
+
+          <h1>
+            <a
+              href="<%- pkgInfo.homepage %>"
+              target="_blank"><%= pkgInfo.siteName %></a>
+          </h1>
+
+          <p class="description"><%= pkgInfo.description %></p>
+
+          <div class="meta">
+            <dl>
+              <dt>Version</dt>
+              <dd>
+                <a
+                  href="<%- pkgInfo.homepage %>/blob/master/CHANGELOG.md"
+                  target="_blank">
+                  <%= pkgInfo.version %>
+                </a>
+              </dd>
+            </dl>
+
+            <% if (lastUpdatedDate) { %>
+              <dl>
+                <dt>Last Update</dt>
+                <dd>
+                  <time><%= lastUpdatedDate %></time>
+                </dd>
+              </dl>
+            <% } %>
+          </div>
+
+          <div class="search">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search"
+              required>
+
+            <button
+              type="reset"
+              class="resetButton"
+              title="입력취소">reset</button>
+          </div>
+
+          <div class="viewToggler">
+            <button type="button" class="viewToggleButton">
+              <span>toggle</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="pages">
+          <div class="asideWrapper">
+
+            <% for (var group in list) { %>
+              <% if(list[group].pages) {%>
+                <div class="group" data-search-level="0">
+                  <h3><%= list[group].name %></h3>
+                  <ul>
+                    <% list[group].pages.forEach(function(page) { %>
+                      <li data-search-level="1">
+                        <span
+                          title="<%= page.path %>"
+                          class="pageName">
+                            <%= page.name %>
+                        </span>
+
+                        <% if (page.states.length) { %>
+                          <ul>
+                            <% page.states.forEach(function(state) { %>
+                              <li
+                                <%- state.unexposed ? 'class="unexposed"' : '' %>
+                                data-search-level="2">
+                                <a
+                                  href="<%- state.href %>"
+                                  title="<%= page.name + ' - ' + state.text %>"
+                                  data-group-name="<%= list[group].name %>"
+                                  data-token="<%- state.token %>">
+                                  <%= state.text %>
+                                </a>
+                              </li>
+                            <% }) %>
+                          </ul>
+                        <% } %>
+
+                      </li>
+                    <% }) %>
+                  </ul>
+                </div>
+              <% } %>
+            <% } %>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="splitter col"></div>
+
+      <div class="contentCol col">
+        <div class="contentHeader">
+          <div id="pageTitle" class="pageTitle">
+            <h2>
+              <span class="groupName"></span> -
+              <span class="pageName"></span>
+            </h2>
+            <p class="url">&nbsp;</p>
+          </div>
+
+          <div class="mainHeaderLink">
+            <a
+              id="viewOrigin"
+              href="#"
+              class="openWithNewWindow"
+              target="_blank">new window</a>
+          </div>
+        </div>
+
+        <iframe id="contentFrame" class="frame"></iframe>
+      </div>
+    </div>
+
+    <script src="/scripts/libs/jquery/jquery.min.js"></script>
+    <script src="/scripts/plugins/js.cookie/js.cookie.min.js"></script>
+    <script src="/scripts/index/index.js"></script>
+  </body>
+</html>

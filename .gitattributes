@@ -1,0 +1,16 @@
+# Auto-detect text files, ensure they use LF
+* text=auto eol=lf
+
+# Define binary file attributes
+*.png binary diff=image
+*.jpg binary diff=image
+*.jpeg binary diff=image
+*.gif binary diff=image
+*.ico binary
+*.exe binary
+*.dll binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.woff binary
+*.woff2 binary
