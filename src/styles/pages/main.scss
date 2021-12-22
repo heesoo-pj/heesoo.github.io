@@ -1,8 +1,6 @@
-@mixin center() {
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-  }
+@import "base/font";
+@import "base/variables";
+@import "base/reset";
 
 html,
 body {
@@ -20,12 +18,8 @@ body {
 
 .main__wrap {
     .title-wrap {
-        @include center();
+        @include alignCenter();
         position: absolute;
-    }
-
-    .maskbg {
-        mask: url(#maskTitle);
     }
 
     .title {
@@ -37,7 +31,7 @@ body {
         background-clip: text;
         position: relative;
         text-align: center;
-        line-height: 92px;
+        line-height: 93px;
         letter-spacing: -8px;
     }
 
