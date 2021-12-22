@@ -68,6 +68,7 @@
     "node-sass-middleware": "0.11.0",
     "nodemon": "2.0.1",
     "postcss-middleware": "1.1.4",
+    "vue": "2.6.12",
     "yargs": "15.0.2"
   },
   "engines": {

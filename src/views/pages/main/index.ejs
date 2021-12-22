@@ -5,17 +5,68 @@ pageId: main
 indexGroup: main
 state:
   default: main
+styles:
+  - /styles/pages/main.css
 ---
 
 <!DOCTYPE html>
 <html lang="<%= lang %>">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>main</title>
+  <%- include('/layouts/head'); %>
 </head>
-<body>
 
+<body>
+  <div id="app" class="container main__wrap">
+    <div class="title-wrap">
+      <h1 class="title">{{ ment.title }}</h1>
+      <p class="subtitle">{{ ment.sub }}</p>
+    </div>
+  </div>
 </body>
 </html>
+
+<%- include('/layouts/scripts'); %>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      ment: {
+        title: 'LEE HEE SOO PORTFOLIO',
+        sub: '웹퍼블리셔 이희수 포트폴리오 사이트 입니다 :)'
+      }
+    },
+    methods: {
+      ieCheck() {
+        const agent = navigator.userAgent.toLowerCase()
+        if (
+          (navigator.appName === 'Netscape' &&
+            navigator.userAgent.search('Trident') !== -1) ||
+          agent.includes('msie')
+        ) {
+          // IE 일 경우
+          alert('다른 브라우저를 이용해주세요.')
+        }
+      },
+      titleMotion(e) {
+        let mouseX = 0
+        let mouseY = 0
+        let traX = 0
+        let traY = 0
+        mouseX = e.pageX
+        mouseY = e.pageY
+        traX = (4 * mouseX) / 570 + 40
+        traY = (4 * mouseY) / 570 + 50
+        document.querySelector('.title').style.backgroundPosition =
+          traX + '%' + traY + '%'
+      }
+    },
+    mounted() {
+      this.ieCheck();
+      document.querySelector('.main__wrap').addEventListener('mousemove', (e) => {
+        this.titleMotion(e)
+      });
+    }
+  });
+</script>
