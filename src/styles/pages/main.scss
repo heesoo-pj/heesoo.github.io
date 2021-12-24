@@ -2,6 +2,32 @@
 @import "base/variables";
 @import "base/reset";
 
+:root {
+    --ease: cubic-bezier(.29, .57, .12, .99);
+    --duration: .6s;
+    --size: 800px;
+    --scaleMask: 1;
+    --scaleBtn: 1;
+
+    @media (max-width: 900px) {
+        --size: 600px;
+        --scaleMask: .75;
+        --scaleBtn: .8;
+    }
+
+    @media (max-width: 700px) {
+        --size: 400px;
+        --scaleMask: .5;
+        --scaleBtn: .7;
+    }
+
+    @media (max-width: 500px) {
+        --size: 300px;
+        --scaleMask: .375;
+        --scaleBtn: .6;
+    }
+  }
+
 html,
 body {
     width: 100%;
@@ -42,6 +68,158 @@ body {
         font-size: 20px;
         padding-top: 20px;
         font-family: "Noto Sans KR", sans-serif;
+    }
+}
+
+
+.history {
+    .historyList {
+        > li {
+            margin-bottom: 50px;
+        }
+
+        .pjTitle {
+            font-size: 50px;
+
+            b {
+                display: inline-block;
+                font-size: 50px;
+
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    width: 100px;
+                    height: 2px;
+                    margin: 0 20px;
+                    background-color: blue;
+                }
+            }
+        }
+    }
+
+    .pjList {
+        margin-top: 10px;
+        padding-left: 20px;
+        font-size: 20px;
+
+        li {
+            position: relative;
+            line-height: 28px;
+
+            &::before {
+                content: "";
+
+            }
+        }
+    }
+}
+
+.project {
+    height: 100vh;
+    margin: 0;
+    background: #fff;
+    color: #84b7b2;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .carousel {
+        position: relative;
+        z-index: 1;
+        width: var(--size);
+        height: var(--size);
+
+        &--play {
+            position: absolute;
+            z-index: 10;
+            bottom: calc(10% * var(--scaleBtn));
+            left: calc(10% * var(--scaleBtn));
+            transform: rotate(-20deg) scale(var(--scaleBtn));
+            transition: transform .2s var(--ease);
+            width: 120px;
+            height: 120px;
+            background: #7ec96a;
+            box-shadow: 0 10px 20px -6px #7ec96a;
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+
+            &:before {
+                content: "";
+                position: absolute;
+                z-index: 2;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                box-shadow: inset 0 0 0 10px rgba(255, 255, 255, .2);
+                border-radius: 50%;
+                transform: scale(1.2);
+                transition: transform .4s var(--ease);
+            }
+
+            &:hover {
+                &:before {
+                    transform: scale(1);
+                }
+            }
+
+            &:active {
+                transform: scale(calc(var(--scaleBtn) * .9)) rotate(-5deg);
+            }
+        }
+
+        svg {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: #e8f5e4;
+            pointer-events: none;
+
+            #mask {
+                transform: scale(var(--scaleMask));
+            }
+        }
+
+        &--images {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            // -webkit-clip-path: url(#mask);
+            // clip-path: url(#mask);
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+            opacity: 0;
+            transform: scale(.9) translateZ(0);
+
+            &.active {
+                transform: scale(1) translateZ(0);
+                opacity: 1;
+            }
+        }
     }
 }
 

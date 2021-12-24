@@ -7,6 +7,9 @@ state:
   default: main
 styles:
   - /styles/pages/main.css
+scripts:
+  - https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js
+  - /scripts/pages/main/project.js
 ---
 
 <!DOCTYPE html>
@@ -27,12 +30,14 @@ styles:
     <section>
 
     </section>
-    <section>
+
+    <!-- history -->
+    <section class="history">
       <h2>History</h2>
-      <ul>
+      <ul class="historyList">
         <li>
-          <span><b>2020. 9 ~ 재직 중</b> 인터파크</span>
-          <ul>
+          <span class="pjTitle"><b>2020. 9 ~ 재직 중</b> 인터파크</span>
+          <ul class="pjList">
             <li>매월 진행하는 인터파크 인생날 진행</li>
             <li>인터파크 도서 모바일 메인 접근성</li>
             <li>인터파크 티켓 모바일 결제 UI 고도화 </li>
@@ -44,8 +49,8 @@ styles:
           </ul>
         </li>
         <li>
-          <span><b>2016. 11 ~ 2020. 8</b> 메가존</span>
-          <ul>
+          <span class="pjTitle"><b>2016. 11 ~ 2020. 8</b> 메가존</span>
+          <ul class="pjList">
             <% [
             { title: '돌체구스토 일렉트로마트', link: false },
             { title: '킨더조이, 킨더크리스피 이벤트 작업', link: false },
@@ -62,8 +67,8 @@ styles:
           </ul>
         </li>
         <li>
-          <span><b>2016. 4 ~ 2016. 10</b> 더더함 커뮤니케이션</span>
-          <ul>
+          <span class="pjTitle"><b>2016. 4 ~ 2016. 10</b> 더더함 커뮤니케이션</span>
+          <ul class="pjList">
             <% [
               '킨텍스 원시티', '거제센트럴자이', '동천자이 2차', '화이트코리아(주)'
             ].forEach(e => { %>
@@ -74,6 +79,28 @@ styles:
         <li><span>2015.10 - 2016.03</span> 스마트웹 / 컨텐츠개발 수료</li>
       </ul>
       <p>등 다수 사이트 작업</p>
+    </section>
+
+    <!-- project -->
+    <section class="project">
+      <div class="carousel">
+        <svg id="blob-1" viewbox="0 0 800 800">
+          <defs>
+            <clippath id="mask">
+              <path id="path-1"/>
+            </clippath>
+          </defs>
+          <path id="path-2" />
+        </svg>
+        <div class="carousel--images">
+          <img class="active" src="https://images.unsplash.com/photo-1595857819837-1c820f33e62d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80" alt="" />
+          <img src="https://images.unsplash.com/photo-1595719078597-f8ba9cc6ae72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80" alt="" />
+          <img src="https://images.unsplash.com/photo-1462804993656-fac4ff489837?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80" alt="" />
+        </div>
+        <button type="button" class="carousel--play">
+          Click
+        </button>
+      </div>
     </section>
   </div>
 </body>
