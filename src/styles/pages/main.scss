@@ -40,9 +40,14 @@ body {
     width: 100%;
     height: 100%;
     font-family: "Raleway", sans-serif;
+
+    section {
+        width: 100%;
+        height: 100vh;
+    }
 }
 
-.main__wrap {
+.kv {
     .title-wrap {
         @include alignCenter();
         position: absolute;
@@ -58,7 +63,7 @@ body {
         position: relative;
         text-align: center;
         line-height: 93px;
-        letter-spacing: -8px;
+        letter-spacing: -5px;
     }
 
     .subtitle {
@@ -71,8 +76,12 @@ body {
     }
 }
 
-
 .history {
+    .inner {
+        width: 1280px;
+        margin: 0 auto;
+    }
+
     .historyList {
         > li {
             margin-bottom: 50px;
@@ -130,7 +139,7 @@ body {
         width: var(--size);
         height: var(--size);
 
-        &--play {
+        .btnPlay {
             position: absolute;
             z-index: 10;
             bottom: calc(10% * var(--scaleBtn));
@@ -191,16 +200,24 @@ body {
             }
         }
 
-        &--images {
+        .ppList {
             position: absolute;
             z-index: 2;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            // -webkit-clip-path: url(#mask);
-            // clip-path: url(#mask);
             overflow: hidden;
+
+            li {
+                &.active {
+                    img {
+                        transform: scale(1) translateZ(0);
+                        opacity: 1;
+
+                    }
+                }
+            }
         }
 
         img {
@@ -214,11 +231,6 @@ body {
             transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
             opacity: 0;
             transform: scale(.9) translateZ(0);
-
-            &.active {
-                transform: scale(1) translateZ(0);
-                opacity: 1;
-            }
         }
     }
 }
