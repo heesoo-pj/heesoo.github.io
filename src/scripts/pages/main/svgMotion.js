@@ -55,7 +55,6 @@ class SupahBlob {
   update() {
     this.el.setAttribute('d', this.createPath());
 
-    // Force clipPath update
     if (this.maskEl) {
       this.maskEl.style.clipPath = 'none';
       this.maskEl.style.webkitClipPath = 'none';
@@ -102,7 +101,7 @@ const blob1 = new SupahBlob({
   maxRadius: 380,
   minDuration: 1,
   maxDuration: 3,
-  maskEl: document.querySelector('.carousel--images'),
+  maskEl: document.querySelector('.ppList'),
   maskID: '#mask'
 });
 
@@ -126,8 +125,8 @@ const blob2 = new SupahBlob({
 Fastest Carousel
 --------------------*/
 let active = 0;
-const slides = document.querySelectorAll('.carousel--images img');
-document.querySelector('.carousel--play').addEventListener('click', () => {
+const slides = document.querySelectorAll('.ppList li');
+document.querySelector('.btnPlay').addEventListener('click', () => {
   slides[active].classList.remove('active');
   active = active < slides.length - 1 ? active + 1 : 0;
   slides[active].classList.add('active');

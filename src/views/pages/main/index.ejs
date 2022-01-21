@@ -4,81 +4,94 @@ title: main
 pageId: main
 indexGroup: main
 state:
-  default: main
+default: main
 styles:
-  - /styles/pages/main.css
+- /styles/pages/main.css
 scripts:
-  - https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js
-  - /scripts/pages/main/project.js
+- //cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js
+- /scripts/pages/main/svgMotion.js
+- /scripts/pages/main/scrollMotion.js
 ---
 
 <!DOCTYPE html>
 <html lang="<%= lang %>">
+
 <head>
   <%- include('/layouts/head'); %>
 </head>
 
 <body>
-  <div id="app" class="container main__wrap">
-    <div class="title-wrap">
-      <h1 class="title">{{ ment.title }}</h1>
-      <p class="subtitle">{{ ment.sub }}</p>
-    </div>
-  </div>
-
   <div class="container">
-    <section>
-
+    <section class="kv">
+      <div class="title-wrap">
+        <h1 class="title">LEE HEE SOO<br>PORTFOLIO</h1>
+        <p class="subtitle">웹퍼블리셔 이희수 포트폴리오 사이트 입니다 :)</p>
+      </div>
     </section>
 
     <!-- history -->
     <section class="history">
-      <h2>History</h2>
-      <ul class="historyList">
-        <li>
-          <span class="pjTitle"><b>2020. 9 ~ 재직 중</b> 인터파크</span>
-          <ul class="pjList">
-            <li>매월 진행하는 인터파크 인생날 진행</li>
-            <li>인터파크 도서 모바일 메인 접근성</li>
-            <li>인터파크 티켓 모바일 결제 UI 고도화 </li>
-            <li>티켓매니저 어드민</li>
-            <li>기획전 템플릿</li>
-            <li>라이브TV 영상재생 UI 작업</li>
-            <li>스토어 메인, 카테고리 UI</li>
-            <li>투어 PC 검색리스트 UI</li>
-          </ul>
-        </li>
-        <li>
-          <span class="pjTitle"><b>2016. 11 ~ 2020. 8</b> 메가존</span>
-          <ul class="pjList">
-            <% [
-            { title: '돌체구스토 일렉트로마트', link: false },
-            { title: '킨더조이, 킨더크리스피 이벤트 작업', link: false },
-            { title: '커버댄스 사이트 유지보수', link: 'http://coverdance.seoul.co.kr' },
-            { title: '쌤소나이트 기획전, 이벤트, 뉴스레터, 사이트 유지보수', link: 'https://www.samsonitemall.co.kr/' },
-            { title: '스마트카라 사이트 유지보수 및 관리', link: 'https://www.smartcara.com/onlineShop' },
-            { title: '폭스바겐 투아렉 런칭 사이트', link: '있느넫...' },
-            { title: '베비언스 카브리타 마이크로 사이트', link: false },
-            { title: 'DONGINBI 싱글에센스 런칭 캠페인', link: 'https://www.pentacle.co.kr/work/304', modal: true },
-            { title: '세타필 레스토라덤(AD) 동안바디 캠페인', link: 'https://www.pentacle.co.kr/work/257', modal: true }
-          ].forEach(e => { %>
-            <li><%= e.title %></li>
-          <% }); %>
-          </ul>
-        </li>
-        <li>
-          <span class="pjTitle"><b>2016. 4 ~ 2016. 10</b> 더더함 커뮤니케이션</span>
-          <ul class="pjList">
-            <% [
-              '킨텍스 원시티', '거제센트럴자이', '동천자이 2차', '화이트코리아(주)'
-            ].forEach(e => { %>
-              <li><%= e %></li>
-            <% }); %>
-          </ul>
-        </li>
-        <li><span>2015.10 - 2016.03</span> 스마트웹 / 컨텐츠개발 수료</li>
-      </ul>
-      <p>등 다수 사이트 작업</p>
+      <div class="inner">
+        <h2>History</h2>
+        <ul class="historyList">
+          <li class="scrollElme a">
+            <span class="pjTitle"><b>2020. 9 ~ 재직 중</b> 인터파크</span>
+            <ul class="pjList">
+              <li>인터파크 쇼핑 스토어 메인, 카테고리 UI</li>
+              <li>인터파크 투어 PC 검색리스트 UI</li>
+              <li>쇼핑 라이브TV 영상재생 UI 작업</li>
+              <li>인터파크 도서 모바일 접근성</li>
+              <li>인터파크 티켓 모바일 결제 UI 고도화 </li>
+              <li>티켓매니저 어드민</li>
+              <li>기획전 템플릿 작업</li>
+            </ul>
+          </li>
+          <li class="scrollElme b">
+            <span class="pjTitle"><b>2016. 11 ~ 2020. 8</b> 메가존</span>
+            <ul class="pjList">
+              <% [ { title: '돌체구스토 일렉트로마트' , link: false }, { title: '킨더조이, 킨더크리스피 이벤트 작업' , link: false }, { title: '커버댄스 사이트 유지보수' , link: 'http://coverdance.seoul.co.kr' }, { title: '쌤소나이트 기획전, 이벤트, 뉴스레터, 사이트 유지보수' , link: 'https://www.samsonitemall.co.kr/' }, { title: '스마트카라 사이트 유지보수 및 관리' , link: 'https://www.smartcara.com/onlineShop' }, { title: '폭스바겐 투아렉 런칭 사이트' , link: 'https://leeheesoo.github.io/vw/' }, { title: '베비언스 카브리타 마이크로 사이트' , link: false }, { title: 'DONGINBI 싱글에센스 런칭 캠페인' , link: 'https://www.pentacle.co.kr/work/304' , modal: true }, { title: '세타필 레스토라덤(AD) 동안바디 캠페인' , link: 'https://www.pentacle.co.kr/work/257' , modal: true } ].forEach(e=> { %>
+                <li>
+                  <%= e.title %>
+                </li>
+                <% }); %>
+            </ul>
+          </li>
+          <li class="scrollElme c">
+            <span class="pjTitle"><b>2016. 4 ~ 2016. 10</b> 더더함 커뮤니케이션</span>
+            <ul class="pjList">
+              <% [ '킨텍스 원시티' , '거제센트럴자이' , '동천자이 2차' , '화이트코리아(주)' ].forEach(e=> { %>
+                <li>
+                  <%= e %>
+                </li>
+                <% }); %>
+            </ul>
+          </li>
+          <li class="scrollElme d"><span>2015.10 - 2016.03</span> 스마트웹 / 컨텐츠개발 수료</li>
+        </ul>
+        <p>등 다수 사이트 작업</p>
+      </div>
+    </section>
+
+    <section class="mySelf">
+      <div class="inner">
+        Skill
+        XHTML, HTML5
+        EJS / CSS / Media query / SCSS & LESS / BEM, SMACSS등 CSS방법론 / Cross browsing
+        Javascript(ES6) / jQuery / Vue (CLI / NUXT)
+        SVG / AJAX / Git 소스관리 / Gulp / 웹접근성
+
+        <p>
+          "진취적이며 웃음이 넘치는" 웹퍼블리셔 이희수입니다!
+          e커머스 프로젝트, 유지 보수, 다양한 이벤트 페이지 제작 등 누구보다 재미난 작업물을 많이 작업했으며, 그로 인한 다양한 경험을 해왔다 자부합니다.
+
+          혼자 하는 일이 아닌 협업을 하는 일이다 보니, 기획자 디자이너 간의 소통을 중요하게 생각하고
+          맡은 일에 책임감을 느끼며 일하고 있습니다.
+
+          또한 기술적으로도 안주하지 않고 다양한 작업을 하기 위해 끊임없이 공부 중이며,
+          현재는 VUE, SVG를 공부 중입니다.
+        </p>
+      </div>
+
     </section>
 
     <!-- project -->
@@ -87,67 +100,65 @@ scripts:
         <svg id="blob-1" viewbox="0 0 800 800">
           <defs>
             <clippath id="mask">
-              <path id="path-1"/>
+              <path id="path-1" />
             </clippath>
           </defs>
           <path id="path-2" />
         </svg>
-        <div class="carousel--images">
-          <img class="active" src="https://images.unsplash.com/photo-1595857819837-1c820f33e62d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80" alt="" />
-          <img src="https://images.unsplash.com/photo-1595719078597-f8ba9cc6ae72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80" alt="" />
-          <img src="https://images.unsplash.com/photo-1462804993656-fac4ff489837?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80" alt="" />
-        </div>
-        <button type="button" class="carousel--play">
-          Click
-        </button>
+        <ul class="ppList">
+          <li class="active"><a href="https://store.interpark.com/sandlvillage" title="인터파크 판매자 스토어"><img src="https://images.unsplash.com/photo-1595857819837-1c820f33e62d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80" alt="" /></a></li>
+          <li><a href="https://travel.interpark.com/checkinnow/search?q=&disp_q=%ED%98%B8%ED%85%94&coord=&startdate=20220120&enddate=20220121&roomOptions=&npprmaxsort=min&goodstype=%ED%98%B8%ED%85%94,%EB%AA%A8%ED%85%94,%EB%A0%88%EC%A7%80%EB%8D%98%EC%8A%A4,%EA%B0%80%EC%A1%B1%ED%98%B8%ED%85%94,%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94,%EA%B4%80%EA%B4%91%ED%98%B8%ED%85%94,%ED%95%9C%EC%98%A5,%EA%B3%A8%ED%94%84%ED%85%94,%EC%9C%A0%EC%8A%A4%ED%98%B8%EC%8A%A4%ED%85%94,%EA%B2%8C%EC%8A%A4%ED%8A%B8%ED%95%98%EC%9A%B0%EC%8A%A4,%EB%B6%80%ED%8B%B0%ED%81%AC,%EC%95%84%ED%8C%8C%ED%8A%B8,%EB%8F%84%EB%AF%B8%ED%86%A0%EB%A6%AC,%ED%99%88%EC%8A%A4%ED%85%8C%EC%9D%B4,%ED%8C%9C%EC%8A%A4%ED%85%8C%EC%9D%B4,%EB%B9%8C%EB%9D%BC,%EC%BA%A1%EC%8A%90%ED%98%B8%ED%85%94,%EB%A3%8C%EC%B9%B8,%EC%BA%A0%ED%94%84%EC%9E%A5,%EA%B8%80%EB%9E%A8%ED%95%91%EC%9E%A5&packageType=&category=%ED%98%B8%ED%85%94&regioncode1=&regioncode2=&contentSeq=19117&apiType=quick" title="인터파크 투어 검색리스트"><img src="https://images.unsplash.com/photo-1595719078597-f8ba9cc6ae72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80" alt="" /></a></li>
+        </ul>
+        <button type="button" class="btnPlay">Click</button>
       </div>
     </section>
   </div>
 </body>
+
 </html>
 
 <%- include('/layouts/scripts'); %>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      ment: {
-        title: 'LEE HEE SOO PORTFOLIO',
-        sub: '웹퍼블리셔 이희수 포트폴리오 사이트 입니다 :)'
-      }
-    },
-    methods: {
-      ieCheck() {
-        const agent = navigator.userAgent.toLowerCase()
-        if (
-          (navigator.appName === 'Netscape' &&
-            navigator.userAgent.search('Trident') !== -1) ||
-          agent.includes('msie')
-        ) {
-          // IE 일 경우
-          alert('다른 브라우저를 이용해주세요.')
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        ment: {
+          title: 'LEE HEE SOO PORTFOLIO',
+          sub: '웹퍼블리셔 이희수 포트폴리오 사이트 입니다 :)'
         }
       },
-      titleMotion(e) {
-        let mouseX = 0
-        let mouseY = 0
-        let traX = 0
-        let traY = 0
-        mouseX = e.pageX
-        mouseY = e.pageY
-        traX = (4 * mouseX) / 570 + 40
-        traY = (4 * mouseY) / 570 + 50
-        document.querySelector('.title').style.backgroundPosition =
-          traX + '%' + traY + '%'
+      methods: {
+        ieCheck() {
+          const agent = navigator.userAgent.toLowerCase()
+          if (
+            (navigator.appName === 'Netscape' &&
+              navigator.userAgent.search('Trident') !== -1) ||
+            agent.includes('msie')
+          ) {
+            // IE 일 경우
+            alert('다른 브라우저를 이용해주세요.')
+          }
+        },
+        titleMotion(e) {
+          let mouseX = 0
+          let mouseY = 0
+          let traX = 0
+          let traY = 0
+          mouseX = e.pageX
+          mouseY = e.pageY
+          traX = (4 * mouseX) / 570 + 40
+          traY = (4 * mouseY) / 570 + 50
+          document.querySelector('.title').style.backgroundPosition =
+            traX + '%' + traY + '%'
+        }
+      },
+      mounted() {
+        this.ieCheck();
+        document.querySelector('.kv').addEventListener('mousemove', (e) => {
+          this.titleMotion(e)
+        });
       }
-    },
-    mounted() {
-      this.ieCheck();
-      document.querySelector('.main__wrap').addEventListener('mousemove', (e) => {
-        this.titleMotion(e)
-      });
-    }
-  });
-</script>
+    });
+  </script>
