@@ -1,0 +1,159 @@
+.bestReview {
+    h3 {
+        @if $device == "desktop" {
+            margin-bottom: 26px;
+        }
+    }
+
+    .bx-viewport {
+        li {
+            margin: 0;
+        }
+    }
+
+    @if $device == "mobile" {
+        .bx-controls {
+            top: 0;
+        }
+
+        .bx-pager {
+            display: flex;
+            position: absolute;
+            top: -2.3rem;
+            right: 0;
+
+            .bx-pager-item {
+                display: inline-block;
+                width: .5rem;
+                height: .5rem;
+
+
+                &:not(:first-child) {
+                    margin-left: .5rem;
+                }
+
+                a {
+                    display: inline-block;
+                    width: .5rem;
+                    height: .5rem;
+                    background-color: #eee;
+                    border-radius: 100%;
+
+                    &.active {
+                        background-color: $mainColor;
+                    }
+                }
+
+            }
+        }
+    }
+
+    li {
+        display: inline-block;
+        @if $device == "mobile" {
+            width: auto;
+        } @else {
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .productImg {
+        @if $device == "mobile" {
+            height: 0;
+            margin: 0 auto;
+        }
+    }
+
+    .reviewContent {
+        @if $device == "mobile" {
+            padding: 0 .5rem;
+        } @else {
+            width: 380px;
+            margin: 0 auto;
+        }
+    }
+
+    .reviewHeader {
+        margin: sz(20) 0 sz(10);
+
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .headerLeft {
+            float: left;
+        }
+
+        .headerRight {
+            float: right;
+
+            span {
+                position: relative;
+                color: #999;
+                @if $device == "mobile" {
+                    font-size: 1.1rem;
+                } @else {
+                    font-size: 12px;
+                }
+
+                &:first-child {
+                    padding-right: sz(20);
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: sz(10);
+                        width: sz(1);
+                        height: sz(10);
+                        background-color: #ccc;
+                    }
+                }
+            }
+        }
+    }
+
+    .starRate {
+        @include starRate();
+    }
+
+    .reviewTxt {
+        @include line-clamp(2);
+        @if $device == "mobile" {
+            height: 3.8rem;
+            font-size: 1.5rem;
+            line-height: 2rem;
+        } @else {
+            height: 50px;
+            line-height: 25px;
+            font-size: 14px;
+        }
+        margin: sz(10) 0 sz(20);
+        color: #666;
+
+    }
+
+    .productInfo {
+        padding: 0;
+
+        .name {
+            @include line-clamp(1);
+            height: auto;
+            line-height: inherit;
+            @if $device == "mobile" {
+                margin: 0 0 .8rem 0;
+                color: #666;
+                font-size: 1.5rem;
+            } @else {
+                margin: 0 0 10px 0;
+                color: #000;
+                font-size: 14px;
+            }
+        }
+    }
+}

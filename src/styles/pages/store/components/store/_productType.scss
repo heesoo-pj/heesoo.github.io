@@ -1,0 +1,752 @@
+@import "base/variables";
+@import "../components/store/_pointColor";
+
+.productWrap {
+    @if $device == "mobile" {
+        width: 100%;
+        padding: 0 2rem;
+        margin: 6rem auto 0;
+        box-sizing: border-box;
+    } @else {
+        width: 1280px;
+        margin: 120px auto 0;
+    }
+
+    &:not(.bestManual) {
+        .slideWrap.bestProductSlide .bx-controls {
+            top: 214px;
+        }
+    }
+
+    .slideWrap {
+        position: relative;
+
+        &.bigItemSlide,
+        &.bestProductSlide {
+            &.touchEnabeld {
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .bx-controls {
+                @if $device == "desktop" {
+                    top: 174px;
+                }
+            }
+        }
+
+        .bx-controls {
+            position: absolute;
+            width: 100%;
+            left: 0;
+
+            @if $device == "mobile" {
+                top: 15rem;
+            } @else {
+                top: 50%;
+            }
+
+            a {
+                position: absolute;
+                font-size: 0;
+                @if $device == "mobile" {
+                    width: .1rem;
+                    height: .1rem;
+                } @else {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+        }
+    }
+
+    &.bestProduct {
+        padding-right: 0;
+    }
+
+    h3 {
+        @if $device == "mobile" {
+            margin-bottom: 1.5rem;
+            font-size: 1.7rem;
+        } @else {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        font-weight: bold;
+    }
+
+    ul {
+        font-size: 0;
+    }
+
+    &.noSlide {
+        .bigItem {
+            .item {
+                @if $device == "mobile" {
+                    width: 100%;
+                    margin-top: 4rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                } @else {
+                    margin: 60px 0 0 40px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(3n+1) {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(-n+3) {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .bestNumber {
+        display: block;
+        color: $mainColor;
+        font-weight: $boldWeight;
+        @if $device == "mobile" {
+            height: 3.5rem;
+            font-size: 2.5rem;
+            margin-bottom: .5rem;
+            font-style: italic;
+        } @else {
+            height: 40px;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+    }
+
+    @if $device == "desktop" {
+        .bx-prev {
+            left: -60px;
+
+            &::after {
+                @include arrow(20px, "prev");
+                top: 23px;
+                left: 20px;
+            }
+        }
+
+        .bx-next {
+            right: -60px;
+
+            &::after {
+                @include arrow(20px, "next");
+                top: 23px;
+                right: 20px;
+            }
+        }
+    }
+
+
+
+    // 타입별 공통 style
+    .item {
+        display: inline-block;
+        vertical-align: top;
+
+        @if $device == "mobile" {
+            margin-top: 4rem;
+            z-index: 0;
+        } @else {
+            margin-top: 60px;
+        }
+
+        a {
+            display: inline-block;
+            width: 100%;
+            color: #666;
+            font-size: 0;
+        }
+
+        .productImg {
+            @include btnDibs(10);
+            position: relative;
+            width: 100%;
+            border-radius: sz(10);
+            overflow: hidden;
+            z-index: 0;
+
+            @if $device == "mobile" {
+                height: 0;
+                padding-bottom: 100%;
+            }
+
+            > img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+
+                @if $device == "mobile" {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        .productInfo {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+
+            @if $device == "mobile" {
+                padding: 0 .5rem;
+            } @else {
+                padding: 0 10px;
+            }
+        }
+
+        .name {
+            @include line-clamp(2);
+            @if $device == "mobile" {
+                height: 3.8rem;
+                font-size: 1.5rem;
+                margin: 0 0 .5rem;
+            } @else {
+                height: 50px;
+                line-height: 25px;
+                font-size: 16px;
+                margin: 0 0 10px;
+            }
+        }
+
+        .price {
+            > span {
+                vertical-align: middle;
+            }
+        }
+
+        .originalPrice {
+            color: #999;
+            text-decoration: line-through;
+            @if $device == "mobile" {
+                font-size: 1.3rem;
+            } @else {
+                font-size: 12px;
+            }
+        }
+
+        .salePrice {
+            color: #000;
+            font-weight: bold;
+            margin-right: sz(5);
+            @if $device == "mobile" {
+                font-size: 1.7rem;
+            } @else {
+                font-size: 20px;
+            }
+        }
+
+        .percentage {
+            color: #26cec1;
+            font-weight: bold;
+            margin-left: sz(5);
+            @if $device == "mobile" {
+                font-size: 1.7rem;
+            } @else {
+                font-size: 20px;
+            }
+        }
+
+        .productText {
+            color: #999;
+            @if $device == "mobile" {
+                font-size: 1.3rem;
+            } @else {
+                font-size: 12px;
+            }
+        }
+
+        .info {
+            font-size: 0;
+            margin-top: sz(10);
+            @if $device == "mobile" {
+                color: #999;
+            } @else {
+                color: #666;
+            }
+
+            span {
+                display: inline-block;
+                @if $device == "mobile" {
+                    font-size: 1.3rem;
+                } @else {
+                    font-size: 14px;
+                }
+
+                &:not(:last-child) {
+                    &::after {
+                        content: "/";
+                        display: inline-block;
+                        margin: 0 sz(4);
+                    }
+                }
+            }
+
+        }
+
+        .labelWrap {
+            height: sz(20);
+            margin: sz(5) 0;
+            font-size: 0;
+
+            .tag {
+                display: inline-block;
+                padding: 0 sz(3);
+                height: sz(20);
+                line-height: sz(20);
+                border-radius: sz(4);
+                vertical-align: top;
+                box-sizing: border-box;
+                font-size: sz(11);
+
+                & +.tag {
+                    margin-left: sz(4);
+                }
+
+                &.usedTag {
+                    color: #dc941b;
+                    border: sz(1) solid rgba(220, 148, 27, .7);
+                    font-weight: $boldWeight;
+                }
+
+                &.overseasTag {
+                    color: #666;
+                    border: sz(1) solid #ccc;
+                    font-weight: $boldWeight;
+                }
+
+                &.lifeWeekTag {
+                    border: solid sz(1) #26cec1;
+
+                    img {
+                        display: inline-block;
+                        width: sz(44);
+                        vertical-align: sz(-2);
+                    }
+                }
+            }
+        }
+    }
+
+    ul {
+        // 기본형
+        &.default {
+            .item {
+                @if $device == "mobile" {
+                    width: (155 / 335) * 100%;
+                    margin-left: (25 / 335) * 100%;
+
+                    &:nth-child(odd) {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(-n+2) {
+                        margin-top: 0;
+                    }
+                } @else {
+                    width: 290px;
+                    margin-left: sz(40);
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(4n+1) {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(-n+4) {
+                        margin-top: 0;
+                    }
+                }
+
+                .productImg {
+                    @if $device == "mobile" {
+                        @include noImage(sz(73));
+                    } @else {
+                        @include noImage(sz(140));
+                        height: 290px;
+                    }
+                }
+
+                .name {
+                    @if $device == "mobile" {
+                        line-height: 1.9rem;
+                    }
+                }
+
+                .price {
+                    @if $device == "mobile" {
+                        position: relative;
+                        margin-top: 1.9rem;
+                    }
+
+                    &.inText {
+                        margin-top: .5rem;
+                    }
+                }
+
+                .originalPrice {
+                    @if $device == "mobile" {
+                        position: absolute;
+                        top: -1.5rem;
+                        left: 0;
+                    } @else {
+                        font-size: 12px;
+                    }
+                }
+
+                .percentage {
+                    @if $device == "mobile" {
+                        margin-left: 0;
+                    }
+                }
+
+                .productText {
+                    @if $device == "mobile" {
+                        display: block;
+                        margin-top: .1rem;
+                    }
+                }
+            }
+        }
+
+        &.bigItem {
+            .item {
+                @if $device == "mobile" {
+                    width: 64vw;
+
+                    &:only-child {
+                        width: 100%;
+                    }
+                } @else {
+                    width: 400px;
+                    margin-right: 40px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                margin-top: 0;
+
+                .productImg {
+                    @if $device == "mobile" {
+                        @include noImage(14.6rem);
+                        @include btnDibs(15);
+                    } @else {
+                        @include noImage(206px);
+                        height: 400px;
+
+                        .btnDibs {
+                            padding: 20px;
+                        }
+                    }
+                }
+
+                .name {
+                    @if $device == "mobile" {
+                        margin-top: 1.5rem;
+                    }
+                }
+
+                .originalPrice {
+                    @if $device == "desktop" {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        &.bestProductItem {
+            .item {
+                @if $device == "mobile" {
+                    width: 64vw;
+
+                    &:only-child {
+                        width: 100%;
+                        padding-right: 2rem;
+                        box-sizing: border-box;
+                    }
+                } @else {
+                    width: 400px;
+                    margin-right: 40px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                margin-top: 0;
+
+                .productImg {
+                    @if $device == "mobile" {
+                        @include btnDibs(15);
+                        @include noImage(10.2rem);
+                        padding-bottom: 64vw;
+                    } @else {
+                        @include noImage(206px);
+                        height: 400px;
+
+                        .btnDibs {
+                            padding: 20px;
+                        }
+                    }
+                }
+
+                .originalPrice {
+                    @if $device == "desktop" {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        // 리스트형
+        &.listItem {
+            .item {
+                @if $device == "mobile" {
+                    width: 100%;
+                    margin-top: 3rem;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                } @else {
+                    width: 620px;
+                    margin-top: 50px;
+
+                    &:nth-child(-n+2) {
+                        margin-top: 0;
+                    }
+
+                    &:nth-child(odd) {
+                        margin-right: 40px;
+                    }
+                }
+
+                .productImg {
+                    display: inline-block;
+                    vertical-align: middle;
+                    @if $device == "mobile" {
+                        @include noImage(sz(73));
+                        width: (122 / 335) * 100%;
+                        padding-bottom: (122 / 335) * 100%;
+                    } @else {
+                        @include noImage(sz(86));
+                        width: 160px;
+                        height: 160px;
+                    }
+                }
+
+                .productInfo {
+                    display: inline-block;
+                    padding: 0;
+                    vertical-align: top;
+                    @if $device == "mobile" {
+                        width: (193 / 335) * 100%;
+                        margin-top: .3rem;
+                        margin-left: (20 / 335) * 100%;
+                    } @else {
+                        width: 320px;
+                        margin-top: 5px;
+                        margin-left: 20px;
+                    }
+
+                    .labelWrap {
+                        height: auto;
+                        margin: 0;
+
+                        .usedTag {
+                            margin-bottom: sz(5);
+                        }
+                    }
+                }
+
+                .name {
+                    @if $device == "mobile" {
+                        margin: 0 0 .5rem;
+                    } @else {
+                        margin: 0;
+                    }
+                }
+
+                .price {
+                    position: relative;
+
+                    @if $device == "mobile" {
+                        margin-top: 2rem;
+                        margin-right: 0;
+
+                        &.inText {
+                            margin-top: .5rem;
+                        }
+                    } @else {
+                        margin-top: 33px;
+                    }
+                }
+
+                .originalPrice {
+                    position: absolute;
+                    left: 0;
+                    margin: 0;
+                    @if $device == "mobile" {
+                        top: -1.5rem;
+                    } @else {
+                        top: -22px;
+                        font-size: 14px;
+                    }
+                }
+
+                .percentage {
+                    margin: 0;
+                }
+
+                .productText {
+                    @if $device == "mobile" {
+                        display: block;
+                        margin-top: .1rem;
+                    }
+                }
+
+                .info {
+                    @if $device == "mobile" {
+                        margin-top: 1rem;
+                    } @else {
+                        margin-top: 22px;
+                    }
+
+                }
+            }
+        }
+
+        // 세로형
+        &.verticalItem {
+            .item {
+                @if $device == "mobile" {
+                    width: (155 / 335) * 100%;
+                    margin-left: (25 / 335) * 100%;
+
+                    &:nth-child(odd) {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(-n+2) {
+                        margin-top: 0;
+                    }
+
+                } @else {
+                    width: 290px;
+                    margin-left: 40px;
+                    margin-top: 60px;
+
+                    &:nth-child(4n+1) {
+                        margin-left: 0;
+                    }
+
+                    &:nth-child(-n+4) {
+                        margin-top: 0;
+                    }
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                .productImg {
+                    width: 100%;
+                    overflow: hidden;
+                    @if $device == "mobile" {
+                        @include noImage(sz(73));
+                        padding-bottom: (218 / 155) * 100%;
+                    } @else {
+                        @include noImage(sz(140));
+                        height: 408px;
+                    }
+
+                    img {
+                        height: 100%;
+                        left: 50%;
+                        max-width: none;
+                        transform: translateX(-50%);
+                        @if $device == "mobile" {
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                @if $device == "mobile" {
+                    .price {
+                        position: relative;
+                        margin-top: 2.1rem;
+
+                        &.inText {
+                            margin-top: .5rem;
+                        }
+                    }
+
+                    .originalPrice {
+                        position: absolute;
+                        left: 0;
+                        top: -1.5rem;
+                    }
+
+                    .percentage {
+                        margin: 0;
+                    }
+
+                    .productText {
+                        display: block;
+                        margin-top: .1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            .percentage {
+                color: $pointColor;
+            }
+
+            .bestNumber {
+                color: $pointColor;
+            }
+        }
+    }
+}

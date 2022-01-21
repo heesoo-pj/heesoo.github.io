@@ -1,0 +1,56 @@
+$dibsPath: $base + "/common/store/btnDibs";
+
+@mixin btnDibs($padding) {
+    .btnDibs {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 9;
+
+        @if $device == "mobile" {
+            padding: $padding * .1rem;
+        } @else {
+            padding: $padding * 1px;
+        }
+
+        &.active i {
+            .dibsColor {
+                fill: #ef3e43;
+            }
+        }
+
+        .dibsColor {
+            fill: rgba(0, 0, 0, .4);
+        }
+
+        span {
+            @include blind;
+        }
+
+        i {
+            display: block;
+            border-radius: 0;
+            overflow: hidden;
+
+            @if $device == "mobile" {
+                width: 2.2rem;
+                height: 2rem;
+            } @else {
+                width: 26px;
+                height: 24px;
+            }
+        }
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+}

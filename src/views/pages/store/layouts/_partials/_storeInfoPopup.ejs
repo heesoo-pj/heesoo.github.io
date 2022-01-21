@@ -1,0 +1,78 @@
+<div class="layerTransformWrapper storeInfoPopup">
+  <div id="storeInfo" class="layerTransformContainer">
+    <header class="layerTransformHeader">
+      <h1>스토어 정보</h1>
+      <div class="closeCard">
+        <button type="button" aria-label="닫기"></button>
+      </div>
+    </header>
+
+    <section class="layerTransformContents">
+      <div class="storeName">
+        <div>
+          <h2><i class="storeIcon">
+            <% if(state.toLowerCase().includes('profile')) { %>
+              <img src="/data/images/pages/example/info.jpg" alt="">
+            <% } %>
+            </i>
+            <span>다이슨일렉트로닉스</span>
+          </h2>
+
+          <i class="jjimBtn layerInfoJjim">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18">
+              <g fill="#EF3E43" fill-rule="evenodd">
+                  <path d="M14 0c1.105 0 2 .895 2 2v14.824c0 .239-.086.47-.241.651-.36.42-.991.467-1.41.108L8 12.133l-6.349 5.45c-.419.36-1.05.311-1.41-.108-.155-.181-.241-.412-.241-.651V2C0 .895.895 0 2 0z" transform="translate(-1514 -321) translate(1080 236) translate(20 71) translate(414 14)"/>
+              </g>
+            </svg>
+          </i>
+
+          <% if (!state.toLowerCase().includes('noservicegrade')) { %>
+          <div class="sellerGradeWrap">
+            <div class="sellerIcon">
+              <span class="best">
+                <em>최우수</em>
+              </span>
+            </div>
+            <div class="sellerIcon">
+              <span class="good">
+                <em>판매우수</em>
+              </span>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+
+      <div class="sellerService">
+        <ul>
+          <li>스토어찜<span>1,434</span></li>
+          <li>주간방문<span>3,500</span></li>
+          <% if (!state.toLowerCase().includes('noproductsatisfaction')) { %>
+          <li>상품만족도<span>99<i>%</i></span></li>
+          <% } %>
+        </ul>
+      </div>
+
+      <div class="infoList">
+        <% if(!state.toLowerCase().includes('nosns')) { %>
+          <div class="snsInfo">
+            <h3>SNS 계정</h3>
+            <p><a href="#" target="_blank" aria-label="판매자 sns계정 바로가기">https://instagram.com/12345</a></p>
+          </div>
+        <% } %>
+
+        <h3>판매자 상세정보</h3>
+        <ul>
+          <li>상호명 : <span>다이슨 일렉트로닉</span></li>
+          <li>대표자 : <span>이소연</span></li>
+          <li>전화번호 : <i class="callIcon"><a href="tel:0260048778"><span>02-6004-8778</span></a></i></li>
+          <li>사업자번호 : <span>123-4567-8999</span></li>
+          <li>이메일 : <span>interpark@interpark.com</span></li>
+          <li>통신판매신고번호 : <span>123456</span></li>
+          <li>영업소재지 : <span>서울 강남구 신사동 17-2</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

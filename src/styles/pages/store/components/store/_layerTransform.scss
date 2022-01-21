@@ -1,0 +1,176 @@
+$layerTransformPath: $base + "/common/store/popups/layerTransform";
+
+@if $device == "desktop" {
+    .layerTransformBundle {
+        position: relative;
+
+        &.alignCenter {
+            .layerTransformWrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                .layerTransformContainer {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        &:not(.alignCenter) {
+            .layerTransformWrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+}
+
+.layerTransformWrapper {
+    z-index: 999;
+    display: none;
+
+    @if $device == "mobile" {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        align-items: flex-end;
+    }
+
+    .layerTransformContainer {
+        display: none;
+        position: relative;
+        background: #fff;
+        box-sizing: border-box;
+        width: 100%;
+
+        @if $device == "mobile" {
+            flex-direction: column;
+            height: calc(100% - 6rem);
+            border-radius: 2rem 2rem 0 0;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -1.8rem;
+                left: 0;
+                width: 100%;
+                height: 8.5rem;
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, .33) 40%);
+            }
+        } @else {
+            height: auto;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px 0 rgba(0, 0, 0, .2);
+        }
+
+        &.on {
+            @if $device == "mobile" {
+                display: flex;
+            } @else {
+                display: block;
+            }
+        }
+    }
+
+    .layerTransformHeader {
+        position: relative;
+
+        @if $device == "mobile" {
+            padding: 3rem 2rem;
+            border-radius: 1.3rem 1.3rem 0 0;
+            background: #fff;
+        } @else {
+            padding: 14px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            padding-right: sz(50);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: $boldWeight;
+            color: #000;
+            text-align: left;
+
+            @if $device == "mobile" {
+                font-size: 2.5rem;
+                line-height: 3.1rem;
+            } @else {
+                font-size: 16px;
+                line-height: 21px;
+            }
+        }
+
+        .closeCard {
+            position: absolute;
+
+            @if $device == "mobile" {
+                top: 2.2rem;
+                right: 1.5rem;
+            } @else {
+                top: 0;
+                right: 0;
+            }
+
+            button {
+                width: sz(46);
+                height: sz(46);
+                background: url("#{$layerTransformPath}/icon_close.svg") no-repeat center center;
+                padding: 0;
+                text-indent: sz(-99999);
+                overflow: hidden;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .layerTransformContents {
+        font-size: sz(15);
+        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+
+        @if $device == "mobile" {
+            flex: 1;
+            padding: 0 2rem 2rem;
+            line-height: 1.9rem;
+        } @else {
+            padding: 20px;
+            line-height: 20px;
+        }
+
+        > div {
+            color: #666;
+
+            &:not(:first-child) {
+                margin-top: sz(30);
+            }
+
+            h1 {
+                color: #000;
+
+                &:first-child {
+                    margin-bottom: sz(15);
+                }
+            }
+        }
+    }
+
+    &.visible {
+        @if $device == "mobile" {
+            display: flex;
+        } @else {
+            display: block;
+        }
+    }
+}

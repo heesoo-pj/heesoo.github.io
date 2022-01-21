@@ -1,0 +1,7 @@
+$device: "desktop";
+
+@function sz($val) {
+    @return $val * 1px;
+}
+
+@import "_layerCommon";

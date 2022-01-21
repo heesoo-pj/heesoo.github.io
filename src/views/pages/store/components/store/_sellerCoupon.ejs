@@ -1,0 +1,17 @@
+<% if (typeof tag !== 'undefined' && tag === 'div' ) { %>
+  <div class="storeCoupon <%= couponDisable ? 'disabled' : ''  %> <%= typeof addClass === 'string'  ? addClass : '' %>">
+    <span class="couponNumber"><%= couponNumber ? couponNumber :'10%' %></span>
+    <span class="couponText"><%= couponNumber ? couponText :'스토어찜 할인쿠폰' %></span>
+  </div>
+<% } else { %>
+  <div class="coupon">
+    <button class="storeCoupon layerAlertButton <%= couponDisable ? 'disabled' : ''  %>
+      <%= typeof addClass === 'string'  ? addClass : '' %>"
+      <%= (typeof noClick !== 'undefined' && noClick )  ? 'disabled' : ''  %>
+      aria-controls="<%= couponDisable ? 'couponEnd' : 'couponStep1' %>">
+      <span class="couponNumber"><%= couponNumber ? couponNumber :'10%' %></span>
+      <span class="couponText"><%= couponNumber ? couponText :'스토어찜 할인쿠폰' %></span>
+    </button>
+  </div>
+
+<% } %>

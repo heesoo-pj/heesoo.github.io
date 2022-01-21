@@ -1,0 +1,50 @@
+.loadIndicator {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483647;
+    display: none;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &::before {
+        width: sz(50);
+        height: sz(50);
+        background-color: rgba(0, 0, 0, .4);
+        border-radius: sz(9);
+        border-top-left-radius: 0;
+
+    }
+
+    &::after {
+        width: sz(4);
+        height: sz(10);
+        margin-top: sz(-20);
+        margin-left: sz(-27);
+        background: url("#{$base}/common/store/loader/img_arrow.png") no-repeat;
+        background-size: sz(4) sz(10);
+    }
+
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: sz(25);
+        height: sz(25);
+        z-index: 99;
+    }
+
+    &.visible {
+        display: block;
+    }
+}

@@ -1,0 +1,83 @@
+.filterWrap {
+    position: relative;
+    vertical-align: middle;
+
+    @if $device != "mobile" {
+        position: relative;
+        top: -1px;
+    }
+
+    .filterBtn {
+        @if $device == "mobile" {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } @else {
+            display: block;
+            line-height: 20px;
+
+            &::after {
+                display: block;
+                clear: both;
+                content: "";
+            }
+
+            > * {
+                float: left;
+            }
+
+            span {
+                position: relative;
+                top: 1px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    &:not(.isActive) {
+        g {
+            filter: none;
+        }
+    }
+
+    &.isActive {
+        svg {
+            path {
+                stroke: $mainColor;
+                fill: $mainColor;
+            }
+        }
+    }
+
+    button > span {
+        color: #666;
+        font-size: sz(13);
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            .filterWrap {
+                &.isActive {
+                    svg {
+                        path {
+                            stroke: $pointColor;
+                            fill: $pointColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

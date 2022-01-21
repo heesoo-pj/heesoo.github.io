@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 58 58">
+    <defs>
+        <filter id="5f2i69d38a" width="128%" height="128%" x="-14%" y="-10%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        </filter>
+        <path id="rayj507zmb" d="M45 200c13.807 0 25 11.193 25 25s-11.193 25-25 25-25-11.193-25-25 11.193-25 25-25zm-2.104 15.151c-.192-.191-.502-.191-.694 0-.191.191-.191.502 0 .693l8.666 8.665-8.666 8.666c-.191.192-.191.502 0 .694.192.191.502.191.694 0l9.012-9.013c.191-.191.191-.501 0-.693z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g transform="translate(-336 -434) translate(320 236) matrix(-1 0 0 1 90 0)">
+                    <use fill="#000" filter="url(#5f2i69d38a)" xlink:href="#rayj507zmb"/>
+                    <use fill="#FFF" xlink:href="#rayj507zmb"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+
+

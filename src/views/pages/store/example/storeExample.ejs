@@ -1,0 +1,564 @@
+---
+pageName: 예제
+title: 예제
+pageId: storeExample
+indexGroup: sotreExample
+metaService: shopping
+metaCompatibility: standard
+metaContainerWidth: 1280
+styles:
+  page:
+    - /styles/pages/store/example/storeExample
+scripts:
+  common:
+    - /scripts/plugins/bxslider/jquery.bxslider.js
+    - /scripts/plugins/nstSlider/jquery.nstSlider.min.js
+    - /scripts/components/store/btnDibs.js
+    - /scripts/components/store/toast.js
+    - /scripts/components/store/layerAlert.js
+    - /scripts/pages/store/example/storeExample.js
+state:
+  default: 기본
+  loading: 로더
+  toast: 토스트
+  nameImg: 스토어 네임 이미지
+  nameImg608: 스토어 네임 이미지 | 608*80
+  nameImg321: 스토어 네임 이미지 | 321*120
+  manyCategory: 카테고리 두 줄 이상
+  colorPink: 포인트 컬러 | pink
+  colorOrange: 포인트 컬러 | orange
+  colorBabyBrown: 포인트 컬러 | babyBrown
+  colorGray: 포인트 컬러 | gray
+  colorBlue: 포인트 컬러 | blue
+  colorBrown: 포인트 컬러 | brown
+  colorGreen: 포인트 컬러 | green
+  colorHotPink: 포인트 컬러 | hotPink
+  colorPurple: 포인트 컬러 | purple
+
+  mobile: 기본(모바일)
+  mobileInApp: 앱 헤더(모바일)
+  mobileLoading: 로더(모바일)
+  mobileToast: 토스트(모바일)
+  mobileNameImg: 스토어 네임 이미지(모바일)
+  mobileNameImg608: 스토어 네임 이미지 | 608*80(모바일)
+  mobileNameImg321: 스토어 네임 이미지 | 321*120(모바일)
+  mobileManyCategory: 카테고리 두 줄 이상(모바일)
+  mobileColorPink: 포인트 컬러 | pink(모바일)
+  mobileColorOrange: 포인트 컬러 | orange(모바일)
+  mobileColorBabyBrown: 포인트 컬러 | babyBrown(모바일)
+  mobileColorGray: 포인트 컬러 | gray(모바일)
+  mobileColorBlue: 포인트 컬러 | blue(모바일)
+  mobileColorBrown: 포인트 컬러 | brown(모바일)
+  mobileColorGreen: 포인트 컬러 | green(모바일)
+  mobileColorHotPink: 포인트 컬러 | hotPink(모바일)
+  mobileColorPurple: 포인트 컬러 | purple(모바일)
+base: /images
+---
+
+<%
+  const cs = t => state === t;
+  const isMobile = state.includes('mobile');
+  const slicedColorState = state.replace(/color|mobileColor/g, '');
+  const pointColor = slicedColorState.charAt(0).toLowerCase() + slicedColorState.slice(1);
+%>
+
+<!doctype html>
+<html lang="<%= lang %>">
+  <head>
+    <%- include('/components/store/_head', {isMobile}); %>
+  </head>
+
+  <%- include('/layouts/_partials/_accessibility'); %>
+  <%- isMobile ? '' : include('/layouts/_partials/_gateway'); %>
+
+  <body id="<%= page.pageId %>" class="<%= isMobile ? 'mobile' : 'desktop'%><%= state === 'mobileInApp' ? ' inApp' : '' %>">
+    <!-- id pointColor 값 적용 -->
+
+    <div class="storeContainer" id="pointColorWrap"<%- state.toLowerCase().includes('color') ? ` data-point-color="${pointColor}"` : '' %>>
+      <%- include('/layouts/header', {
+        isMobile,
+        state,
+      }); %>
+
+      <section id="contents" class="contents">
+        <!-- Page Contents :: Start -->
+        <div class="exampleWrapper">
+          <div class="guide">
+            <h1 class="guideTitle">layerTransform 예제</h1>
+            데스크탑에서는 일반 레이어, 모바일에서는 bottomCard 형태의 레이어
+            <dl class="guideItem">
+              <dd>
+                <div class="codeExample">
+                  &lt;div class="layerTransformWrapper"&gt;<br>
+                  &nbsp;&nbsp;&lt;%- include('/components/store/_sharePopup', {isMobile}); %&gt;<br>
+                  &lt;/div&gt;<br>
+                </div>
+                같은 형태로 layerTransformWrapper 클래스로 감싸야함.
+              </dd>
+            </dl>
+
+            <% var layerTitle = [
+              {
+                mobile: '반쪽 화면 BOTTOM CARD',
+                desktop: '레이어'
+              },
+              {
+                mobile: '전체 화면 BOTTOM CARD',
+                desktop: '좌표값, 너비 커스텀 레이어'
+              },
+              {
+                desktop: '가운데 정렬 레이어'
+              }
+            ] %>
+
+            <dl class="guideItem">
+              <dt><%= layerTitle[0][isMobile ? 'mobile' : 'desktop'] %></dt>
+              <% if (isMobile) { %>
+              <p>Bottom Card 높이는 페이지 CSS에서 직접 지정하도록 함</p>
+              <% } %>
+              <dd class="layerTransformBundle">
+                <button
+                  type="button"
+                  class="layerTransformButton storeBtnPrimary"
+                  aria-controls="exampleCardNamePart"
+                >
+                  <span>PRIMARY BUTTON</span>
+                </button>
+                <div class="layerTransformWrapper">
+                  <div id="exampleCardNamePart" class="layerTransformContainer">
+                    <header class="layerTransformHeader">
+                      <h1><%= layerTitle[0][isMobile ? 'mobile' : 'desktop'] %></h1>
+                      <div class="closeCard">
+                        <button type="button" aria-label="닫기"></button>
+                      </div>
+                    </header>
+
+                    <section class="layerTransformContents">
+                      <%
+                        const arr = Array.from({length: 20}, (v, i) => i)
+                        arr.forEach((t, i) => {
+                      %>
+                      <div>
+                        <h1>BOTTOM CARD CONTENT <%= i %></h1>
+                        내용
+                      </div>
+                      <% }); %>
+                    </section>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+
+            <dl class="guideItem">
+              <dt><%= layerTitle[1][isMobile ? 'mobile' : 'desktop'] %></dt>
+              <dd>
+                <% if (!isMobile) { %>
+                <p>좌표값과 너비는 페이지 CSS에서 직접 지정하도록 함</p>
+                <% } %>
+                <div class="layerTransformBundle custom">
+                  <button
+                    type="button"
+                    class="layerTransformButton storeBtnSecondary important"
+                    aria-controls="exampleCardNameFull"
+                    >
+                    <span>SECONDARY BUTTON IMPORTANT</span>
+                  </button>
+                  <div class="layerTransformWrapper">
+                    <div id="exampleCardNameFull" class="layerTransformContainer">
+                      <header class="layerTransformHeader">
+                        <h1><%= layerTitle[1][isMobile ? 'mobile' : 'desktop'] %></h1>
+                        <div class="closeCard">
+                          <button type="button" aria-label="닫기"></button>
+                        </div>
+                      </header>
+
+                      <section class="layerTransformContents">
+                        <p style="height: 500px">BOTTOM CARD CONTENT</p>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+
+            <% if (!isMobile) { %>
+            <dl class="guideItem">
+              <dt><%= layerTitle[2]['desktop'] %></dt>
+              <dd>
+                <p>layerTransformBundle에 alignCenter 클래스 추가</p>
+                <div class="layerTransformBundle alignCenter">
+                  <button
+                    type="button"
+                    class="layerTransformButton storeBtnSecondary important"
+                    aria-controls="exampleCardCenter"
+                    >
+                    <span>SECONDARY BUTTON IMPORTANT</span>
+                  </button>
+                  <div class="layerTransformWrapper">
+                    <div id="exampleCardCenter" class="layerTransformContainer">
+                      <header class="layerTransformHeader">
+                        <h1><%= layerTitle[2]['desktop'] %></h1>
+                        <div class="closeCard">
+                          <button type="button" aria-label="닫기"></button>
+                        </div>
+                      </header>
+
+                      <section class="layerTransformContents">
+                        <p><%= layerTitle[2]['desktop'] %>의 경우<br>스크롤 비활성화</p>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+            <% } %>
+
+            <dl class="guideItem">
+              <dd>콜백 코드 bottomCard 선언부 참조</dd>
+              <dd class="layerTransformBundle">
+                <button
+                  type="button"
+                  class="layerTransformButton storeBtnPrimary"
+                  aria-controls="callBackTestCard"
+                  >
+                  <span>PRIMARY BUTTON</span>
+                </button>
+                <div class="layerTransformWrapper">
+                  <div id="callBackTestCard" class="layerTransformContainer">
+                    <header class="layerTransformHeader">
+                      <h1>콜백 테스트</h1>
+                      <div class="closeCard">
+                        <button type="button" aria-label="닫기"></button>
+                      </div>
+                    </header>
+
+                    <section class="layerTransformContents">
+                      <p>Console log</p>
+                    </section>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+
+            <dl class="guideItem">
+              <dt>공유하기</dt>
+              <dd>
+                <div class="codeExample">&nbsp;&nbsp;&lt;%- include('/components/store/_sharePopup'); %&gt;<br></div>
+                <div class="layerTransformBundle">
+                  <button
+                    type="button"
+                    class="layerAlertButton sharePopButton"
+                    aria-controls="sharePopup"
+                    >
+                    <span class="blind">공유하기</span>
+                  </button>
+                  <%- include('/components/store/_sharePopup', {isMobile}); %>
+                </div>
+              </dd>
+            </dl>
+
+          </div>
+
+          <div class="guide flex">
+            <div>
+              <h1 class="guideTitle">찜하기</h1>
+              <div class="dibsWrapper">
+                <%- include('/components/store/_btnDibs'); %>
+              </div>
+            </div>
+
+            <div>
+              <h1 class="guideTitle">에러 이미지</h1>
+              <div class="errorImage">
+                <img src="#" alt="" onerror="this.src='<%= page.base %>/store/common/noImage/transparent.png'">
+              </div>
+            </div>
+          </div>
+
+          <div class="guide flex">
+            <div>
+              <h1 class="guideTitle">포인트 color 적용</h1>
+
+              <p>
+                페이지를 감싸고 있는 부모 div에<br>
+                <b>id="pointColorWrap"</b>를 적용한 후 <b>data-point-color</b> 값에 컬러 이름을 넣어준다.
+              </p>
+              <%
+                const colorList = [
+                  {
+                    background: '#e775c4',
+                    name: 'pink',
+                    mode: 'black'
+                  },
+                  {
+                    background: '#f99641',
+                    name: 'orange',
+                    mode: 'black'
+                  },
+                  {
+                    background: '#c4a07c',
+                    name: 'babyBrown',
+                    mode: 'black'
+                  },
+                  {
+                    background: '#888',
+                    name: 'gray',
+                    mode: 'white'
+                  },
+                  {
+                    background: '#6b90dc',
+                    name: 'blue',
+                    mode: 'white'
+                  },
+                  {
+                    background: '#815726',
+                    name: 'brown',
+                    mode: 'white'
+                  },
+                  {
+                    background: '#6f9f33',
+                    name: 'green',
+                    mode: 'white'
+                  },
+                  {
+                    background: '#fc5296',
+                    name: 'hotPink',
+                    mode: 'white'
+                  },
+                  {
+                    background: '#9a2dff',
+                    name: 'purple',
+                    mode: 'white'
+                  }
+                ]
+              %>
+
+              <ul class="colorList">
+                <% colorList.forEach(item => { %>
+                  <li><span style="background: <%= item.background %>; color: <%= item.mode %>"><%= item.name %></span></li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+
+          <div class="guide">
+            <h1 class="guideTitle">별점</h1>
+            <div class="guideItem">
+              <div>
+                <% for (var i = 0, iLength = 5; i <= iLength; i++) { %>
+                <i class="starRate" data-star-rate="<%= i %>"><%= i %></i>
+                <%   if (i !== 5) { %>
+                <i class="starRate" data-star-rate="<%= i %>.5"><%= i %>.5</i>
+                <% } } %>
+              </div>
+
+              <div>
+                <% for (var i = 0, iLength = 5; i <= iLength; i++) { %>
+                <i class="starRate big" data-star-rate="<%= i %>"><%= i %></i>
+                <%   if (i !== 5) { %>
+                <i class="starRate big" data-star-rate="<%= i %>.5"><%= i %>.5</i>
+                <% } } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide">
+            <h1 class="guideTitle">탭 기본</h1>
+            <div class="guideItem">
+              <div class="tab jsTab">
+                <ol class="tabList jsTabList">
+                  <% ['전체', '더블더블자켓', '플리스', '퍼 자켓', '베스트', '싱글코트'].forEach((t, i) => { %>
+                  <li class="tabItem jsTabItem<%= i === 0 ? ' active' : '' %>">
+                    <button type="button" class="tabBtn jsTabBtn"><%= t %></button>
+                  </li>
+                  <% }); %>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide">
+            <h1 class="guideTitle">rangeBar</h1>
+            <div class="guideItem">
+              <label class="progressBar">
+                <div class="gauge-cell">
+                  <div class="rangeWrap" data-range_min="0" data-range_max="9900000" data-cur_min="0" data-cur_max="9900000">
+                    <div class="bar nst-animating"></div>
+                    <button class="min nst-animating" type="button" tabindex="0"></button>
+                    <button class="max nst-animating" type="button" tabindex="0"></button>
+                  </div>
+                </div>
+                <div class="priceWrap">
+                  <div class="minPrice">
+                    <span class="blind">최솟값</span>
+                    <span class="value"></span>원
+                  </div>
+                  <div class="maxPrice">
+                    <span class="blind">최댓값</span>
+                    <span class="value"></span>원
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="guide flex">
+            <div>
+              <h1 class="guideTitle">checkbox</h1>
+              <p style="font-size: 12px;">기본 체크아이콘 우측설정 class rightCheck 추가(기본 좌측)</p>
+              <label class="formCheck jsFormCheckRound" data-round=".addPlanWayType" data-toggle=".jsFormGroupToggle">
+                <input type="checkbox" class="formCheckInput">
+                <span class="formCheckText">무료배송</span>
+              </label>
+
+              <label class="formCheck rightCheck jsFormCheckRound" data-round=".addPlanWayType" data-toggle=".jsFormGroupToggle">
+                <input type="checkbox" class="formCheckInput">
+                <span class="formCheckText">무료배송</span>
+              </label>
+            </div>
+            <div>
+              <h1 class="guideTitle">selectbox</h1>
+            <div class="selectStyle sortSelect">
+              <a href="#" class="viewPoint invisible">
+                <span>추천상품순</span>
+              </a>
+              <div class="optionList">
+                <ul>
+                  <% ['추천상품순', '판매많은순', '낮은가격순', '상품평많은순', '최근등록순'].forEach((t, i) => { %>
+                  <li<% if (i === 0) { %> class="current"<% } %>>
+                    <a href="#"><%= t %></a>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+            </div>
+            <div class="filterWrap isActive">
+              <h1 class="guideTitle">filter icon</h1>
+              <p style="font-size: 12px;">필터 적용되어 있을 때, class isActive 추가</p>
+              <button type="button" class="filterBtn" aria-controls="filterBox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                  <path fill="#FFF" stroke="#000" d="M9.04 15.57V8.61l-.13-.16-4.47-4h12.23l-4.47 4-.13.16v8.06z"/>
+                </svg>
+
+                <span>필터</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="guide alert">
+            <h1 class="guideTitle">alert 레이어 팝업</h1>
+            <div class="guideItem jsGuideItem">
+              <button type="button" class="layerAlertButton" aria-controls="alertExample01">alert 레이어 활성화(버튼 1개)</button>
+              <button type="button" class="layerAlertButton" aria-controls="alertExample02">alert 레이어 활성화(버튼 1개, 타이틀, 강조 텍스트)</button>
+              <button type="button" class="layerAlertButton" aria-controls="alertExample03">alert 레이어 활성화(버튼 2개, 콘텐츠, 커스텀 클래스)</button><br>
+            </div>
+          </div>
+
+        <div class="guide">
+          <h1 class="guideTitle">스토어 쿠폰</h1>
+          <dl class="guideItem">
+            <dt>button 쿠폰</dt>
+            <dd>
+            <%- include('/components/store/_sellerCoupon', {
+              addClass: false,
+              couponDisable: false,
+              couponNumber: '10%',
+              couponText: '스토어찜 할인쿠폰'
+            }); %>
+            <%- include('/components/store/_sellerCoupon', {
+              addClass: false,
+              couponDisable: true,
+              couponNumber: '2,500원',
+              couponText: '첫구매 할인쿠폰'
+            }); %>
+            </dd>
+          </dl>
+
+          <dl class="guideItem">
+            <dt>div 쿠폰(기능X)</dt>
+            <dd>
+            <%- include('/components/store/_sellerCoupon', {
+              addClass: false,
+              couponDisable: false,
+              couponNumber: '10%',
+              couponText: '스토어찜 할인쿠폰',
+              tag: "div"
+            }); %>
+            <%- include('/components/store/_sellerCoupon', {
+              addClass: false,
+              couponDisable: true,
+              couponNumber: '2,500원',
+              couponText: '첫구매 할인쿠폰',
+              tag: "div"
+            }); %>
+            </dd>
+          </dl>
+        </div>
+
+        <% if (state.toLowerCase().includes('toast')) { %>
+          <div class="guide toastExample">
+            <h1 class="guideTitle">토스트 팝업</h1>
+            <div class="guideItem jsGuideItem" style="position: relative;">
+              토스트 팝업 예제입니다.<br>
+              토스트 팝업의 위치는 따로 CSS를 통해 잡아주세요.
+            </div>
+          </div>
+        <% } %>
+        </div>
+        <!-- Page Contents :: End -->
+
+        <!-- Load Indicator :: Start -->
+        <%- include('/components/store/_loader'); %>
+        <!-- Load Indicator :: End -->
+
+        <!-- layer alert :: Start -->
+        <%- include('/components/store/_layerAlert', {
+          layerAlertId: 'alertExample01',
+          layerAlertClass: 'popCenter',
+          title: '<p>이미 쿠폰을<br>발급받으셨습니다.</p>',
+          btn01: {
+            close: true,
+            text: '확인',
+          }
+        }); %>
+
+        <%- include('/components/store/_layerAlert', {
+          layerAlertId: 'alertExample02',
+          layerAlertClass: 'popCenter',
+          title: '<h1>공통 레이어 팝업 타이틀</h1><p>다이슨 일렉트로닉 <em>스토어를 찜</em>하면<br>할인쿠폰을 드립니다.</p>',
+          btn01: {
+            close: true,
+            text: '닫기',
+          }
+        }); %>
+
+        <%- include('/components/store/_layerAlert', {
+          layerAlertId: 'alertExample03',
+          layerAlertClass: 'coupon popCenter',
+          stateName: 'alertLayer',
+          title: '<h1>다이슨 일렉트로닉 스토어를 찜하면<br>할인쿠폰을 드립니다.</h1><span>지금 바로 찜하고 할인받으세요!</span>',
+          content: '콘텐츠',
+          coupon: {
+            addClass: false,
+            couponDisable: false,
+            couponNumber: '10%',
+            couponText: '스토어찜 할인쿠폰',
+            tag: "div"
+          },
+          btn01: {
+            close: true,
+          },
+          btn02: {
+            class:'newClass',
+            text: '찜하고 쿠폰받기',
+          }
+        }); %>
+        <!-- layer alert :: End -->
+
+      </section>
+
+    </div>
+    <%- include('/components/_scripts', {isMobile}); %>
+  </body>
+</html>

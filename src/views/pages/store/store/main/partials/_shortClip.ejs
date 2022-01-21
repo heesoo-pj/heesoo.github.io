@@ -1,0 +1,51 @@
+<div class="productWrap shortClip">
+  <h3>숏클립</h3>
+  <ul class="shortClipItem slideWrap ">
+    <% data.product.shotClip.forEach((item, idx) => { %>
+      <li class="item">
+        <div class="productVideo">
+          <iframe class="videoItem" id="videoNum<%= idx %>" src="https://player.vimeo.com/video/<%= item.video %>?muted=0&controls=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
+          <div class="buttonPlayWrap">
+            <button class="js-method btnPlay" data-method="play">재생</button>
+          </div>
+          <div class="vimeoLoading"></div>
+          <div class="controls">
+            <span class="curentTime"></span>
+            <span class="muteWrap">
+              <button type="button" class="btnUnmute">소리 켜기</button>
+              <button type="button" class="btnMute">소리 끄기</button>
+            </span>
+          </div>
+        </div>
+        <div class="productInfo">
+          <h4><%= item.title %></h4>
+
+          <div class="labelWrap">
+            <i class="tag usedTag">중고상품</i>
+            <i class="tag lifeWeekTag"><img src="/images/common/store/icon/icon_lifeweek.svg" alt="인생주간"></i>
+          </div>
+
+          <p class="name"><%= item.productName %></p>
+
+          <div class="price <%= item.text ? 'inText': '' %>">
+            <span class="salePrice"><em class="blind">판매가</em><em><%= idx === 5 ? '월 ' : '' %><%= $.withCommas(item.salePrice) %></em><span class="currency">원<%= idx === 2 ? '~' : '' %></span></span>
+            <% if(item.originPrice) { %>
+              <span class="originalPrice"><em class="blind">원가</em><%= $.withCommas(item.originPrice) %><span class="currency">원</span></span>
+            <% } %>
+
+            <% if(item.text) { %>
+              <span class="productText"><%= item.text %></span>
+            <% } %>
+
+            <% if(item.percent) { %>
+              <span class="percentage">
+                <em><em class="blind">할인율</em><%= item.percent %></em><span class="unit">%</span>
+              </span>
+            <% } %>
+          </div>
+        </div>
+      </li>
+    <% }); %>
+  </ul>
+</div>
+

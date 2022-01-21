@@ -1,0 +1,188 @@
+---
+pageName: 카테고리
+title: 카테고리
+pageId: storeCategory
+indexGroup: storeCategory
+metaService: shopping
+metaCompatibility: standard
+metaContainerWidth: 1280
+styles:
+  page:
+    - /styles/pages/store/category/category
+scripts:
+  common:
+    - /scripts/plugins/bxslider/jquery.bxslider.js
+    - /scripts/plugins/nstSlider/jquery.nstSlider.min.js
+    - /scripts/components/store/toast.js
+    - /scripts/components/store/btnDibs.js
+    - /scripts/components/store/productType.js
+    - /scripts/pages/store/category/filter.js
+    - /scripts/pages/store/category/category.js
+data:
+- /data/texts/pages/store/product.json
+state:
+  default: 기본
+  pointColor: 포인트컬러 적용
+  search: 검색
+  searchResult: 검색결과
+  searchResultNone: 검색결과 없음
+  keywordNone: 검색키워드 없음
+  loading: 로딩여백
+  browserLayer: 브라우저 호환성안내
+
+  mobile: 기본(모바일)
+  mobileInApp: 앱 헤더(모바일)
+  mobilePointColor: 포인트컬러 적용(모바일)
+  mobileSearch: 검색(모바일)
+  mobileSearchResult: 검색결과(모바일)
+  mobileSearchResultNone: 검색결과 없음(모바일)
+  mobileKeywordNone: 검색키워드 없음(모바일)
+  mobileLoading: 로딩여백(모바일)
+base: /images
+---
+
+<%
+  isMobile = state.includes('mobile');
+  isSearch = state === 'search' || state === 'mobileSearch'
+%>
+
+<!doctype html>
+<html lang="<%= lang %>">
+  <head>
+    <%- include('/components/store/_head', {isMobile}); %>
+  </head>
+
+  <%- include('/layouts/_partials/_accessibility'); %>
+  <%- isMobile ? '' : include('/layouts/_partials/_gateway'); %>
+
+  <body id="<%= page.pageId %>" class="<%= isMobile ? 'mobile' : 'desktop'%><%= state === 'mobileInApp' ? ' inApp' : '' %>">
+    <div class="storeContainer categoryContainer" id="<%= state.toLowerCase().includes('pointcolor') ? 'pointColorWrap' : '' %>" data-point-color="<%= state.toLowerCase().includes('pointcolor') ? 'purple' : '' %>">
+      <% if (state !== 'mobileSearch') { %>
+      <%- include('/layouts/header', {
+        isMobile,
+        state
+      }); %>
+      <% } %>
+
+      <section id="contents" class="contents">
+        <% if (isSearch) { %>
+        <div class="contentInner searchFormWrap">
+          <div class="searchForm">
+            <input
+              type="search"
+              class="iSearch jsSearch"
+              placeholder="스토어 내 상품검색"
+              value="">
+            <button type="button" class="deleteBtn jsDelSearchText">
+              <span>삭제</span>
+            </button>
+          </div>
+          <% if (state === 'mobileSearch') { %>
+          <a href="#" class="btnCancle">취소</a>
+          <% } %>
+        </div>
+        <% } else { %>
+        <% if(!state.toLowerCase().includes('search')){ %>
+          <div class="subHeader">
+            <div class="contentInner">
+              <div class="tab jsTab">
+                <ul class="tabList jsTabList">
+                  <% ['전체상품', '다이슨 V11', '다이슨 디지털 슬림', '다이슨 V10', '다이슨 V8', '다이슨 옴니-글라이드', '무선 청소기 툴', '무선 청소기',  '다이슨 V10', '다이슨 V8', '다이슨 옴니-글라이드', '무선 청소기 툴', '무선 청소기'].forEach((t, i) => { %>
+                    <li class="tabItem jsTabItem<%= i === 0 ? ' active' : '' %>"><button class="jsTabBtn"><%= t %></button></li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% } %>
+
+        <div class="contentInner">
+          <!-- 소분류 카테고리 -->
+          <% if(state.toLowerCase().includes('search')){ %>
+            <p class="searchTitle"><span>'<b>무선청소기</b>'</span>에 대한 검색결과<%- state.toLowerCase().includes('searchresultnone') ? '' : ' (<em>2,321</em>)' %></p>
+          <% } else { %>
+            <div class="subcategory">
+              <div class="tab jsTab">
+                <ul class="tabList jsTabList">
+                  <% ['전체', '더블더블자켓', '플리스', '퍼 자켓', '베스트', '싱글코트', '더블더블자켓', '더블더블자켓', '베스트', '더블더블자켓', '더블더블자켓', '베스트', '싱글코트'].forEach((t, i) => { %>
+                  <li class="tabItem jsTabItem<%= i === 0 ? ' active' : '' %>">
+                    <button type="button" class="tabBtn jsTabBtn"><%= t %></button>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+          <% } %>
+
+
+          <div class="categoryHeader">
+            <div class="selectStyle sortSelect">
+              <a href="#" class="viewPoint invisible">
+                <span>추천상품순</span>
+              </a>
+              <div class="optionList">
+                <ul>
+                  <% ['추천상품순', '판매많은순', '낮은가격순', '상품평많은순', '최근등록순'].forEach((t, i) => { %>
+                  <li<% if (i === 0) { %> class="current"<% } %>>
+                    <a href="#"><%= t %></a>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="rightWrap">
+              <div class="filterWrap">
+                <button type="button" class="filterBtn" aria-controls="filterBox">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <path fill="#FFF" stroke="#000" d="M9.04 15.57V8.61l-.13-.16-4.47-4h12.23l-4.47 4-.13.16v8.06z"/>
+                  </svg>
+                  <span>필터</span>
+                </button>
+                <!-- 필터 레이어 -->
+                <%- include('partials/_filterLayer'); %>
+              </div>
+
+              <%- include('/components/store/_typeIcon'); %>
+            </div>
+          </div>
+
+          <% if (state.toLowerCase().includes('searchresultnone')) { %>
+          <div class="noSearchResult">
+            <p>검색결과가 없습니다.</p>
+            <span>정확한 검색어 인지 확인하시고 다시 검색해 주세요.</span>
+            <ul class="caution">
+              <li>일시적으로 상품이 품절되었을 수 있습니다.</li>
+              <li>단어의 철자가 정확한지 확인해 주세요.</li>
+              <li>보다 일반적인 검색어로 다시 검색해 보세요.</li>
+              <li>검색어의 띄어쓰기를 다르게 해보세요.</li>
+            </ul>
+          </div>
+          <% } else if(state.toLowerCase().includes('keywordnone')) { %>
+          <div class="noSearchResult">
+            <p>검색결과가 없습니다.</p>
+          </div>
+          <% } else if(state.toLowerCase().includes('loading')) { %>
+            <!-- 상품 불러올 때, 개발에서 사용될 여백 div -->
+              <div class="loadingMargin"></div>
+          <% } else { %>
+          <div class="productWrap typeFilter noSlide">
+            <div class="typeWrap">
+              <ul class="default">
+                <%- include('/components/store/_productType', {
+                  products: 10
+                }); %>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="btnMoreProduct"><span>더보기</span></button>
+          <% } %>
+        </div>
+        <% } %>
+      </section>
+
+    </div>
+
+    <%- include('/components/_scripts', {isMobile}); %>
+  </body>
+</html>

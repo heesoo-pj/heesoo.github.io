@@ -1,0 +1,133 @@
+$base: "/images" !default;
+$imgPath: $base + "/pages/store";
+
+$system-font-desktop: -apple-system, system-ui, BlinkMacSystemFont, "맑은 고딕", "Malgun Gothic", "돋움", Dotum, Helvetica, "Apple SD Gothic Neo", sans-serif;
+$system-font-mobile: -apple-system, BlinkMacSystemFont, Roboto, "Droid Sans", "Helvetica Neue", "Apple SD Gothic Neo", "sans-serif", sans-serif;
+
+$defaultRed: #ef3e43;
+$mainColor: #26cec1;
+
+$normalWeight: normal;
+$boldWeight: bold;
+
+$maxWidth: 1280px;
+$minWidth: 320px;
+
+@mixin line-clamp($val) {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $val;
+    -webkit-box-orient: vertical;
+}
+
+@mixin blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: sz(-1);
+    width: sz(1);
+    height: sz(1);
+}
+
+@mixin starRate($starWidth: sz(13), $starHeight: sz(14), $starGap: sz(2)) {
+    $starImageURL: $base + "/common/store/starRate/icon_starOff.svg";
+    $starArea: $starWidth + $starGap;
+    position: relative;
+    display: inline-block;
+    width: $starWidth * 5 + $starGap * 4;
+    height: $starHeight;
+    background: url($starImageURL) no-repeat,
+    url($starImageURL) no-repeat $starArea 0,
+    url($starImageURL) no-repeat $starArea * 2 0,
+    url($starImageURL) no-repeat $starArea * 3 0,
+    url($starImageURL) no-repeat $starArea * 4 0;
+    background-size: $starWidth $starHeight;
+    text-indent: sz(-9999);
+    overflow: hidden;
+
+    &::after {
+        $starImageURL: $base + "/common/store/starRate/icon_starOn.svg";
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url($starImageURL) no-repeat,
+        url($starImageURL) no-repeat $starArea 0,
+        url($starImageURL) no-repeat $starArea * 2 0,
+        url($starImageURL) no-repeat $starArea * 3 0,
+        url($starImageURL) no-repeat $starArea * 4 0;
+        background-size: $starWidth $starHeight;
+    }
+
+    @for $i from 0 through 4 {
+        &[data-star-rate="#{$i}"]::after {
+            width: $starArea * $i;
+        }
+
+        &[data-star-rate="#{$i}.5"]::after {
+            width: $starArea * $i + $starWidth * .5;
+        }
+    }
+}
+
+@function vw($val) {
+    @return $val / 375 * 100vw;
+}
+
+@mixin noImage($size: 70%) {
+    background: #fff url("#{$base}/common/store/noImage/interpark.svg") center center no-repeat;
+    background-size: $size;
+}
+
+@mixin checkbox($size: 24rem) {
+    appearance: none;
+    width: $size;
+    height: $size;
+    margin-right: .5rem;
+    background: url("#{$base}/common/store/checkbox/check-off.svg") center center no-repeat;
+    background-size: $size;
+    border: none;
+
+    &:checked {
+        background: url("#{$base}/common/store/checkbox/check-on.svg") center center no-repeat;
+    }
+}
+
+@mixin arrow($size, $direction) {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: $size;
+    height: $size;
+    font-size: 0;
+    box-shadow: sz(1) sz(1) 0 0 #858585;
+    @if $direction == "prev" {
+        transform: translateY(-50%) rotate(135deg);
+    } @else {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+
+}
+
+@mixin line-clamp($val) {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $val;
+    -webkit-box-orient: vertical;
+}
+
+@mixin mq($prop, $maxVal) {
+    width: 100%;
+    min-width: $maxWidth;
+
+    > div {
+        width: $maxWidth;
+        margin: 0 auto;
+    }
+}

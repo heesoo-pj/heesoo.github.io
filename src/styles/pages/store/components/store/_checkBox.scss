@@ -1,0 +1,100 @@
+.formCheck {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+
+    &.rightCheck {
+        .formCheckText {
+            padding: 0 sz(25) 0 0;
+
+            &::before {
+                right: 0;
+                left: auto;
+            }
+
+            &::after {
+                right: sz(5);
+                left: auto;
+            }
+        }
+    }
+
+    &Input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+
+        &:checked {
+            + .formCheckText {
+                &::before {
+                    background-color: $defaultRed;
+                    box-shadow: 0 sz(1) sz(2.5) 0 rgba(0, 0, 0, .3);
+                }
+            }
+        }
+    }
+
+    &Text {
+        display: block;
+        position: relative;
+        font-size: sz(13);
+        line-height: sz(24);
+        color: #666;
+        padding: 0 0 0 sz(25);
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: sz(20);
+            height: sz(20);
+            transform: translateY(-50%);
+            background-color: #e2e2e2;
+            border-radius: 50%;
+            box-shadow: inset 0 sz(1) sz(2.5) 0 rgba(0, 0, 0, .1);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: sz(9);
+            left: sz(5);
+            width: sz(8);
+            height: sz(3);
+            transform: rotate(-42deg);
+            border-bottom: sz(2) solid #fff;
+            border-left: sz(2) solid #fff;
+        }
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            .formCheckInput {
+                &:checked {
+                    & +.formCheckText {
+                        &::before {
+                            background-color: $pointColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

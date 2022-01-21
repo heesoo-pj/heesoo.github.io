@@ -1,0 +1,60 @@
+<div class="layerAlert sharePopup<%= (isMobile) ? ' popCenter' : '' %>"  id="sharePopup" role="dialog" aria-modal="true">
+  <div class="layerAlertInner">
+    <div id="sharePopContainer" class="sharePopContainer">
+      <header>
+        <h1>공유하기</h1>
+        <div class="closeBtn">
+          <button type="button" class="layerAlertBtn" aria-label="닫기">닫기</button>
+        </div>
+      </header>
+
+      <section>
+        <div class="shareList">
+          <ul>
+            <%
+              [
+              {
+                  "id": "kakao",
+                  "name": "카카오톡",
+                  "link": "#"
+                },
+                {
+                  "id": "story",
+                  "name": "카카오스토리",
+                  "link": "#"
+                },
+                {
+                  "id": "line",
+                  "name": "라인",
+                  "link": "#"
+                },
+                {
+                  "id": "twitter",
+                  "name": "트위터",
+                  "link": "#"
+                },
+                {
+                  "id": "facebook",
+                  "name": "페이스북",
+                  "link": "#"
+                },
+                {
+                  "id": "urlCopy",
+                  "name": "URL 복사",
+                  "link": "#"
+                }
+              ].forEach(t => {
+            %>
+            <li class="<%= t.id %>">
+              <a href="<%= t.link %>">
+                <i></i>
+                <span><%= t.name %></span>
+              </a>
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

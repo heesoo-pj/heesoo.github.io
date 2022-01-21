@@ -1,0 +1,385 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../components/store/_tabs";
+@import "../components/store/_rangeBar";
+@import "../components/store/_checkBox";
+@import "../components/store/_selectBox";
+@import "../components/store/_filter";
+@import "../components/store/_pointColor";
+@import "../components/store/_layerTransform";
+@import "../components/store/_btnDibs";
+@import "../components/store/_typeIcon";
+@import "../components/store/_productType";
+
+.categoryContainer {
+    @import "partials/_filterLayer";
+
+    @if $device == "mobile" {
+        min-width: $minWidth;
+    } @else {
+        min-width: $maxWidth;
+    }
+
+    .contentInner {
+        @if $device == "mobile" {
+            width: 100%;
+        } @else {
+            width: $maxWidth;
+        }
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .searchTitle {
+        padding: 0 sz(20);
+        @if $device == "mobile" {
+            margin: 2rem 0;
+            font-size: 1.7rem;
+        } @else {
+            margin: 40px 0 20px;
+            font-size: 20px;
+        }
+
+        span {
+            display: inline-block;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            font-weight: $boldWeight;
+            vertical-align: bottom;
+        }
+    }
+
+    .subHeader {
+        width: 100%;
+        border-bottom: sz(1) solid #ebebeb;
+        box-sizing: border-box;
+
+        @if $device == "mobile" {
+            height: 5rem;
+        } @else {
+            padding-bottom: 20px;
+        }
+
+        ul {
+            height: 100%;
+        }
+
+        li {
+            display: inline-block;
+            height: 100%;
+            @if $device == "mobile" {
+                padding: 0 1.5rem;
+                line-height: 5rem;
+                font-size: 1.5rem;
+                margin: 0;
+
+                &:first-child {
+                    padding-left: 2rem;
+                }
+            } @else {
+                margin-top: 20px;
+                padding: 0 20px;
+                font-size: 16px;
+            }
+
+            button {
+                color: #999;
+                @if $device == "mobile" {
+                    font-size: 1.5rem;
+                } @else {
+                    font-size: 16px;
+                }
+            }
+
+            &.active {
+                button {
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .subcategory {
+        @if $device == "mobile" {
+            margin: 1.5rem 0 .5rem;
+
+        } @else {
+            margin: 16px 0 30px;
+            padding: 0 20px;
+        }
+
+        .tabItem  {
+            @if $device == "mobile" {
+                &:first-child {
+                    margin-left: 2rem;
+                }
+
+                &:last-child {
+                    button {
+                        margin-right: 2rem;
+                    }
+                }
+
+            } @else {
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+        }
+
+        .viewPoint {
+            @if $device == "mobile" {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .categoryHeader {
+        border-bottom: sz(1) solid #ebebeb;
+
+        @if $device == "mobile" {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .5rem 2rem .6rem;
+        } @else {
+            height: 50px;
+            padding: 0 20px;
+        }
+
+        .selectStyle {
+            display: inline-block;
+            vertical-align: middle;
+
+            .viewPoint {
+                @if $device == "mobile" {
+                    font-size: 1.3rem;
+                } @else {
+                    font-size: 14px;
+                }
+            }
+
+            span {
+                color: #666;
+                @if $device == "mobile" {
+                    font-size: 1.3rem;
+                } @else {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .rightWrap {
+            float: right;
+            @if $device != "mobile" {
+                position: relative;
+                top: 14px;
+            }
+
+            > div {
+                float: left;
+                line-height: normal;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    clear: both;
+                }
+            }
+
+            .filterWrap {
+                display: inline-block;
+                margin-right: sz(14);
+                vertical-align: text-bottom;
+            }
+        }
+    }
+
+    .productWrap  {
+        margin-top: sz(50);
+    }
+
+    .btnMoreProduct {
+        text-align: center;
+        border: sz(1) solid #ccc;
+        border-radius: sz(10);
+
+        @if $device == "mobile" {
+            width: calc(100% - 4rem);
+            height: 4.5rem;
+            line-height: 4.5rem;
+            margin: 3rem 2rem 0;
+            font-size: 1.5rem;
+        } @else {
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            margin-top: 60px;
+            font-size: 16px;
+        }
+
+        span {
+            position: relative;
+            display: inline-block;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                border: sz(1) solid #333;
+                border-width: 0 sz(1) sz(1) 0;
+                transform: rotate(45deg);
+                width: sz(6);
+                height: sz(6);
+                margin-top: sz(-6);
+                margin-left: sz(3);
+
+                @if $device == "mobile" {
+                    right: -1.2rem;
+                } @else {
+                    right: -10px;
+                }
+            }
+        }
+    }
+
+    .noSearchResult {
+        text-align: center;
+        color: #666;
+
+        @if $device == "mobile" {
+            padding: 8rem 0 28rem;
+            margin: 0 auto;
+            font-size: 1.3rem;
+        } @else {
+            margin: 101px auto 467px;
+            font-size: 16px;
+            line-height: 25px;
+        }
+
+        p {
+            margin-bottom: sz(20);
+
+            @if $device == "mobile" {
+                font-size: 1.5rem;
+            } @else {
+                font-size: 20px;
+            }
+        }
+
+        span {
+            display: block;
+
+            @if $device == "mobile" {
+                margin-bottom: 1.5rem;
+            } @else {
+                margin-bottom: 30px;
+            }
+        }
+
+        .caution {
+            color: #999;
+
+            @if $device == "mobile" {
+                line-height: 1.9rem;
+            } @else {
+                line-height: 25px;
+            }
+        }
+    }
+
+    .searchForm {
+        position: relative;
+
+        @if $device == "mobile" {
+            width: 100%;
+            height: 4.4rem;
+            font-size: 1.5rem;
+
+            &Wrap {
+                display: flex;
+                align-items: center;
+                padding: 2rem;
+                box-sizing: border-box;
+
+                .btnCancle {
+                    flex-shrink: 0;
+                    margin-left: 2rem;
+                    text-align: center;
+                    color: #000;
+                }
+            }
+        } @else {
+            width: 600px;
+            height: 60px;
+            margin: 50px auto 411px;
+        }
+
+        .iSearch {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: sz(1) solid #e8e8e8;
+            box-sizing: border-box;
+            background-color: #f3f3f3;
+
+            &::placeholder {
+                color: #999;
+            }
+
+            @if $device == "mobile" {
+                appearance: none;
+                outline: 0;
+                padding: 0 4rem 0 1.5rem;
+                font-size: 1.5rem;
+                border-radius: 4.4rem;
+            } @else {
+                padding: 0 60px;
+                border-radius: 60px;
+                background-image: url("#{$base}/pages/store/category/icon_search.png");
+                background-repeat: no-repeat;
+                background-position: 10px 10px;
+                font-size: 16px;
+
+                &::-ms-clear {
+                    display: none;
+                }
+            }
+        }
+
+        .deleteBtn {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: sz(-14);
+            width: sz(28);
+            height: sz(28);
+            background: url("#{$base}/pages/store/category/icon_search_delete.png") no-repeat;
+            background-size: 100% auto;
+
+            span {
+                @include blind;
+            }
+
+            @if $device == "mobile" {
+                right: .8rem;
+            } @else {
+                right: 15px;
+            }
+        }
+
+        &.hasText {
+            .deleteBtn {
+                display: block;
+            }
+        }
+    }
+
+    .loadingMargin {
+        height: sz(500);
+    }
+}

@@ -1,0 +1,109 @@
+---
+pageName: 상품 타입별 예제
+title: 상품 타입별 예제
+pageId: storeExample
+indexGroup: store
+metaService: shopping
+metaCompatibility: standard
+metaContainerWidth: 1280
+styles:
+  page:
+    - /styles/pages/store/productExample/productExample
+scripts:
+  common:
+    - /scripts/plugins/bxslider/jquery.bxslider.js
+    - /scripts/components/store/toast.js
+    - /scripts/components/store/btnDibs.js
+    - /scripts/components/store/productType.js
+data:
+- /data/texts/pages/store/product.json
+state:
+  default: 기본
+
+  mobile: 기본(모바일)
+base: /images
+---
+
+<%
+  isMobile = state.includes('mobile');
+%>
+
+<!doctype html>
+<html lang="<%= lang %>">
+  <head>
+    <%- include('/components/store/_head'); %>
+  </head>
+
+  <body id="<%= page.pageId %>" class="<%= isMobile ? 'mobile' : 'desktop'%>">
+    <div class="storeContainer" id="pointColorWrap" data-point-color="babyBrown">
+      <section class="contents">
+        <% const cs = t => state === t %>
+        <div class="productWrap typeFilter">
+          <h3>
+            상품 타입별 예제
+            <%- include('/components/store/_typeIcon'); %>
+          </h3>
+
+          <div class="typeWrap">
+            <ul class="default">
+              <%- include('/components/store/_productType', {
+                products: 4
+              }); %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="productWrap">
+          <h3>기본형 <%= isMobile ? '(2*N)' : '(4*N)' %></h3>
+          <ul class="default">
+            <%- include('/components/store/_productType', {
+              products: 4
+            }); %>
+          </ul>
+        </div>
+
+        <div class="productWrap">
+          <h3>큰이미지 슬라이드<%= isMobile ? '(1*1)' : '(3*1)' %></h3>
+          <div class="slideWrap bigItemSlide">
+            <ul class="bigItem">
+              <%- include('/components/store/_productType', {
+                products: 4
+              }); %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="productWrap bestProduct">
+          <h3>베스트 상품 슬라이드<%= isMobile ? '(1*1)' : '(3*1)' %></h3>
+          <div class="slideWrap bestProductSlide">
+            <ul class="bestProductItem">
+              <%- include('/components/store/_productType', {
+                products: 4
+              }); %>
+            </ul>
+          </div>
+        </div>
+
+        <div class="productWrap">
+          <h3>리스트형 <%= isMobile ? '(1*N)' : '(2*N)' %></h3>
+          <ul class="listItem">
+            <%- include('/components/store/_productType', {
+              products: 4
+            }); %>
+          </ul>
+        </div>
+
+        <div class="productWrap">
+          <h3>세로형 <%= isMobile ? '(2*N)' : '(4*N)' %></h3>
+          <ul class="verticalItem">
+            <%- include('/components/store/_productType', {
+              products: 4
+            }); %>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <%- include('/components/_scripts', {isMobile}); %>
+  </body>
+</html>

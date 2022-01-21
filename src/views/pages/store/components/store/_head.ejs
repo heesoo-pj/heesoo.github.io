@@ -1,0 +1,42 @@
+<title><%= (page.title ? page.title + ' - ' : '') + site.siteName %></title>
+<meta charset="<%= page.charset || 'utf-8' %>">
+
+<% if (isMobile) { %>
+  <meta name="viewport" content="<%- $.serialize(page.viewport || site.viewport) %> maximum-scale=1.0, minimum-scale=1.0, target-densitydpi=medium-dpi">
+  <link rel="shortcut icon" href="/images/icons/favicon.ico">
+  <meta property="og:url"   content="">
+  <meta property="og:title"  content="">
+  <meta property="og:image"  ontent="">
+  <meta property="og:description"  content="">
+  <meta name="format-detection" content="telephone=no">
+<% } else { %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="service" content="<%= page.metaService ? page.metaService : 'interpark' %>">
+  <meta name="compatibility" content="<%= page.metaCompatibility ? page.metaCompatibility : 'standard' %>">
+  <meta name="containerWidth" content="<%= page.metaContainerWidth ? page.metaContainerWidth : '980' %>">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="description" content="인터파크, INTERPARK">
+  <meta name="keywords" content="인터파크, INTERPARK">
+<% } %>
+
+<link rel="stylesheet" href="/styles/pages/store/common/common.css">
+<link rel="stylesheet" href="/styles/pages/store/common/layer<%= isMobile ? 'M' : ''%>.css">
+
+<% if (!page.metaPage || (typeof page.metaPage !== 'undefined' && page.metaPage.header)) { %>
+<link rel="stylesheet" href="/styles/pages/store/components/store/header<%= isMobile ? 'M' : ''%>.css">
+<% } %>
+
+<script src="/scripts/libs/jquery/jquery.min.js"></script>
+
+<% if (typeof page.styles !== 'undefined' && page.styles.common instanceof Array) { %>
+  <% page.styles.common.forEach(function(commonCssPath) { %>
+    <link rel="stylesheet" href="<%= commonCssPath %>">
+  <% }) %>
+<% } %>
+
+<% if (typeof page.styles !== 'undefined' && page.styles.page instanceof Array) { %>
+  <% page.styles.page.forEach(function(pageCssPath) { %>
+    <link rel="stylesheet" href="<%= pageCssPath %><%= isMobile ? 'M' : ''%>.css">
+  <% }) %>
+<% } %>

@@ -1,0 +1,251 @@
+.filterBox {
+    @if $device == "mobile" {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: -29rem;
+        left: auto;
+        width: 29rem;
+        height: 100%;
+        transition: right .6s;
+        z-index: 999;
+    } @else {
+        position: absolute;
+        right: -100px;
+        top: 0;
+        width: 300px;
+    }
+
+    &.active {
+        &::before {
+            content: "";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @if $device == "mobile" {
+            right: 0;
+
+            &::before {
+                background-color: rgba(0, 0, 0, .5);
+            }
+
+            .layerHeader {
+                right: 0;
+            }
+        } @else {
+            display: block;
+
+            &::before {
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+    }
+
+    .layerHeader {
+        font-size: 0;
+        @if $device == "mobile" {
+            max-width: 29rem;
+            width: 100%;
+            padding: 3rem 2rem 0;
+            background: #fff;
+            box-sizing: border-box;
+            transition: right .6s;
+            z-index: 1;
+        } @else {
+            padding: 11px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h1 {
+            display: inline-block;
+            vertical-align: middle;
+            @if $device == "mobile" {
+                padding-right: 1rem;
+                font-size: 1.7rem;
+            } @else {
+                padding-right: 10px;
+            }
+        }
+
+        .closeCard {
+            @if $device == "mobile" {
+                top: 1.6rem;
+            } @else {
+                top: 1px;
+            }
+        }
+
+        .filterReset {
+            display: inline-block;
+            color: #666;
+            font-size: sz(13);
+            border: sz(1) solid #ccc;
+            border-radius: sz(6);
+            line-height: sz(25);
+            vertical-align: middle;
+            @if $device == "mobile" {
+                top: 1.6rem;
+                padding: 0 1rem;
+            } @else {
+                padding: 0 8px;
+            }
+        }
+    }
+
+    &Container {
+        position: relative;
+        background: #fff;
+        @if $device == "mobile" {
+            top: 0;
+            width: 100%;
+            height: 100%;
+            // height: calc(100% - 4.4rem);
+            z-index: 1;
+        } @else {
+            box-sizing: border-box;
+            width: 100%;
+            height: auto;
+            border: 1px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px 0 rgba(0, 0, 0, .2);
+        }
+    }
+
+    .checkboxWrap {
+        @if $device == "mobile" {
+            margin-bottom: 1.2em;
+        } @else {
+            padding: 0 5px;
+            margin-bottom: 30px;
+        }
+
+        li {
+            position: relative;
+            height: sz(50);
+            border-bottom: sz(1) solid #e8e8e8;
+
+            label {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+            }
+
+            .formCheckText {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: sz(15);
+            }
+        }
+    }
+
+    .filterBoxContainer {
+        overflow: auto;
+    }
+
+    .progressBarWrap {
+        @if $device == "mobile" {
+            margin-bottom: 2.7em;
+        } @else {
+            margin-bottom: 50px;
+        }
+    }
+
+    .gauge-cell {
+        margin-top: sz(34);
+    }
+
+    .layerContents {
+        @if $device == "mobile" {
+            margin-top: 3rem;
+        }
+
+        .search {
+            margin-top: 0;
+
+            .filterInput {
+                width: 100%;
+                margin-top: sz(5);
+                padding: sz(10) sz(34) sz(10) sz(5);
+                border: 0;
+                border-bottom: sz(1) solid rgba(0, 0, 0, .2);
+                border-radius: 0;
+                box-sizing: border-box;
+                @if $device == "mobile" {
+                    font-size: 1.6rem;
+                } @else {
+                    font-size: 15px;
+                }
+            }
+
+            form {
+                position: relative;
+            }
+
+            .btnFilterSearch {
+                position: absolute;
+                right: 0;
+                bottom: sz(3);
+                width: sz(34);
+                height: sz(34);
+                background: url("#{$base}/pages/store/category/icon_search.png");
+                background-size: cover;
+
+                span {
+                    @include blind;
+                }
+            }
+
+            &List {
+                @if $device == "mobile" {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
+                li {
+                    @if $device == "mobile" {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                    } @else {
+                        display: inline-block;
+                    }
+                    position: relative;
+                    margin: sz(10) sz(10) 0 0;
+                    padding: sz(5) sz(10);
+                    color: #000;
+                    font-size: sz(13);
+                    border: sz(1) solid #ccc;
+                    border-radius: sz(6);
+                }
+            }
+
+            &Text {
+                display: inline-block;
+                padding-right: sz(15);
+                word-break: break-all;
+                text-align: left;
+            }
+
+            &Close {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                padding: 0 sz(10);
+
+                &:after {
+                    content: "x";
+                    color: #999;
+                    font-size: sz(15);
+                    line-height: sz(15);
+                }
+            }
+        }
+    }
+}

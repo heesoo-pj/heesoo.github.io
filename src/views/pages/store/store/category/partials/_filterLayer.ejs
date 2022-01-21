@@ -1,0 +1,64 @@
+<div id="filterBox" class="layerTransformWrapper filterBox">
+  <div class="filterBoxContainer">
+    <header class="layerTransformHeader layerHeader">
+      <h1>필터</h1>
+      <button class="filterReset" type="button">초기화</button>
+      <div class="closeCard">
+        <button type="button" aria-label="닫기"></button>
+      </div>
+    </header>
+
+    <section class="layerTransformContents layerContents">
+      <h2>혜택/배송</h2>
+      <ul class="checkboxWrap">
+        <% ['청구할인','무료배송','오늘출발'].forEach((t) => { %>
+          <li>
+            <label class="formCheck rightCheck jsFormCheckRound" data-round=".addPlanWayType" data-toggle=".jsFormGroupToggle">
+              <input type="checkbox" class="formCheckInput">
+              <span class="formCheckText"><%= t %></span>
+            </label>
+          </li>
+        <% }); %>
+      </ul>
+
+      <h2>가격</h2>
+      <div class="progressBarWrap">
+        <label class="progressBar">
+          <div class="gauge-cell">
+            <div class="rangeWrap" data-range_min="0" data-range_max="9900000" data-cur_min="0" data-cur_max="9900000">
+              <div class="bar nst-animating"></div>
+              <button class="min nst-animating" type="button" tabindex="0"></button>
+              <button class="max nst-animating" type="button" tabindex="0"></button>
+            </div>
+          </div>
+          <div class="priceWrap">
+            <div class="minPrice">
+              <span class="blind">최솟값</span>
+              <span class="value"></span>원
+            </div>
+            <div class="maxPrice">
+              <span class="blind">최댓값</span>
+              <span class="value"></span>원
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <h2><label for="filterInput">결과 내 검색</label></h2>
+      <div class="search">
+        <form>
+          <input type="search" id="filterInput" class="filterInput" placeholder="검색어를 입력해주세요">
+          <button type="button" class="btnFilterSearch"><span>검색</span></button>
+        </form>
+        <ul class="searchList">
+          <% ['검색어 예시1', 'sdfsdfsdf', '두 줄 이상 검색어 예시 두 줄 이상 검색어 예시 두 줄 이상 검색어 예시 두 줄 이상 검색어 예시'].forEach(function(item) { %>
+            <li>
+              <button type="button" class="searchText"><%= item %></button>
+              <button type="button" class="searchClose"><span class="blind">검색어 삭제</span></button>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>

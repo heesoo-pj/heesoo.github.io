@@ -1,0 +1,8 @@
+$device: "desktop";
+
+@function sz($val) {
+    @return $val * 1px;
+}
+
+@import "_layerCommon";
+@import "components/store/_browserLayer"; // 브라우저 호환성 레이어

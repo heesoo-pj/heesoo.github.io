@@ -44,7 +44,7 @@ body {
 
 .main__wrap {
     .title-wrap {
-        @include alignCenter();
+        //@include alignCenter();
         position: absolute;
     }
 

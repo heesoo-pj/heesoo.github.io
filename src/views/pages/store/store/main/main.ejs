@@ -1,0 +1,224 @@
+---
+pageName: 메인
+title: 메인
+pageId: storeMain
+indexGroup: storeMain
+metaService: shopping
+metaCompatibility: standard
+metaContainerWidth: 1280
+styles:
+  page:
+    - /styles/pages/store/main/main
+data:
+  - /data/texts/pages/store/product.json
+scripts:
+  common:
+    - /scripts/plugins/bxslider/jquery.bxslider.js
+    - /scripts/plugins/nstSlider/jquery.nstSlider.min.js
+    - /scripts/components/store/toast.js
+    - /scripts/components/store/layerAlert.js
+    - /scripts/components/store/btnDibs.js
+    - /scripts/components/store/productType.js
+    - /scripts/pages/store/main/main.js
+state:
+  default: 기본
+  pointColor: 포인트컬러 적용
+  bestManual: 베스트상품 수동설정
+  oneCoupon: 쿠폰 1개
+  coupons: 쿠폰 2개 이상
+  noCoupon: 쿠폰 없음
+  noBannercoupons: 메인배너X
+  noBanneroneCoupon: 메인배너X, 쿠폰 1개
+  profile: 판매자 프로필 등록
+  noSns: sns계정없음
+  noServiceGrade: 서비스 우수여부 없음
+  noProductSatisfaction: 상품만족도 데이터 없음
+  noSlider: 배너, 상품영역 슬라이드X
+  browserLayer: 브라우저 호환성안내
+
+  mobile: 기본(모바일)
+  mobileInApp: 앱 헤더(모바일)
+  mobilePointColor: 포인트컬러 적용(모바일)
+  mobileBestManual: 베스트상품 수동설정(모바일)
+  mobileOneCoupon: 쿠폰 1개(모바일)
+  mobileNoCoupon: 쿠폰 없음(모바일)
+  mobileNoBanner: 메인배너X(모바일)
+  mobileNoBanneroneCoupon: 메인배너X, 쿠폰 1개(모바일)
+  mobileProfile: 판매자 프로필 등록(모바일)
+  mobileNoSns: sns계정없음(모바일)
+  mobileNoServiceGrade: 서비스 우수여부 없음(모바일)
+  mobileNoProductSatisfaction: 상품만족도 데이터 없음(모바일)
+  mobileNoSlider: 배너, 상품영역 슬라이드X(모바일)
+base: /images
+
+---
+
+<%
+  const cs = t => state === t;
+  const isMobile = state.includes('mobile');
+  const noSlider = state.toLowerCase().includes('noslider');
+%>
+
+<!doctype html>
+<html lang="<%= lang %>">
+  <head>
+    <%- include('/components/store/_head', {isMobile}); %>
+  </head>
+
+  <%- include('/layouts/_partials/_accessibility'); %>
+  <%- isMobile ? '' : include('/layouts/_partials/_gateway'); %>
+
+  <body id="<%= page.pageId %>" class="<%= isMobile ? 'mobile' : 'desktop' %><%= state === 'mobileInApp' ? ' inApp' : '' %>">
+    <div class="storeContainer mainContainer" id="<%= state.toLowerCase().includes('pointcolor') ? 'pointColorWrap' : '' %>" data-point-color="<%= state.toLowerCase().includes('pointcolor') ? 'babyBrown' : '' %>">
+      <%- include('/layouts/header', {
+        isMobile,
+        state
+      }); %>
+      <section id="contents" class="contents">
+        <div class="contentInner">
+          <div class="sellerInfoWrap <%= state.toLowerCase().includes('nobanner') ? 'noBanner' : '' %>">
+            <div class="mainBanner">
+              <ul>
+                <li><a href="#"><img src="//via.placeholder.com/750x640/97cefd/FFFFFF/?text=link O" alt="상품 이미지1"></a></li>
+                <% if(!noSlider) { %>
+                  <li><img src="//via.placeholder.com/710x450/fd97a5/FFFFFF/?text=link X" alt="테스트 이미지"></li>
+                  <li><img src="//via.placeholder.com/810x350/" alt="테스트 이미지"></li>
+                  <li><img src="//via.placeholder.com/510x600/" alt="테스트 이미지"></li>
+                <% } %>
+              </ul>
+            </div>
+
+            <div class="storeInfo">
+              <!-- 스토어 정보 -->
+              <%- include('partials/_storeInfo', {isMobile}); %>
+
+              <!-- 쿠폰영역 -->
+              <% if (!state.toLowerCase().includes('nocoupon')) { %>
+                <div class="couponWrap">
+                  <div class="couponInner<%= state.toLowerCase().includes('onecoupon') ? ' oneCoupon' : ''%>">
+                    <%- include('/components/store/_sellerCoupon', {
+                      addClass: false,
+                      couponDisable: false,
+                      couponNumber: '10%',
+                      couponText: '스토어찜 할인쿠폰'
+                    }); %>
+
+                    <% if (!state.toLowerCase().includes('onecoupon')) { %>
+                      <%- include('/components/store/_sellerCoupon', {
+                        addClass: false,
+                        couponDisable: true,
+                        couponNumber: '2,500원',
+                        couponText: '첫구매 할인쿠폰'
+                      }); %>
+                    <% } %>
+
+                    <% if (state.toLowerCase().includes('coupons')) { %>
+                      <%- include('/components/store/_sellerCoupon', {
+                        addClass: false,
+                        couponDisable: true,
+                        couponNumber: '2,500원',
+                        couponText: '첫구매 할인쿠폰'
+                      }); %>
+                      <%- include('/components/store/_sellerCoupon', {
+                        addClass: false,
+                        couponDisable: true,
+                        couponNumber: '2,500원',
+                        couponText: '첫구매 할인쿠폰'
+                      }); %>
+                    <% } %>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          </div>
+
+          <a class="btnSearch" href="./../category/category.mobile.html">스토어 내 상품검색</a>
+
+          <div class="productContainer">
+            <div class="productWrap bestReview">
+              <h3>베스트 리뷰</h3>
+              <div class="slideWrap bigItemSlide">
+                <ul class="bigItem">
+                  <%
+                    var productNumber = 10;
+                    if(isMobile && noSlider) {
+                      productNumber = 1;
+                    } else if(noSlider) {
+                      productNumber = 3;
+                    }
+                  %>
+                  <%- include('partials/_bestReview', { products: productNumber }); %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="productWrap bestProduct<%= state.toLowerCase().includes('bestmanual') ? ' bestManual' : ''%>">
+              <h3>베스트 상품</h3>
+              <div class="slideWrap bestProductSlide">
+                <ul class="bestProductItem">
+                  <%- include('/components/store/_productType', {
+                    bestNumber: !state.toLowerCase().includes('bestmanual'),
+                    products: productNumber,
+                    isMobile
+                  }); %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="productWrap">
+              <h3>신상품</h3>
+              <div class="typeWrap">
+                <ul class="verticalItem">
+                  <%- include('/components/store/_productType', {
+                    products: isMobile ? 4 : 8,
+                    isMobile
+                  }); %>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 기획전 -->
+            <%- include('partials/_storeEvent',{
+              noSlider: noSlider,
+              isMobile: isMobile
+            }); %>
+
+            <div class="productWrap">
+              <h3>판매자 추천상품</h3>
+              <div class="typeWrap">
+                <ul class="listItem">
+                  <%- include('/components/store/_productType', {
+                    products: isMobile ? 4 : 6,
+                    isMobile
+                  }); %>
+                </ul>
+              </div>
+            </div>
+
+            <div class="productWrap">
+              <h3>전체상품<span>(20개)</span></h3>
+              <div class="typeWrap">
+                <ul class="default">
+                  <%- include('/components/store/_productType', {
+                    products: isMobile ? 4 : 8,
+                    isMobile
+                  }); %>
+                </ul>
+              </div>
+
+              <a href="" class="btnMoreLink">더보기</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 쿠폰 팝업 -->
+        <% if(!state.toLowerCase().includes('nocoupon')) { %>
+          <%- include('partials/_couponPopup'); %>
+        <% } %>
+
+      </section>
+    </div>
+
+    <%- include('/components/_scripts', {isMobile}); %>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<div class="storeInfoInner">
+  <div class="storeName">
+    <div>
+      <h1>
+        <button type="button"
+        class="layerTransformButton"
+        aria-controls="storeInfo">
+        <i class="storeIcon">
+          <% if(state.toLowerCase().includes('profile')) { %>
+            <img src="/data/images/pages/example/info.jpg" alt="">
+          <% } %>
+        </i>
+        다이슨일렉트로닉스
+      </button>
+      </h1>
+      <button
+        type="button"
+        class="layerAlertButton sharePopButton"
+        aria-controls="sharePopup"
+        >
+        <span class="blind">공유하기</span>
+      </button>
+
+      <% if (!state.toLowerCase().includes('noservicegrade')) { %>
+      <div class="sellerGradeWrap">
+        <div class="sellerIcon">
+          <span class="best">
+            <em>최우수</em>
+          </span>
+        </div>
+        <div class="sellerIcon">
+          <span class="good">
+            <em>판매우수</em>
+          </span>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <p class="sellerGreeting">안녕하세요. 여기는 다이슨 일렉트로닉 입니다. 방문해 주셔서 감사합니다.</p>
+
+  <div class="sellerService">
+    <ul>
+      <li>스토어찜<span>1,434</span></li>
+      <li>주간방문<span>3,500</span></li>
+      <% if (!state.toLowerCase().includes('noproductsatisfaction')) { %>
+      <li>상품만족도<span>99<i>%</i></span></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div class="favoriteToggle">
+    <button type="button" class="jjimBtn layerAlertButton"<%- !state.includes('noCoupon') ? ' aria-controls="couponStep1"' : "" %>>
+      <span class="jjimText">스토어 찜하기</span>
+      <i>
+        <!-- desktop -->
+        <span class="jjimDesktop">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+            <g fill-rule="evenodd">
+                <path d="M115 2c1.105 0 2 .895 2 2v13.023c0 .22-.073.435-.208.61-.337.438-.965.52-1.402.182L109 12.892l-6.39 4.923c-.437.337-1.065.256-1.402-.182-.135-.175-.208-.39-.208-.61V4c0-1.105.895-2 2-2z" transform="translate(-1383 -496) translate(1045 256) translate(35 218) translate(202 20)"/>
+            </g>
+          </svg>
+        </span>
+
+        <!-- mobile -->
+        <span class="jjimMobile" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18">
+            <g fill="#EF3E43" fill-rule="evenodd">
+              <path d="M14 0c1.105 0 2 .895 2 2v14.824c0 .239-.086.47-.241.651-.36.42-.991.467-1.41.108L8 12.133l-6.349 5.45c-.419.36-1.05.311-1.41-.108-.155-.181-.241-.412-.241-.651V2C0 .895.895 0 2 0z" transform="translate(-1514 -321) translate(1080 236) translate(20 71) translate(414 14)"></path>
+            </g>
+          </svg>
+        </span>
+      </i>
+    </button>
+  </div>
+
+  <% if (!isMobile) { %>
+  <!-- 스토어정보 팝업 -->
+  <%- include('/layouts/_partials/_storeInfoPopup'); %>
+  <% } %>
+
+  <!-- 공유하기 팝업 -->
+  <%- include('/components/store/_sharePopup', {isMobile}); %>
+</div>

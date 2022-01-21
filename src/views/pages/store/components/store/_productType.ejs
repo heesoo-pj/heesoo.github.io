@@ -1,0 +1,60 @@
+<% data.product.product.forEach((item, idx) => { %>
+  <% if(typeof products !== 'undefined' && products) { %>
+    <% if (idx <= products - 1 ) { %>
+      <li class="item">
+        <% if(typeof bestNumber !== 'undefined' && bestNumber) { %>
+          <em class="bestNumber">
+            <%= idx + 1 %>
+          </em>
+        <% } %>
+        <a href="#">
+          <div class="productImg">
+            <%- include('/components/store/_btnDibs'); %>
+            <img src="<%= item.image.length ? `${item.image}` : '#' %>" alt="" onerror="this.src='<%= page.base %>/common/store/noImage/transparent.png'">
+          </div>
+
+          <div class="productInfo">
+            <div class="labelWrap">
+              <% if(item.used) { %>
+                <i class="tag usedTag">중고상품</i>
+              <% } %>
+              <% if(item.overseas) { %>
+                <i class="tag overseasTag">해외배송</i>
+              <% } %>
+              <% if(item.lifeWeek) { %>
+                <i class="tag lifeWeekTag"><img src="<%= page.base %>/common/store/icon/icon_lifeweek.svg" alt="인생주간"></i>
+              <% } %>
+            </div>
+
+            <p class="name"><%= item.product %></p>
+            <div class="price <%= item.text ? 'inText': '' %>">
+              <span class="salePrice"><em class="blind">판매가</em><em><%= idx === 5 ? '월 ' : '' %><%= $.withCommas(item.salePrice) %></em><span class="currency">원<%= idx === 2 ? '~' : '' %></span></span>
+              <% if(item.originPrice) { %>
+                <span class="originalPrice"><em class="blind">원가</em><%= $.withCommas(item.originPrice) %><span class="currency">원</span></span>
+              <% } %>
+
+              <% if(item.text) { %>
+                <span class="productText"><%= item.text %></span>
+              <% } %>
+
+              <% if(item.percent) { %>
+                <span class="percentage">
+                  <em><em class="blind">할인율</em><%= item.percent %></em><span class="unit">%</span>
+                </span>
+              <% } %>
+
+            </div>
+
+            <% if (item.info) { %>
+              <p class="info">
+                <% item.info.forEach(t => { %>
+                  <span><%= t%></span>
+                <% }); %>
+              </p>
+            <% } %>
+          </div>
+        </a>
+      </li>
+    <% } %>
+  <% } %>
+<% }); %>

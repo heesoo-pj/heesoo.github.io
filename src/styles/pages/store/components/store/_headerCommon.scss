@@ -1,0 +1,1297 @@
+@charset "utf-8";
+
+@import "../../../base/variables";
+@import "_pointColor";
+
+$imgPath: "//openimage.interpark.com/.ui/interparkMain/2017/common/header";
+$storeInfoImgPath: $base + "/pages/store/main";
+
+$primaryColor: #000;
+$defaultColor: #666;
+$subColor: #bfa36e;
+$lineColor: #333;
+$horizonLine: #e9edf3;
+$pointColor: #ef3f43;
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+.accessibility {
+    @if $device == "mobile" {
+        width: 100%;
+    } @else {
+        margin: 0 auto;
+    }
+
+    ul {
+        li {
+            position: absolute;
+
+            a {
+                display: block;
+                width: sz(1);
+                height: sz(1);
+                overflow: hidden;
+
+                &:focus {
+                    width: sz(150);
+                    height: sz(30);
+                    background: $primaryColor;
+                    font-size: sz(14);
+                    line-height: sz(30);
+                    text-align: center;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+@if $device != "mobile" {
+    .gatewayWrapper {
+        height: 33px;
+        background: #f4f6f9;
+        border-bottom: 1px solid $horizonLine;
+        font-family: $system-font-desktop;
+        font-weight: $normalWeight;
+        font-size: 12px;
+        color: $defaultColor;
+
+        @if $device != "mobile" {
+            @include mq(width, $maxWidth);
+        }
+
+        .gatewayInner {
+            #{"*zoom"}: 1;
+
+            &::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+
+        .gatewayLeft {
+            float: left;
+
+            .interparkGate {
+                ul {
+                    border-right: 1px solid $horizonLine;
+                    #{"*zoom"}: 1;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+
+                    li {
+                        float: left;
+                        width: 60px;
+                        border-left: 1px solid $horizonLine;
+
+                        a {
+                            display: block;
+                            padding-top: 9px;
+                            height: 24px;
+                            text-align: center;
+                            font-size: 12px;
+                            line-height: 16px;
+                            color: #777;
+                            transition: all ease .3s;
+
+                            &:hover {
+                                background: darken(#f4f6f9, 5%);
+                            }
+                        }
+
+                        &.current {
+                            a {
+                                background: #fff;
+                                height: 25px;
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .gatewayRight {
+            float: right;
+
+            .gatewayMenus {
+                .gatewayMenu {
+                    #{"*zoom"}: 1;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        clear: both;
+                    }
+
+                    > li {
+                        float: left;
+                        position: relative;
+                        z-index: 201;
+                        padding: 0 8px;
+                        height: 33px;
+
+                        > a {
+                            display: block;
+                            padding-top: 9px;
+                            height: 24px;
+                            font-size: 12px;
+                            line-height: 16px;
+                            text-align: center;
+                            color: #777;
+
+                            span {
+                                font-weight: $boldWeight;
+                                color: #ef3f43;
+                            }
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
+                        &.gatewayDirectConnect {
+                            &.off {
+                                > a {
+                                    span {
+                                        color: inherit;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.hasSub {
+                            > a {
+                                position: relative;
+                                padding-right: 17px;
+
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 10px;
+                                    right: 0;
+                                    width: 13px;
+                                    height: 13px;
+                                    background: url("#{$imgPath}/img_gatewayArrow.png") no-repeat 0 -12px;
+                                }
+
+                                &:hover {
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+
+                        .gatewaySub {
+                            display: none;
+                            position: absolute;
+                            top: 27px;
+                            right: 10px;
+                            z-index: 2;
+                            border: 1px solid #333;
+                            background: #fff;
+                            box-shadow: 0 5px 7px 0 rgba(0, 0, 0, .2);
+
+                            ul.gatewaySubMenu {
+                                padding: 10px 13px 11px 14px;
+
+                                li {
+                                    font-size: 12px;
+                                    line-height: 20px;
+                                    letter-spacing: -.5px;
+
+                                    a {
+                                        white-space: nowrap;
+                                        color: $primaryColor;
+
+                                        &:hover {
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.active {
+                            > a {
+                                &::before {
+                                    background-position: 0 0;
+                                }
+                            }
+
+                            .gatewaySub {
+                                display: block;
+                            }
+                        }
+
+                        &.gatewayLanguages {
+                            padding-right: 0;
+
+                            .gatewaySub {
+                                right: 0;
+
+                                ul.gatewaySubMenu {
+                                    li {
+                                        letter-spacing: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        .directConnectGuide {
+                            width: 247px;
+
+                            .directConnectTop {
+                                position: relative;
+                                height: 54px;
+                                text-indent: -9999px;
+                                background: url("//openimage.interpark.com/_nip/img_stConnect_top_off.gif") no-repeat;
+
+                                .closeDirectConnect {
+                                    position: absolute;
+                                    top: 6px;
+                                    right: 7px;
+                                    width: 15px;
+                                    height: 15px;
+                                    background: url("#{$imgPath}/blank.png");
+                                }
+                            }
+
+                            .directConnectIPoint {
+                                height: 133px;
+                                text-indent: -9999px;
+                                background: url("//openimage.interpark.com/_nip/img_stConnect_01c.gif") no-repeat;
+                            }
+
+                            .directConnectHowto {
+                                position: relative;
+                                height: 93px;
+                                background: url("//openimage.interpark.com/_nip/img_stConnect_02a.gif") no-repeat;
+
+                                strong {
+                                    @include blind;
+                                }
+
+                                ul {
+                                    li {
+                                        position: absolute;
+                                        top: 34px;
+                                        left: 11px;
+
+                                        &.setFavorite {
+                                            left: 68px;
+                                        }
+
+                                        &.setURL {
+                                            left: 125px;
+                                        }
+
+                                        &.connectMail {
+                                            left: 182px;
+                                        }
+
+                                        a {
+                                            display: block;
+                                            text-indent: -9999px;
+                                            width: 56px;
+                                            height: 51px;
+                                            background: url("#{$imgPath}/blank.png");
+                                        }
+                                    }
+                                }
+                            }
+
+                            .directConnectMembership {
+                                padding: 8px 10px 11px;
+
+                                a {
+                                    display: block;
+
+                                    img {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.on {
+                            .directConnectGuide {
+                                .directConnect {
+                                    .directConnectTop {
+                                        background: url("//openimage.interpark.com/_nip/img_stConnect_top_on.gif") no-repeat;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+$mobileHeaderHeight: 5rem;
+
+.headerWrapper {
+    $desktopTopSpace: 40px;
+    background: #fff;
+
+    @if $device != "mobile" {
+        @include mq(width, $maxWidth);
+    } @else {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding-top: .6rem;
+        z-index: 999;
+    }
+
+    .header {
+        @if $device == "mobile" {
+            &Left {
+                position: absolute;
+                left: .5rem;
+                bottom: 0;
+                z-index: 1;
+
+                a {
+                    padding: 1rem;
+                }
+            }
+
+            &Left,
+            &Right {
+                a {
+                    display: block;
+                }
+            }
+        }
+
+        &Center {
+            a {
+                display: block;
+                color: #000;
+                font-weight: $boldWeight;
+
+                img {
+                    display: block;
+                }
+            }
+
+            @if $device == "mobile" {
+                position: absolute;
+                bottom: 1rem;
+                right: 0;
+                left: 0;
+
+                a {
+                    span {
+                        display: block;
+                        max-width: calc(100vw - (4.4rem*2 + 1rem)*2 - 1rem);
+                        font-size: 1.7rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
+                        &.imgBox {
+                            max-width: 13.8rem;
+                            height: 2.4rem;
+                        }
+                    }
+
+                    img {
+                        max-width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                @media (max-width: 320px) {
+                    bottom: 1.2rem;
+
+                    a {
+                        span {
+                            &.imgBox {
+                                max-width: 11.6rem;
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+            } @else {
+                margin: 0 auto;
+                display: inline-block;
+                font-size: 30px;
+                line-height: 40px;
+
+                a {
+                    span {
+                        display: block;
+
+                        &.imgBox {
+                            max-width: 230px;
+                            height: 40px;
+                        }
+                    }
+
+                    img {
+                        display: block;
+                        max-width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        &Right {
+            position: absolute;
+            right: sz(10);
+
+            @if $device == "mobile" {
+                display: flex;
+                bottom: 0;
+            } @else {
+                top: $desktopTopSpace;
+            }
+
+            .btnSearch {
+                @include clearfix();
+                display: block;
+                border: sz(1) solid #e8e8e8;
+                box-sizing: border-box;
+
+                @if $device == "mobile" {
+                    width: 3.6rem;
+                    height: 3.6rem;
+                    margin: .4rem;
+                    border-radius: 1.8rem;
+                    background: #f3f3f3 url("#{$base}/common/store/header/icon_search_mo.png") no-repeat center top;
+                    background-size: cover;
+                } @else {
+                    width: 300px;
+                    height: 40px;
+                    line-height: 40px;
+                    padding: 0 5px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    color: #666;
+                    background: #f3f3f3 url("#{$base}/common/store/header/icon_search.png") no-repeat 5px 2px;
+                    background-size: 34px;
+
+                    span {
+                        display: block;
+                        color: #000;
+                        padding-left: 40px;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+
+    .headerInner {
+        position: relative;
+        text-align: center;
+
+        @if $device == "mobile" {
+            display: flex;
+            height: $mobileHeaderHeight;
+            align-items: center;
+            width: 100%;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        } @else {
+            padding: $desktopTopSpace 0 10px;
+        }
+    }
+
+
+}
+
+.inApp .headerWrapper {
+    .btnInterpark {
+        display: none;
+    }
+}
+
+.categoryNavigation {
+    $topMargin: 10px;
+    border-bottom: sz(1) solid #ebebeb;
+
+    @if $device == "mobile" {
+        position: relative;
+        margin-top: $mobileHeaderHeight + .6rem;
+    } @else {
+        @include mq(width, $maxWidth);
+    }
+
+    .categoryList {
+        position: relative;
+
+        @if $device == "mobile" {
+            display: flex;
+            width: 100%;
+
+            @if $device == "mobile" {
+                &::after {
+                    position: absolute;
+                    right: 4.4rem;
+                    top: 0;
+                    content: "";
+                    display: block;
+                    width: 1.6rem;
+                    height: 100%;
+                    background-image: linear-gradient(to right, rgba(#fff, 0) -28%, #fff 50%);
+                }
+            }
+        } @else {
+            @include clearfix();
+            overflow: hidden;
+            height: 60px;
+            margin: 0 auto;
+            padding: 10px 20px 10px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            width: 100%;
+            overflow: hidden;
+
+            @if $device != "mobile" {
+                opacity: 1;
+            }
+
+            &.invisible {
+                opacity: 0;
+            }
+
+            li {
+                @if $device != "mobile" {
+                    float: left;
+                }
+
+                &:last-child a {
+                    margin-right: 0;
+                }
+
+                &.on a {
+                    font-weight: $boldWeight;
+                }
+
+                a {
+                    height: 100%;
+                    color: #000;
+
+                    @if $device == "mobile" {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0 1.5rem;
+                        font-size: 1.5rem;
+                        line-height: 5rem;
+
+                        &:first-child {
+                            padding-left: 2rem;
+                        }
+                    } @else {
+                        box-sizing: border-box;
+                        height: 40px;
+                        line-height: 40px;
+                        margin-right: 40px;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            @if $device == "mobile" {
+                display: flex;
+                overflow-x: auto;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                & {
+                    scrollbar-width: none;  /* Firefox */
+                }
+
+                li {
+                    flex-shrink: 0;
+                }
+            } @else {
+                @include clearfix();
+                float: left;
+            }
+        }
+
+        .btnMore {
+            position: relative;
+            float: right;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: sz(8);
+                height: sz(8);
+                transform: rotate(45deg);
+                border: solid #000;
+                border-width: 0 sz(2) sz(2) 0;
+                transform-origin: 70% 70%;
+                transition: .3s;
+            }
+
+            @if $device == "mobile" {
+                flex-shrink: 0;
+                width: 4.4rem;
+                height: 5rem;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                &[aria-expanded="false"]::before {
+                    width: .1rem;
+                    height: 2rem;
+                    background-color: #eee;
+                }
+
+                &[aria-expanded="true"]::before {
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 3rem;
+                    height: 3rem;
+                    border: .1rem solid #e5e5e5;
+                    border-radius: .3rem;
+                }
+
+                &::after {
+                    top: 50%;
+                    right: 43%;
+                    transform: translateY(-70%) rotate(45deg);
+                }
+            } @else {
+                display: none;
+                font-size: 16px;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 17px;
+
+                &::after {
+                    top: 13px;
+                    right: 5px;
+                }
+            }
+        }
+    }
+
+    &.expanded {
+        @if $device == "mobile" {
+            .layerCategory {
+                display: block;
+            }
+
+            .btnMore::after {
+                transform: translateY(-70%) rotate(225deg);
+            }
+        } @else {
+            > div {
+                height: auto;
+            }
+
+            .btnMore::after {
+                transform: rotate(225deg);
+            }
+        }
+    }
+
+    @if $device == "mobile" {
+        .layerCategory {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: none;
+            padding: 1.3rem 2rem;
+            background-color: #fff;
+            box-sizing: border-box;
+            color: #000;
+            overflow-y: auto;
+            z-index: 999;
+
+            .accordionBtnWrap {
+                display: flex;
+                justify-content: space-between;
+                height: 4.9rem;
+                border-bottom: .1rem solid #e8e8e8;
+
+                + ul {
+                    display: none;
+                    padding: 0 2rem;
+                    border-bottom: .1rem solid #e8e8e8;
+
+                    li {
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            }
+
+            .depth {
+                &01 {
+                    display: flex;
+                    align-items: center;
+                    flex-shrink: 0;
+                    height: 100%;
+                    padding-left: 1rem;
+                    color: #000;
+                    font-size: 1.5rem;
+                    line-height: 1.9rem;
+                    font-weight: $boldWeight;
+
+                    + .accordionBtn {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+
+                        span {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            overflow: hidden;
+                            clip: rect(0 0 0 0);
+                            margin: sz(-1);
+                            width: sz(1);
+                            height: sz(1);
+                        }
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: .7rem;
+                            width: sz(8);
+                            height: sz(8);
+                            margin-top: -.6rem;
+                            transform: rotate(45deg);
+                            border: solid #666;
+                            border-width: 0 .1rem .1rem 0;
+                            transform-origin: 70% 70%;
+                            transition: .3s;
+                        }
+                    }
+                }
+
+                &02 {
+                    display: block;
+                    color: #666;
+                    font-size: 1.3rem;
+                    line-height: 1.6rem;
+                }
+            }
+
+            > .depth01 {
+                height: 4.9rem;
+                padding-left: 0;
+                border-bottom: .1rem solid #e8e8e8;
+
+                + .accordionBtn::after {
+                    display: none;
+                }
+            }
+
+            .accordion > ul > li {
+                &.on {
+                    .accordionBtnWrap {
+                        border-bottom: none;
+                    }
+
+                    .depth01+ .accordionBtn::after {
+                        transform: rotate(225deg);
+                    }
+
+                    ul {
+                        display: block;
+                    }
+                }
+            }
+
+            .openStoreInfoBtn {
+                position: relative;
+                font-size: 1.5rem;
+                line-height: 1.9rem;
+                color: #666;
+                padding: 1.5rem 1rem;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: -.1rem;
+                    content: "";
+                    display: block;
+                    width: .7rem;
+                    height: .4rem;
+                    background-image: url("#{$base}/common/store/arrow/arrow_gray.svg");
+                    background-size: 100%;
+                    transform: translateY(-50%) rotate(-90deg);
+                }
+            }
+        }
+    } @else {
+        &[data-multi-line="true"] {
+            ul {
+                width: calc(100% - 100px);
+            }
+
+            .btnMore {
+                display: block;
+            }
+        }
+    }
+}
+
+.storeName {
+    display: table;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    @if $device == "mobile" {
+        height: 4.5rem;
+        padding: 0 4.5 + 1rem;
+    } @else {
+        height: 60px;
+        padding: 0 60 + 15px;
+    }
+
+    > div {
+        display: table-cell;
+        vertical-align: middle;
+
+        .storeIcon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            font-size: 0;
+            border-radius: sz(10);
+            overflow: hidden;
+            @if $device == "mobile" {
+                width: 4.5rem;
+                height: 4.5rem;
+                padding: 0;
+            } @else {
+                width: 60px;
+                height: 60px;
+            }
+
+            background: url("#{$storeInfoImgPath}/icon_store.png") center center no-repeat;
+            background-size: cover;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        > h1 {
+            button,
+            span {
+                text-align: left;
+                font-weight: $boldWeight;
+                @if $device == "mobile" {
+                    font-size: 1.7rem;
+                    line-height: 2rem;
+                } @else {
+                    font-size: 24px;
+                    line-height: 32px;
+                }
+            }
+        }
+    }
+}
+
+.sellerGradeWrap {
+    white-space: nowrap;
+    font-size: 0;
+    @if $device == "mobile" {
+        margin-top: .2rem;
+        line-height: 1.3rem;
+    } @else {
+        margin-top: 5px;
+    }
+
+    .sellerIcon {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        font-size: 0;
+        font-weight: normal;
+        color: #666;
+
+        &:last-child {
+            span {
+                margin-right: 0;
+            }
+        }
+
+        span {
+            @if $device == "mobile" {
+                font-size: 1.1rem;
+                margin-right: .7rem;
+            } @else {
+                font-size: 12px;
+                margin-right: 10px;
+            }
+            vertical-align: middle;
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: sz(16);
+                height: sz(11);
+                background: url("#{$storeInfoImgPath}/icon_crown.png") no-repeat;
+                background-size: contain;
+                vertical-align: sz(-1);
+            }
+
+            &.best:before {
+                width: sz(27);
+                height: sz(15);
+                background: url("#{$storeInfoImgPath}/icon_crown_better.png") no-repeat;
+                background-size: contain;
+                vertical-align: sz(-5);
+            }
+        }
+    }
+}
+
+.sellerService {
+    width: 100%;
+    border-radius: sz(8);
+    background-color: #f8f8f8;
+    @if $device == "mobile" {
+        margin: 1rem 0 1.5rem;
+    } @else {
+        margin: 15px 0 30px;
+    }
+
+    ul {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: sz(65);
+        font-size: 0;
+        box-sizing: border-box;
+        padding: sz(20) 0;
+
+    }
+
+    li {
+        display: table-cell;
+        position: relative;
+        text-align: center;
+        color: #999;
+        @if $device == "mobile" {
+            font-size: 1.1rem;
+        } @else {
+            font-size: 12px;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: sz(1);
+            @if $device == "mobile" {
+                height: 2.5rem;
+            } @else {
+                height: 40px;
+            }
+            background-color: #dfdfdf;
+        }
+
+        &:first-child {
+            &::before {
+                display: none;
+            }
+        }
+
+        span {
+            display: block;
+
+            font-weight: $boldWeight;
+            color: #000;
+            @if $device == "mobile" {
+                margin-top: -.1rem;
+                font-size: 1.5rem;
+            } @else {
+                margin-top: -3px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.layerTransformWrapper {
+    &.storeInfoPopup {
+        @if $device == "desktop" {
+            width: 520px;
+            position: absolute;
+            top: 0;
+        }
+
+        .storeName {
+            padding-left: sz(55);
+            height: sz(45);
+        }
+
+        .storeIcon {
+            border-radius: sz(10);
+            overflow: hidden;
+            @if $device == "mobile" {
+                width: 4.5rem;
+                height: 4.5rem;
+            } @else {
+                width: 45px;
+                height: 45px;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .layerInfoJjim {
+            padding: sz(10);
+            position: absolute;
+            right: 0;
+            top: sz(4);
+            cursor: pointer;
+
+            g {
+                fill: #ddd;
+            }
+
+            &.on {
+                g {
+                    fill: $defaultRed;
+                }
+            }
+        }
+
+        h2 {
+            span {
+                font-size: sz(17);
+                color: #000;
+
+                @if $device == "mobile" {
+                    display: block;
+                    line-height: 2rem;
+                }
+            }
+        }
+
+        h3 {
+            margin-top: sz(30);
+            font-size: sz(15);
+            color: #000;
+            font-weight: $boldWeight;
+        }
+
+        .layerTransformContents  {
+            .sellerService {
+                margin-top: sz(15);
+
+                li {
+                    &::before {
+                        height: sz(20);
+                    }
+
+                    span {
+                        font-size: sz(14);
+                    }
+                }
+            }
+        }
+
+        .layerTransformContents {
+            padding-bottom: sz(40);
+        }
+
+        .infoList {
+            p,
+            li,
+            a {
+                color: #666;
+                font-size: sz(15);
+            }
+
+            li,
+            p {
+                margin-top: sz(15);
+            }
+
+            a {
+                word-break: break-all;
+            }
+        }
+
+        .callIcon {
+            @if $device == "mobile" {
+                position: relative;
+
+                a {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        right: -4rem;
+                        top: -.8rem;
+                        display: inline-block;
+                        width: 3.2rem;
+                        height: 3.2rem;
+                        background: url("#{$storeInfoImgPath}/icon_call.svg") center center no-repeat;
+                        background-size: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            @if $device == "mobile" {
+                &::before {
+                    content: "";
+                    display: block;
+                    position: fixed;
+                    width: 100%;
+                    height: 50%;
+                    background: $pointColor;
+                    z-index: -1;
+                }
+            }
+
+            .headerWrapper {
+                background-color: $pointColor;
+                color: $iconTextColor;
+
+                .headerCenter a {
+                    color: $iconTextColor;
+                }
+
+                .btnInterpark {
+                    path {
+                        &:first-child {
+                            fill: #fff;
+                        }
+
+                        &:last-child {
+                            fill: $pointColor;
+                        }
+                    }
+                }
+
+                .btnSearch {
+                    background-color: rgba(#fff, .2);
+                    border: none;
+
+                    @if $device == "mobile" {
+                        @if ($isDarkMode == false) {
+                            background-color: rgba(#000, .15);
+                            background-position-y: bottom;
+                        }
+                    } @else {
+                        @if ($isDarkMode == false) {
+                            background-position: left 5px bottom 3px;
+
+                            span {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+
+                .btnCart {
+                    path {
+                        stroke: $iconTextColor;
+                    }
+                }
+            }
+
+            .categoryNavigation {
+                background-color: $pointColor;
+                color: $iconTextColor;
+                border-color: $pointColor;
+
+                .categoryList {
+                    ul {
+                        li a {
+                            color: $iconTextColor;
+                        }
+                    }
+
+                    .btnMore {
+                        color: $iconTextColor;
+
+                        &[aria-expanded="false"]::before {
+                            background-color: rgba(#000, .2);
+                        }
+
+                        &[aria-expanded="true"]::before {
+                            border-color: $iconTextColor;
+                        }
+
+                        &::after {
+                            border-color: $iconTextColor;
+                        }
+                    }
+
+                    @if $device == "mobile" {
+                        &::after {
+                            background-image: linear-gradient(to right, rgba($pointColor, 0) -28%, $pointColor 50%);
+                        }
+                    }
+                }
+            }
+
+            .layerInfoJjim {
+                &.on {
+                    g {
+                        fill: $pointColor;
+                    }
+                }
+            }
+        }
+    }
+}

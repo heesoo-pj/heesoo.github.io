@@ -1,0 +1,702 @@
+$normalWeight: 300;
+$boldWeight: 600;
+$font: -apple-system, system-ui, BlinkMacSystemFont, "맑은 고딕", "Malgun Gothic", "돋움", Dotum, Helvetica, "Apple SD Gothic Neo", sans-serif;
+$imgPath: "//openimage.interpark.com/.ui/interparkMain/2019/common/footer";
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+#intFooter {
+    width: 100%;
+    min-width: 980px;
+    overflow: hidden;
+    border-top: 1px solid #999;
+    background-color: #fff;
+    font-family: $font;
+    letter-spacing: 0;
+
+    h1,
+    h2,
+    div,
+    ul,
+    li,
+    dl,
+    dt,
+    dd,
+    a,
+    div,
+    span,
+    address {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0;
+        font-family: $font;
+        color: #666;
+        list-style: none;
+        font-weight: $normalWeight;
+        font-style: normal;
+        text-decoration: none;
+        text-align: left;
+    }
+
+    .footerBlind {
+        position: absolute;
+        left: -9999px;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    a,
+    a:link,
+    a:hover,
+    a:active {
+        font-style: normal;
+        text-decoration: none;
+        font-weight: $normalWeight;
+        color: inherit;
+    }
+
+    .intFooterInner {
+        width: 980px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    &.container1280 {
+        .intFooterInner {
+            width: 1280px;
+        }
+
+        .intFooterInfoWrap {
+            height: 150px;
+
+            .intFooterInterpark,
+            .intFooterCustomer,
+            .intFooterSolution {
+                width: 426px;
+            }
+
+            .intFooterCustomer {
+                padding-right: 25px;
+            }
+
+            .intFooterSolution {
+                padding-right: 150px;
+            }
+
+            .intFooterInterpark {
+                .intLicensee,
+                .intOrderBusiness {
+                    display: inline-block;
+                }
+
+                .intLicensee {
+                    position: relative;
+                    margin-right: 18px;
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: 1px;
+                        right: -9px;
+                        width: 1px;
+                        height: 11px;
+                        background-color: #7a7a7a;
+                    }
+                }
+            }
+        }
+
+        .intFooterAwardWrap {
+            li {
+                margin-left: 60px;
+            }
+        }
+
+        &.shoppingFooter,
+        &.interparkFooter,
+        &.ipssFooter {
+            .intFooterLinks {
+                li {
+                    padding: 0 45px;
+                }
+            }
+        }
+
+        &.tourFooter {
+            .intFooterLinks {
+                li {
+                    padding: 0 58px;
+                }
+            }
+        }
+
+        &.bookFooter {
+            .intFooterLinks {
+                li {
+                    padding: 0 46px;
+                }
+            }
+        }
+
+        &.ticketFooter {
+            .intFooterLinks {
+                li {
+                    padding: 0 60px;
+                }
+            }
+        }
+
+        &.ipssFooter {
+            .intFooterInterpark {
+                width: 100%;
+            }
+        }
+    }
+
+    .intFooterPartnerWrap {
+        height: 40px;
+        padding-top: 7px;
+        box-sizing: border-box;
+        background-color: #fafafa;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .intFooterPartner {
+        display: inline-block;
+    }
+
+    .intFooterSelect {
+        position: relative;
+
+        > button {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            width: 130px;
+            height: 26px;
+            box-sizing: border-box;
+            padding: 0 20px 0 10px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            line-height: 14px;
+            font-family: $font;
+            color: #555;
+            background: transparent;
+            text-align: left;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 10px;
+                right: 11px;
+                width: 9px;
+                height: 5px;
+                background: url("#{$imgPath}/select_arrow.png") no-repeat 0 0;
+            }
+        }
+
+        ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 25px;
+            width: 100%;
+            padding: 10px;
+            background-color: #fafafa;
+            z-index: 1;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+
+        li {
+            a {
+                font-family: $font;
+                font-size: 12px;
+                line-height: 20px;
+                color: #555;
+            }
+        }
+
+        &.active {
+            > a {
+                &:before {
+                    background-position: 0 100%;
+                }
+            }
+
+            ul {
+                display: block;
+            }
+        }
+    }
+
+    .intFooterInfoWrap {
+        height: 170px;
+        font-size: 0;
+        line-height: 0;
+
+        .intFooterInterpark,
+        .intFooterCustomer,
+        .intFooterSolution {
+            display: inline-block;
+            padding-left: 10px;
+            box-sizing: border-box;
+            vertical-align: top;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        .intFooterInterpark {
+            width: 365px;
+
+            .intFooterContact {
+                display: block;
+            }
+        }
+
+        .intFooterCustomer {
+            width: 375px;
+        }
+
+        .intFooterSolution {
+            width: 240px;
+            padding-right: 0;
+        }
+
+        .intFooterTel {
+            font-size: 0;
+            line-height: 0;
+            margin-right: 15px;
+
+            &:before {
+                left: -7px;
+            }
+        }
+    }
+
+    .intFooterLinks {
+        display: inline-block;
+        padding-top: 7px;
+        vertical-align: top;
+        font-size: 0;
+        letter-spacing: 0;
+
+        ul {
+            font-size: 0;
+            letter-spacing: 0;
+        }
+
+        li {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            padding: 0 25px;
+
+            a {
+                font-family: $font;
+                font-size: 12px;
+                color: #666;
+                line-height: 14px;
+                letter-spacing: 0;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1px;
+                height: 12px;
+                background-color: #aaa;
+            }
+
+            &:first-child {
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        .privacyLink {
+            a {
+                font-weight: $boldWeight;
+                color: #333;
+            }
+        }
+    }
+
+    .intFooterInfoWrap {
+        padding-top: 27px;
+        border-top: 1px solid #ebebeb;
+        box-sizing: border-box;
+        font-size: 0;
+        line-height: 0;
+
+        address,
+        dt,
+        dd {
+            font-family: $font;
+            font-size: 12px;
+            line-height: 14px;
+            color: #666;
+
+            a {
+                font-family: $font;
+                font-size: 12px;
+                line-height: 14px;
+                color: #666;
+            }
+        }
+
+        address {
+            font-style: normal;
+            line-height: 18px;
+        }
+
+        dl {
+            font-size: 0;
+            line-height: 0;
+            margin-top: 5px;
+        }
+
+        dt,
+        dd {
+            display: inline-block;
+        }
+
+        dt {
+            margin-right: 5px;
+        }
+
+        .intFooterTel {
+            display: inline-block;
+            position: relative;
+
+            &:after {
+                content: "";
+                position: absolute;
+                right: -9px;
+                top: 1px;
+                width: 1px;
+                height: 11px;
+                background-color: #7a7a7a;
+            }
+        }
+    }
+
+    .intFooterInfoTitle {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 10px;
+
+        > h2 {
+            display: inline-block;
+            font-family: $font;
+            font-size: 14px;
+            color: #000;
+            line-height: 16px;
+            font-weight: $boldWeight;
+        }
+
+        > a {
+            position: relative;
+            margin-left: 10px;
+            padding-right: 7px;
+            color: #666;
+            font-family: $font;
+            font-size: 12px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -2px;
+                left: -5px;
+                width: 100%;
+                height: 100%;
+                padding: 1px 5px 3px 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 30%;
+                right: 0;
+                width: 4px;
+                height: 7px;
+                background: url("#{$imgPath}/button_arrow_right.png") no-repeat 0 0;
+            }
+
+            &.intLinkInquiry {
+                margin-left: 14px;
+            }
+        }
+    }
+
+    .intFooterCustomer {
+        padding-right: 48px;
+
+        .intFooterInfoTitle {
+            > a {
+                color: #333;
+
+                &:before {
+                    border-color: #666;
+                }
+            }
+        }
+
+        address {
+            margin-top: 5px;
+            word-break: keep-all;
+        }
+
+        .intTicketTel,
+        .intPetTel {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .intFooterSolution {
+        .intBookTel,
+        .intFax {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .intFooterAwardWrap {
+        border: 1px solid #ebebeb;
+        border-left: none;
+        border-right: none;
+        height: 50px;
+        padding-top: 5px;
+        box-sizing: border-box;
+
+        .intFooterInner {
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            font-size: 0;
+            line-height: 0;
+        }
+
+        li {
+            display: inline-block;
+            height: 40px;
+            text-indent: -9999px;
+            margin-left: 23px;
+            background: url("#{$imgPath}/footer_mark_ver1.jpg") no-repeat 0 0;
+
+            &.intFooterAwrad1 {
+                width: 76px ;
+                margin-left: 0;
+                background-position: 0 0;
+            }
+
+            &.intFooterAwrad2 {
+                width: 122px ;
+                background-position: -136px 0;
+            }
+
+            &.intFooterAwrad3 {
+                width: 92px;
+                background-position: -318px 0;
+            }
+
+            &.intFooterAwrad4 {
+                width: 66px;
+                background-position: -470px 0;
+            }
+
+            &.intFooterAwrad5 {
+                width: 104px;
+                background-position: -596px 0;
+            }
+
+            &.intFooterAwrad6 {
+                width: 77px;
+                background-position: -760px 0;
+            }
+
+            &.intFooterAwrad7 {
+                width: 93px;
+                background-position: -897px 0;
+            }
+
+            &.intFooterAwrad8 {
+                width: 96px;
+                background-position: -1050px 0;
+            }
+
+            &.intFooterAwrad9 {
+                width: 50px;
+                background-position: -1206px 0;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                display: block;
+                height: 40px;
+            }
+        }
+    }
+
+    .intFooterNoticeWrap {
+        height: 128px;
+        box-sizing: border-box;
+        font-size: 0;
+        line-height: 0;
+
+        .intFooterInner {
+            padding: 30px 10px 0 10px;
+        }
+
+        .intFooterCaution {
+            margin-bottom: 5px;
+            font-family: $font;
+            font-size: 12px;
+            line-height: 14px;
+            color: #666;
+        }
+
+        .intFooterCopyright {
+            font-family: $font;
+            font-size: 12px;
+            line-height: 14px;
+            color: #666;
+        }
+    }
+
+    &.shoppingFooter,
+    &.interparkFooter {
+        .intFooterLinks {
+            li {
+                padding: 0 24px;
+            }
+        }
+    }
+
+    &.tourFooter {
+        .intFooterLinks {
+            li {
+                padding: 0 33px;
+            }
+        }
+    }
+
+    &.ipssFooter {
+        .intFooterLinks {
+            li {
+                padding: 0 22px;
+            }
+        }
+    }
+
+    &.bookFooter {
+        .intFooterLinks {
+            li {
+                padding: 0 25px;
+            }
+        }
+    }
+
+    &.ticketFooter {
+        .intFooterLinks {
+            li {
+                padding: 0 35px;
+            }
+        }
+    }
+
+    &.tourFooter {
+        .intAllFax {
+            display: inline-block;
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                right: -9px;
+                left: -7px;
+                width: 1px;
+                height: 11px;
+                background-color: #7a7a7a;
+            }
+        }
+    }
+
+    &.ipssFooter {
+        .intFooterInner {
+            margin: 0 0 0 25px;
+        }
+
+        .intFooterInfoWrap {
+            height: 150px;
+        }
+
+        .intFooterInterpark {
+            width: 100%;
+
+            .intOrderBusiness,
+            .intLicensee {
+                display: inline-block;
+                position: relative;
+                margin-right: 18px;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 1px;
+                    right: -9px;
+                    width: 1px;
+                    height: 11px;
+                    background-color: #7a7a7a;
+                }
+            }
+
+            .intServiceCenter {
+                display: inline-block;
+            }
+        }
+
+        .intFooterNoticeWrap {
+            .intFooterInner {
+                padding-top: 8px;
+            }
+
+            .intFooterCaution {
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 1280px) {
+    #intFooter {
+        width: 1280px;
+    }
+}

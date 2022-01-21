@@ -1,0 +1,48 @@
+<%- include('/components/store/_layerAlert', {
+  layerAlertId: 'couponStep1',
+  layerAlertClass: 'couponStep1 popCenter',
+  title: '<h1>다이슨 일렉트로닉 스토어를 찜하면<br>할인쿠폰을 드립니다.</h1><span>지금 바로 찜하고 할인받으세요!</span>',
+  coupon: {
+      addClass: 'small',
+      couponDisable: false,
+      couponNumber: '10%',
+      couponText: '스토어찜 할인쿠폰',
+      tag: "div"
+  },
+  content: '<ul><li>- 1,000원 이상 구매 시 최대 5,000원 할인</li><li>- 2021.2.28일까지 유효</li></ul>',
+  btn01: {
+    close: true,
+  },
+  btn02: {
+    class:'jjimGetBtn',
+    text: '찜하고 쿠폰받기',
+  }
+}); %>
+
+<%- include('/components/store/_layerAlert', {
+  layerAlertId: 'couponStep2',
+  layerAlertClass: 'couponStep2 popCenter',
+  title: '<h1>할인쿠폰이 발급되었습니다.</h1><span>메종마르지엘라 스토어 상품을 구매해보세요!</span>',
+  coupon: {
+    addClass: 'small',
+    couponDisable: true,
+    couponNumber: '10%',
+    couponText: '스토어찜 할인쿠폰',
+    tag: "div"
+  },
+  content: '<ul><li>- 1,000원 이상 구매 시 최대 5,000원 할인</li><li>- 2021.2.28일까지 유효</li></ul>',
+  btn01: {
+    close: true,
+    text: '닫기',
+  }
+}); %>
+
+<%- include('/components/store/_layerAlert', {
+  layerAlertId: 'couponEnd',
+  layerAlertClass: 'popCenter',
+  title: '<p>이미 쿠폰을<br>발급받으셨습니다.</p>',
+  btn01: {
+    close: true,
+    text: '확인',
+  }
+}); %>

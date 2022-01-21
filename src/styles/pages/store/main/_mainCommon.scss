@@ -1,0 +1,829 @@
+@charset "UTF-8";
+
+@import "../../base/variables";
+@import "../components/store/_pointColor";
+@import "../components/store/_layerTransform";
+@import "../components/store/_btnDibs";
+@import "../components/store/_sellerCoupon";
+@import "../components/store/_productType";
+@import "../components/store/_sharePopup";
+
+$imgPath: $base + "/pages/store/main";
+
+body {
+    -ms-overflow-style: scrollbar;
+}
+
+.mainContainer {
+    .contentInner {
+        @if $device == "mobile" {
+            width: 100%;
+            min-width: $minWidth;
+        } @else {
+            min-width: $maxWidth;
+            width: $maxWidth;
+        }
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .sellerInfoWrap {
+        position: relative;
+        @if $device == "mobile" {
+            border-bottom: 1rem solid #f3f3f3;
+            padding-bottom: 2rem;
+        } @else {
+            margin-top: 50px;
+        }
+        font-size: 0;
+
+        &.noBanner {
+            .mainBanner {
+                display: none;
+            }
+
+            @if $device == "desktop" {
+                .couponWrap {
+                    width: 100%;
+                    max-width: none;
+
+                    .coupon {
+                        &:only-child {
+                            .storeCoupon  {
+                                width: 520px;
+                            }
+                        }
+                    }
+
+                    .storeCoupon  {
+                        width: 440px;
+                    }
+                }
+            }
+
+            .storeInfo {
+                position: relative;
+                top: 0;
+                transform: none;
+                display: block;
+                margin: 0 auto;
+                @if $device == "desktop" {
+                    width: 900px;
+                }
+
+                &Inner {
+                    @if $device == "mobile" {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .mainBanner {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        @if $device == "mobile" {
+            width: 100%;
+            height: 0;
+            padding-bottom: (640 / 750) * 100vw;
+
+            .bx-viewport {
+                height: (640 / 750) * 100vw !important;
+            }
+
+            img {
+                max-width: 100%;
+                width: 100%;
+                height: (640 / 750) * 100vw;
+                object-fit: cover;
+            }
+        } @else {
+            width: 710px;
+            height: 450px;
+            margin-right: 50px;
+            border-radius: 20px;
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+        &.touchEnabeld {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        li {
+            position: relative;
+            @if $device == "desktop" {
+                height: 450px;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        @if $device == "desktop" {
+            .bx-controls-direction {
+                a {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: inline-block;
+                    width: 58px;
+                    height: 58px;
+                    border-radius: 100%;
+                    opacity: .2;
+
+                    &:hover,
+                    &:focus {
+                        opacity: .7;
+                    }
+
+                    &.disabled {
+                        display: none;
+                    }
+                }
+            }
+
+            .bx-prev {
+                left: 20px;
+                background: url("#{$imgPath}/arrow_left.svg") no-repeat;
+            }
+
+            .bx-next {
+                right: 20px;
+                background: url("#{$imgPath}/arrow_right.svg") no-repeat;
+            }
+        }
+
+        .bx-pager {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: sz(22);
+            padding: 0 sz(5);
+            line-height: sz(20);
+            color: #fff;
+            border-radius: sz(11);
+            letter-spacing: sz(-2);
+            background-color: rgba(0, 0, 0, .4);
+            box-sizing: border-box;
+            @if $device == "mobile" {
+                bottom: 4rem;
+                right: 2.5rem;
+                width: 2.6rem;
+                font-size: 1.1rem;
+            } @else {
+                bottom: 20px;
+                right: 20px;
+                font-size: 14px;
+                text-indent: -1px;
+            }
+        }
+    }
+
+    .storeInfo {
+        @if $device == "mobile" {
+            width: 100%;
+        } @else {
+            width: 520px;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        z-index: 1;
+
+        &Inner {
+            @if $device == "mobile" {
+                position: relative;
+                margin: -3rem 2rem 0;
+                padding: 2rem;
+                border-radius: 2rem;
+                box-shadow: 0 .6rem 1.6rem 0 rgba(0, 0, 0, .15);
+                background-color: #fff;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .sharePopButton {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        @if $device == "mobile" {
+            right: 0;
+        } @else {
+            width: 28px;
+            height: 30px;
+            right: 10px;
+        }
+    }
+
+    .sellerGreeting {
+        color: #666;
+        word-break: break-all;
+        @if $device == "mobile" {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+        } @else {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    }
+
+    .favoriteToggle {
+        width: 100%;
+        box-sizing: border-box;
+        vertical-align: middle;
+        @if $device == "desktop" {
+            margin-bottom: 30px;
+        }
+
+        button {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            @if $device == "mobile" {
+                height: 5rem;
+            } @else {
+                height: 59px;
+            }
+            background-color: #fff;
+            color: #000;
+            font-size: sz(15);
+            text-align: center;
+            white-space: nowrap;
+            box-sizing: border-box;
+            border: sz(1) solid #999;
+            border-radius: sz(10);
+            font-size: 0;
+            overflow: hidden;
+
+            span {
+                position: relative;
+                display: inline-block;
+                text-align: left;
+                font-size: sz(15);
+                font-weight: $boldWeight;
+                @if $device == "mobile" {
+                    margin-right: 1rem;
+                } @else {
+                    margin-right: 5px;
+                }
+            }
+
+            i {
+                vertical-align: sz(-2);
+
+                @if $device == "mobile" {
+                    .jjimDesktop {
+                        display: none;
+                    }
+                } @else {
+                    .jjimMobile {
+                        display: none;
+                    }
+                }
+            }
+
+            svg {
+                g {
+                    fill: #ddd;
+                }
+            }
+
+            &.on {
+                border: sz(1) solid $defaultRed;
+                color: $defaultRed;
+
+                svg {
+                    g {
+                        fill: $defaultRed;
+                    }
+                }
+            }
+        }
+    }
+
+    .couponWrap {
+        position: relative;
+        text-align: center;
+        @if $device == "mobile" {
+            margin-top: 2rem;
+        } @else {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .coupon {
+            display: inline-block;
+            box-sizing: border-box;
+
+            @if $device == "mobile" {
+                margin-right: 1rem;
+            } @else {
+                margin-right: 20px;
+            }
+
+            &:first-child {
+                @if $device == "mobile" {
+                    padding-left: 2rem;
+                }
+            }
+
+            &:last-child {
+                @if $device == "mobile" {
+                    padding-right: 2rem;
+                    margin-right: 0;
+
+                    button {
+                        padding-right: 2rem;
+                    }
+                } @else {
+                    margin-right: 0;
+                }
+            }
+
+            &:only-child {
+                width: 100%;
+
+                button {
+                    width: 100%;
+                    @if $device == "desktop" {
+                        max-width: 520px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        button {
+            @if $device == "desktop" {
+                margin-left: 20px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        .bx-wrapper {
+            button {
+                margin: 0;
+            }
+        }
+
+        @if $device == "desktop" {
+            .bx-controls-direction {
+                a {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    display: inline-block;
+                    width: 30px;
+                    height: 50px;
+
+                    &::after {
+                        top: 24px;
+                        box-shadow: sz(1) sz(1) 0 0 #000;
+                    }
+
+                    &.disabled {
+                        &::after {
+                            opacity: .4;
+                        }
+                    }
+                }
+            }
+
+            .bx-prev {
+                left: -40px;
+
+                &::after {
+                    @include arrow(12px, "prev");
+                    left: 15px;
+                }
+            }
+
+            .bx-next {
+                right: -40px;
+
+                &::after {
+                    @include arrow(12px, "next");
+                    right: 15px;
+                }
+            }
+        }
+    }
+
+    .productContainer {
+        .productWrap {
+            &:first-child {
+                @if $device == "mobile" {
+                    margin-top: 4rem;
+                } @else {
+                    margin-top: 100px;
+                }
+            }
+        }
+
+        h3 {
+            @if $device == "mobile" {
+                margin-bottom: 1.5rem;
+            }
+
+            span {
+                margin-left: sz(5);
+                color: #666;
+                font-size: sz(14);
+                font-weight: $normalWeight;
+            }
+        }
+    }
+
+    .storeEvent {
+        position: relative;
+
+        .eventTitle {
+            h3 {
+                display: inline-block;
+            }
+        }
+
+        .slideWrap.touchEnabeld {
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .eventMoreBtn {
+            float: right;
+            margin-top: sz(10);
+            color: #666;
+            @if $device == "mobile" {
+                font-size: 1.3rem;
+            } @else {
+                font-size: 14px;
+            }
+        }
+
+        @if $device == "mobile" {
+            & > .bx-wrapper {
+                position: relative;
+                border-radius: 1rem;
+                overflow: hidden;
+
+                li {
+                    border-radius: 0;
+                }
+            }
+
+            .bx-controls {
+                position: static;
+            }
+
+            .bx-pager {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                min-width: 2.6rem;
+                height: 2.2rem;
+                padding: 0 .5rem;
+                line-height: 2rem;
+                color: #fff;
+                border-radius: 1.1rem;
+                letter-spacing: -.2rem;
+                background-color: rgba(0, 0, 0, .4);
+                box-sizing: border-box;
+                font-size: 1.1rem;
+            }
+        } @else {
+            .bx-controls-direction {
+                position: relative;
+                top: -25px;
+            }
+        }
+
+        li {
+            position: relative;
+            display: inline-block;
+            border-radius: sz(10);
+            font-size: 0;
+            overflow: hidden;
+
+            @if $device == "mobile" {
+                width: 100%;
+            } @else {
+                width: 620px;
+                height: 340px;
+            }
+
+            a {
+                display: block;
+                @if $device == "mobile" {
+                    height: 0;
+                    padding-bottom: (184 / 335) * 100%;
+                } @else {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .bannerInner {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+            }
+
+            &.textBanner {
+                a {
+                    @if $device == "mobile" {
+                        height: 0;
+                    } @else {
+                        height: 100%;
+                    }
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 100%;
+            }
+
+            // 배너 택스트로 설정한 경우
+            &.textBanner {
+                text-align: center;
+                background-color: #26cec1;
+
+                a {
+                    color: #fff;
+                }
+
+                h1 {
+                    margin: 0 auto;
+                    @if $device == "mobile" {
+                        font-size: vw(30);
+                        line-height: vw(36);
+                    } @else {
+                        font-size: 45px;
+                        line-height: 45px;
+                    }
+                }
+
+                .title {
+                    font-weight: $boldWeight;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    @if $device == "mobile" {
+                        display: -webkit-box;
+                        max-height: vw(54);
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        margin: vw(10) vw(20) vw(5);
+                        font-size: vw(22);
+                        line-height: vw(27);
+                    } @else {
+                        white-space: nowrap;
+                        word-wrap: normal;
+                        margin: 28px 20px 20px;
+                        font-size: 30px;
+                        line-height: 31px;
+                    }
+                }
+
+                .eventDate {
+                    @if $device == "mobile" {
+                        font-size: vw(15);
+                        line-height: vw(19);
+                    } @else {
+                        font-size: 22px;
+                        line-height: 22px;
+                    }
+                    opacity: .8;
+                }
+            }
+
+            @import "partials/_bannerColor";
+        }
+
+        .eventSlide {
+            li {
+                @if $device == "desktop" {
+                    width: 620px;
+                    height: 340px;
+                }
+
+                @if $device == "desktop" {
+                    margin-left: 40px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        .bx-viewport {
+            li {
+                margin: 0;
+            }
+        }
+    }
+
+    .btnMoreLink {
+        position: relative;
+        display: block;
+        width: 100%;
+        border: sz(1) solid #ccc;
+        color: #000;
+        text-align: center;
+        border-radius: sz(10);
+        @if $device == "mobile" {
+            height: 4.5rem;
+            font-size: 1.5rem;
+            line-height: 4.5rem;
+            margin-top: 3rem;
+        } @else {
+            height: 60px;
+            line-height: 60px;
+            font-size: 16px;
+            margin-top: 60px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: sz(7);
+            height: sz(7);
+            border: solid #333;
+            border-width: 0 sz(1) sz(1) 0;
+            transform: rotate(-43deg) translateY(-50%);
+            @if $device == "mobile" {
+                margin: -.1rem 0 0 .6rem;
+            } @else {
+                margin: 0 0 0 6px;
+            }
+        }
+    }
+
+    .contents .btnSearch {
+        @if $device == "mobile" {
+            position: relative;
+            display: block;
+            width: calc(100% - 4rem);
+            margin: 2rem auto 0;
+            padding-left: 4.4rem;
+            height: 4.4rem;
+            background-color: #f3f3f3;
+            border: .1rem solid #e8e8e8;
+            border-radius: 2.3rem;
+            color: #666;
+            font-size: 1.5rem;
+            line-height: 4.4rem;
+            box-sizing: border-box;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: .8rem;
+                top: .5rem;
+                width: 3.4rem;
+                height: 3.4rem;
+                display: inline-block;
+                background: url("#{$imgPath}/icon_search.svg") no-repeat;
+            }
+        } @else {
+            display: none;
+        }
+    }
+
+    @if $device == "desktop" {
+        .eventPopup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+
+            &::after {
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                width: 0;
+                height: 100%;
+            }
+
+            .layerTransformContainer {
+                position: relative;
+                display: inline-block;
+                width: 1201px;
+                vertical-align: middle;
+                box-sizing: initial;
+                z-index: 10;
+            }
+
+            .layerTransformContents {
+                max-height: 73vh;
+                padding: 20px 0 10px;
+                box-sizing: border-box;
+            }
+
+            ul {
+                text-align: center;
+
+                li {
+                    display: inline-block;
+                    width: 562px;
+                    height: 308px;
+
+                    &:nth-child(odd) {
+                        margin-right: 20px;
+                    }
+
+                    &:nth-child(n+3) {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    @import "partials/_bestReview";
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            .favoriteToggle {
+                button {
+                    border-color: $pointColor;
+                    background: $pointColor;
+                    color: #fff;
+
+                    svg {
+                        g {
+                            fill: #fff;
+                        }
+                    }
+
+                    &.on {
+                        background-color: #fff;
+                        border-color: $pointColor;
+                        color: $pointColor;
+
+                        svg {
+                            g {
+                                fill: $pointColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

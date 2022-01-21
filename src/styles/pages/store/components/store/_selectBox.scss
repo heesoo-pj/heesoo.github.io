@@ -1,0 +1,131 @@
+$arrowPath: $base + "/common/store/arrow";
+
+.selectStyle {
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: top;
+
+    .viewPoint {
+        position: relative;
+        height: sz(38);
+        padding-right: sz(16);
+        line-height: sz(38);
+        border-radius: sz(6);
+        box-sizing: border-box;
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            content: "";
+            display: block;
+            width: sz(10);
+            height: sz(6);
+            margin-bottom: sz(7);
+            background-image: url("#{$arrowPath}/arrow_gray.svg");
+
+            @if $device == "mobile" {
+                margin-top: -.3rem;
+            } @else {
+                margin-top: -2px;
+            }
+        }
+
+        &.disabled {
+            span {
+                color: #999;
+            }
+        }
+
+        span {
+            font-size: sz(15);
+            color: #000;
+            pointer-events: none;
+        }
+    }
+
+    .optionList {
+        display: none;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        padding: sz(5) 0 sz(10);
+        background: #fff;
+        border: sz(1) solid #000;
+        border-radius: sz(6);
+        box-shadow: 0 sz(6) sz(15) 0 rgba(0, 0, 0, .2);
+        box-sizing: border-box;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: sz(16);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 80%);
+            pointer-events: none;
+        }
+
+        .formSelectLabel {
+            padding-bottom: sz(10);
+        }
+
+        ul {
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+
+            li {
+                a {
+                    display: block;
+                    padding: sz(10) sz(15);
+                    font-size: sz(15);
+                    color: #000;
+                }
+
+                &.current {
+                    a {
+                        font-weight: $boldWeight;
+                    }
+                }
+
+                &.disabled {
+                    a {
+                        color: #999;
+                    }
+                }
+            }
+        }
+    }
+
+    &.on {
+        width: sz(140);
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: sz(26);
+            right: sz(20);
+            width: sz(9);
+            height: sz(9);
+            box-shadow: sz(1) sz(1) 0 0 #000;
+            background: none;
+            transform: rotate(45deg);
+            transform: rotate(225deg);
+            z-index: 11;
+        }
+
+        .optionList {
+            display: block;
+            z-index: 10;
+        }
+
+        + .locationStatus {
+            display: none;
+        }
+    }
+}

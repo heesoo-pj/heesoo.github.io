@@ -1,0 +1,7 @@
+$device: "mobile";
+
+@function sz($val) {
+    @return $val * .1rem;
+}
+
+@import "_headerCommon";

@@ -1,0 +1,10 @@
+<%- include('_partials/_header', {
+    isMobile,
+    state,
+    search: !(typeof search !== 'undefined' && search === false)
+  }); %>
+
+<% if (isMobile) { %>
+<!-- 스토어정보 팝업 -->
+<%- include('_partials/_storeInfoPopup'); %>
+<% } %>

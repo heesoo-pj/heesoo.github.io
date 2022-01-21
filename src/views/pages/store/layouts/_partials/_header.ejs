@@ -1,0 +1,117 @@
+<header class="headerWrapper">
+  <div class="headerInner">
+    <% if (isMobile) { %>
+    <div class="headerLeft">
+      <h1>
+        <a href="http://m.shop.interpark.com" class="btnInterpark">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" viewBox="0 0 26 24">
+            <g fill="none" fill-rule="evenodd">
+              <path fill="#EF3E43"
+                d="M21.211 0H0l2.057 3.632V19.2c0 2.651 2.144 4.8 4.789 4.8h14.365C23.856 24 26 21.851 26 19.2V4.8C26 2.149 23.856 0 21.211 0"
+                transform="translate(-15 -54) translate(0 44) translate(15 10)" />
+              <path fill="#FFF"
+                d="M6.942 17.456L9.174 17.456 9.174 6.546 6.942 6.546zM19.01 17.456V10.79c0-.74-.181-1.315-.545-1.726-.364-.411-.957-.617-1.777-.617h-3.13v9.01h-2.153V6.544h5.22c1.4 0 2.488.294 3.268.881.78.587 1.17 1.474 1.17 2.66v7.37h-2.052z"
+                transform="translate(-15 -54) translate(0 44) translate(15 10)" />
+            </g>
+          </svg>
+          <span class="blind">INTERPARK</span>
+        </a>
+      </h1>
+    </div>
+    <% } %>
+
+    <div class="headerCenter">
+      <a href="#">
+        <% if(state.toLowerCase().includes('nameimg')) { %>
+          <span class="imgBox">
+            <img src="/data/images/pages/example/<%= state === 'nameImg' || state === 'mobileNameImg' ? 'name' : (state === 'nameImg608' || state === 'mobileNameImg608' ? 'logo608x80' : 'logo321x120') %>.png" alt="{업체명}">
+          </span>
+        <% } else { %>
+        <span>텍스트 업체명 예시</span>
+        <% } %>
+      </a>
+    </div>
+
+    <div class="headerRight">
+      <% if (search) { %>
+      <a href="#" class="btnSearch">
+        <span<%- isMobile ? ' class="blind"' : '' %>>스토어 내 상품검색</span>
+      </a>
+      <% } %>
+
+      <% if (isMobile) { %>
+      <a href="#" class="btnCart">
+        <svg width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#333" fill="none" fill-rule="evenodd">
+              <path d="M27.158 27.68a2.12 2.12 0 0 1 1.504.624c.385.385.623.916.623 1.504a2.12 2.12 0 0 1-.623 1.504 2.12 2.12 0 0 1-1.504.623 2.12 2.12 0 0 1-1.504-.623 2.12 2.12 0 0 1-.623-1.504c0-.588.238-1.12.623-1.504a2.12 2.12 0 0 1 1.504-.623zM17.604 27.68a2.12 2.12 0 0 1 1.504.624c.385.385.623.916.623 1.504a2.12 2.12 0 0 1-.623 1.504 2.12 2.12 0 0 1-1.504.623 2.12 2.12 0 0 1-1.504-.623 2.12 2.12 0 0 1-.623-1.504c0-.588.238-1.12.623-1.504a2.12 2.12 0 0 1 1.504-.623z" stroke-width="1.6"/>
+              <path d="M9.2 13.029s2.716-.42 3.826 1.948c.771 1.752 1.332 3.77 1.822 5.223a50.32 50.32 0 0 0 1.032 2.762s.666 1.946 2.98 1.946h9.66l3.68-7.914H13.8" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </a>
+      <% } %>
+    </div>
+  </div>
+</header>
+<div class="categoryNavigation">
+  <div class="categoryList">
+    <% const categoryList = ['홈', '전체', '베스트', '무선 청소기', '헤어케어', '무선 청소기', '공기청정기 및 가습기', '조명', '부품 및 액세서리', '베스트', '무선 청소기', '헤어케어', '베스트', '공기청정기 및 가습기', '조명', '부품 및 액세서리', '베스트', '무선 청소기', '헤어케어', '공기청정기 및 가습기', '조명', '부품 및 액세서리']; %>
+    <ul<%- isMobile ? '' : ' class="invisible"' %>>
+      <% categoryList.forEach(function(item, idx) { %>
+      <% if (!state.toLowerCase().includes('manycategory') && idx > 10) { %>
+      <% return %>
+      <% } %>
+
+      <li<%- idx === 0 ? ' class="on"' : '' %>><a href="#"><%= item %></a></li>
+        <% }) %>
+        </ul>
+        <button type="button" class="btnMore" aria-expanded="false">
+          <span<%- isMobile ? ' class="blind"' : '' %>>더보기</span>
+        </button>
+  </div>
+  <% if (isMobile) { %>
+  <div class="layerCategory">
+    <a href="#" class="depth01">전체상품</a>
+    <%
+      const layerCategory = [
+        {
+          depth01: '아우터',
+          depth02: ['지오지아', '폴로라프로렌', '타미힐피거']
+        },
+        {
+          depth01: '원피스',
+          depth02: ['지오지아', '폴로라프로렌', '타미힐피거', '지오지아', '폴로라프로렌', '타미힐피거']
+        },
+        {
+          depth01: '데일리셔츠',
+          depth02: ['지오지아', '폴로라프로렌', '타미힐피거', '지오지아', '폴로라프로렌', '타미힐피거']
+        }
+      ]
+    %>
+    <div class="accordion">
+      <ul>
+        <% layerCategory.forEach(titleItem => { %>
+        <li>
+          <div class="accordionBtnWrap">
+            <a href="#" class="depth01"><%= titleItem.depth01 %></a>
+            <button type="button" class="accordionBtn" aria-expanded="false"><span>상품 더보기</span></button>
+          </div>
+          <ul>
+            <% titleItem.depth02.forEach(listItem => { %>
+            <li><a href="#" class="depth02"><%= listItem %></a></li>
+            <% }); %>
+          </ul>
+        </li>
+        <% }); %>
+      </ul>
+
+      <button
+        type="button"
+        class="layerTransformButton openStoreInfoBtn"
+        aria-controls="storeInfo"
+      >
+        <span>스토어 정보</span>
+      </button>
+    </div>
+  </div>
+  <% } %>
+</div>

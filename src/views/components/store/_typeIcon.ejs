@@ -1,0 +1,33 @@
+<div class="typeIconWrap">
+  <%
+  const typeList = [
+    {
+      type: 'default',
+      txt: '기본형으로 보기',
+      mode: 'black'
+    },
+    {
+      type: 'bigItem',
+      txt: '큰이미지로 보기',
+      mode: 'black'
+    },
+    {
+      type: 'listItem',
+      txt: '리스트형으로 보기',
+      mode: 'black'
+    },
+    {
+      type: 'verticalItem',
+      txt: '세로형으로 보기',
+      mode: 'white'
+    }
+  ]
+%>
+
+<% typeList.forEach((t, idx) => { %>
+  <button type="button" data-type="<%= t.type %>" class="<%= idx === 0 ? 'on' : '' %>" aria-pressed="<%=  idx === 0 ? true : false %>">
+    <span class="blind"><%= t.txt %></span>
+    <img src="<%= page.base %>/common/store/filter/icon_type_<%= t.type %>.svg" alt="">
+  </button>
+<% }); %>
+</div>

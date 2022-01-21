@@ -1,0 +1,146 @@
+.layerAlert {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0;
+    z-index: 999;
+
+    &.popCenter {
+        text-align: center;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 0;
+            height: 100%;
+        }
+    }
+
+    &Inner {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: 0 sz(6) sz(15) 0 rgba(0, 0, 0, .3);
+        background-color: #fff;
+
+        @if $device == "mobile" {
+            width: calc(100% - 4rem);
+            max-width: 33.5rem;
+            border-radius: 1rem;
+        } @else {
+            width: 335px;
+            border-radius: 10px;
+        }
+    }
+
+    &.active {
+        display: block;
+    }
+
+    &Content {
+        padding: sz(30) sz(15);
+        color: #999;
+
+        h1 {
+            margin-bottom: sz(5);
+            font-weight: $boldWeight;
+            color: #000;
+
+            @if $device == "mobile" {
+                font-size: 1.7rem;
+                line-height: 2rem;
+            } @else {
+                font-size: 16px;
+                line-height: 21px;
+            }
+
+            + span {
+                display: block;
+                font-size: sz(13);
+            }
+        }
+
+        p {
+            @if $device == "mobile" {
+                font-size: 1.5rem;
+                line-height: 1.9rem;
+            } @else {
+                font-size: 13px;
+                line-height: 17px;
+            }
+
+            &:only-child {
+                color: #000;
+            }
+        }
+
+        em {
+            color: #000;
+            font-weight: $boldWeight;
+        }
+
+        .storeCoupon {
+            margin: sz(15) 0 sz(10);
+
+            &~.content {
+                margin-top: 0;
+            }
+        }
+
+        .content {
+            margin-top: sz(15);
+            font-size: sz(13);
+            line-height: sz(17);
+
+            ul {
+                margin: 0 auto;
+                @if $device == "mobile" {
+                    width: calc(100% - 4.8rem);
+                } @else {
+                    width: 250px;
+                }
+            }
+
+            li {
+                text-align: left;
+            }
+
+
+        }
+
+
+    }
+
+    &BtnWrap {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        border-top: sz(1) solid #ddd;
+
+        > div {
+            display: table-cell;
+            vertical-align: middle;
+
+            &:not(:first-child) {
+                border-left: sz(1) solid #ebebeb;
+            }
+        }
+
+        .layerAlertBtn {
+            width: 100%;
+            line-height: sz(45);
+            color: #000;
+            text-align: center;
+
+            @if $device == "mobile" {
+                font-size: 1.5rem;
+            } @else {
+                font-size: 13px;
+            }
+        }
+    }
+}

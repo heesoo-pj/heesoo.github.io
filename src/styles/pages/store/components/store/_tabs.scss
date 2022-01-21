@@ -1,0 +1,101 @@
+@import "../components/store/_pointColor";
+
+.tab {
+    font-size: 0;
+
+    @if $device == "mobile" {
+        overflow: hidden;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        & {
+            scrollbar-width: none;  /* Firefox */
+        }
+    }
+
+    &List {
+        @if $device == "mobile" {
+            display: flex;
+            position: relative;
+            transition: all .5s ease;
+        }
+
+        &::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+    }
+
+    &Item {
+        float: left;
+        @if $device == "mobile" {
+            flex-shrink: 0;
+        }
+
+        &:not(:last-child) {
+            @if $device == "mobile" {
+                margin-right: 1rem;
+            } @else {
+                margin-right: 15px;
+            }
+        }
+
+        &.active {
+            .tabBtn {
+                font-weight: $boldWeight;
+                color: #fff;
+                background-color: $mainColor;
+            }
+        }
+    }
+
+    &Btn {
+        padding: 0 sz(10);
+        font-weight: $normalWeight;
+        color: #666;
+        border: sz(1) solid #f3f3f3;
+        border-radius: sz(6);
+        background-color: #f3f3f3;
+
+        @if $device == "mobile" {
+            min-width: 7.4rem;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            font-size: 1.3rem;
+        } @else {
+            min-width: 72px;
+            height: 40px;
+            line-height: 39px;
+            font-size: 16px;
+        }
+    }
+}
+
+@each $name, $pointColor in $pointColors {
+    $isDarkMode: $pointColor == $pink or $pointColor == $orange or $pointColor == $babyBrown;
+
+    @if ($isDarkMode) {
+        $iconTextColor: #000;
+        $point: $pointColor;
+    } @else {
+        $point: $pointColor;
+        $iconTextColor: #fff;
+    }
+
+    #pointColorWrap {
+        &[data-point-color="#{$name}"] {
+            .tab {
+                .active {
+                    .tabBtn {
+                        background-color: $pointColor;
+                        color: $iconTextColor;
+                    }
+                }
+            }
+        }
+    }
+}

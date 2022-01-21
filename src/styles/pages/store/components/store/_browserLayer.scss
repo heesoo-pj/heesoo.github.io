@@ -1,0 +1,89 @@
+.browserLayer {
+    display: none;
+    width: 100%;
+    min-width: $maxWidth;
+    padding: 20px 0;
+    background-color: #666;
+
+    &.active {
+        display: block;
+    }
+
+    .inner {
+        position: relative;
+        width: 100%;
+        max-width: $maxWidth;
+        width: $maxWidth;
+        padding: 0 30px;
+        margin: 0 auto;
+        box-sizing: border-box;
+
+        .btnClose {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            margin-top: -8px;
+            width: 16px;
+            height: 16px;
+            background: url("#{$base}/common/store/icon/icon_close_w.png") no-repeat center center;
+            text-indent: -99999px;
+            overflow: hidden;
+        }
+    }
+
+    .noticeTxt {
+        display: inline-block;
+        width: 744px;
+        color: #fff;
+        font-size: sz(14);
+        line-height: sz(20);
+    }
+
+    .btn {
+        display: inline-block;
+        height: 40px;
+        margin-left: 60px;
+        vertical-align: top;
+        line-height: 40px;
+        font-size: 0;
+
+        a {
+            display: inline-block;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 12px 0 40px;
+            text-align: left;
+            vertical-align: middle;
+            color: #000;
+            font-weight: $boldWeight;
+            font-size: 14px;
+            border-radius: 17.5px;
+            box-sizing: border-box;
+
+            &:first-child {
+                margin-right: 10px;
+            }
+        }
+
+        &Chrome {
+            background: url("#{$base}/pages/browserCheck/icon_chrome.png") #fff sz(12) center no-repeat;
+        }
+
+        &Edge {
+            background: url("#{$base}/pages/browserCheck/icon_edge.png") #fff sz(12) center no-repeat;
+        }
+    }
+
+    @media all and (max-width: 1280px) {
+        .inner {
+            width: 980px;
+        }
+
+        .btn {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            margin: sz(15) 0 0 0;
+        }
+    }
+}

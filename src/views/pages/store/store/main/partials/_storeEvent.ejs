@@ -1,0 +1,43 @@
+<div class="productWrap storeEvent">
+  <div class="eventTitle">
+    <h3>기획전</h3>
+    <button type="button"
+    class="layerTransformButton eventMoreBtn"
+    aria-controls="eventPopup">더보기</button>
+  </div>
+
+  <div class="slideWrap">
+    <ul class="eventSlide mainEvent">
+      <%
+        [
+          {title: "NS홈쇼핑", subTitle: "공기 청정기 30% 초특가공기 청정기 30% 초특가공기 청정기 30% 초특가", date: "2021.04.07~2021.04.10", pointColor: "blue"},
+          {title: "NS홈쇼핑", subTitle: "공기 청정기 30% 초특가", date: "2021.04.07~2021.04.10"}
+        ].forEach(e => { %>
+          <li class="textBanner" data-point-color="<%= e.pointColor ? e.pointColor : '' %>">
+            <a href="#">
+              <div class="bannerInner">
+                <h1><%= e.title %></h1>
+                <p class="title"><%= e.subTitle %></p>
+                <p class="eventDate"><%= e.date %></p>
+              </div>
+            </a>
+          </li>
+      <% }); %>
+
+      <% if(noSlider) { %>
+        <% if(!isMobile) { %>
+          <li><a href="#"><img src="//via.placeholder.com/620x340" alt="이벤트1 타이틀"></a></li>
+        <% } %>
+      <% } else { %>
+        <li><a href="#"><img src="//via.placeholder.com/620x340" alt="이벤트2 타이틀"></a></li>
+        <li><a href="#"><img src="//via.placeholder.com/620x340" alt="이벤트3 타이틀"></a></li>
+      <% } %>
+
+    </ul>
+  </div>
+
+  <!-- 기획전 전체보기 팝업 -->
+  <%- include('_eventPopup'); %>
+</div>
+
+

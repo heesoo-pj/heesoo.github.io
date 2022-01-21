@@ -1,0 +1,24 @@
+.typeIconWrap {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+
+    button {
+        padding: 0 sz(6);
+        opacity: .2;
+        font-size: sz(13);
+        cursor: pointer;
+
+        img {
+            width: 112%;
+        }
+
+        &.on {
+            opacity: 1;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}

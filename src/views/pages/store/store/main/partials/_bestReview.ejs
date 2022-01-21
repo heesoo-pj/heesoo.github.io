@@ -1,0 +1,45 @@
+<% data.product.review.forEach((item, idx) => { %>
+  <% if(typeof products !== 'undefined' && products) { %>
+    <% if (idx <= products - 1 ) { %>
+      <li class="item">
+        <a href="#">
+          <div class="productImg">
+            <img src="<%= item.image.length ? `${item.image}` : '#' %>" alt="" onerror="this.src='<%= page.base %>/store/common/noImage/transparent.png'">
+          </div>
+
+          <div class="reviewContent">
+            <div class="reviewHeader">
+              <div class="headerLeft">
+                <i class="starRate" data-star-rate="<%= item.start %>"><%= item.start %></i>
+              </div>
+
+              <div class="headerRight">
+                <span class="user"><%= item.userId %></span>
+                <span class="date"><%= item.data %></span>
+              </div>
+            </div>
+
+            <p class="reviewTxt"><%= item.reviewTxt %></p>
+
+            <div class="productInfo">
+              <p class="name"><%= item.product %></p>
+              <div class="price">
+                <span class="salePrice"><em class="blind">판매가</em><em><%= $.withCommas(item.salePrice) %></em><span class="currency">원</span></span>
+
+                <% if(item.originPrice) { %>
+                  <span class="originalPrice"><em class="blind">원가</em><%= $.withCommas(item.originPrice) %><span class="currency">원</span></span>
+                <% } %>
+
+                <% if(item.percent) { %>
+                  <span class="percentage">
+                    <em><em class="blind">할인율</em><%= item.percent %></em><span class="unit">%</span>
+                  </span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    <% } %>
+  <% } %>
+<% }); %>

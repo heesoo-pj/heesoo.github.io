@@ -1,0 +1,37 @@
+<div id="<%= layerAlertId %>" class="layerAlert<%= typeof stateName !== 'undefined' && state.includes(stateName) ? ' active' : '' %><%= typeof layerAlertClass !== 'undefined' && layerAlertClass ? ` ${layerAlertClass}` : '' %>" role="dialog" aria-modal="true">
+  <div class="layerAlertInner">
+    <div class="layerAlertContent">
+      <%- typeof title !== 'undefined' && title !== ''  ? title : '' %>
+      <% if(typeof coupon !== 'undefined' && coupon !== '') { %>
+        <%- include('/components/store/_sellerCoupon', {
+          addClass: coupon.addClass,
+          couponDisable: coupon.couponDisable,
+          couponNumber: coupon.couponNumber,
+          couponText: coupon.couponText,
+          tag: coupon.tag
+        }); %>
+      <% } %>
+      <%- typeof content !== 'undefined' && content !== '' ? `<div class="content">${content}</div>` : '' %>
+    </div>
+    <div class="layerAlertBtnWrap">
+      <div>
+        <button
+          type="button"
+          class="layerAlertBtn<%= typeof btn01.class !== 'undefined' && btn01.class ? ` ${btn01.class}` : '' %>"
+          <%- typeof btn01.close !== 'undefined' && btn01.close ? ' aria-label="닫기"' : '' %>>
+          <%= typeof btn01.text !== 'undefined' && btn01.text ? btn01.text : '취소' %>
+        </button>
+      </div>
+      <% if (typeof btn02 !== 'undefined') { %>
+        <div>
+          <button
+            type="button"
+            class="layerAlertBtn<%= typeof btn02.class !== 'undefined' && btn02.class ? ` ${btn02.class}` : '' %>"
+            <%- typeof btn02.close !== 'undefined' && btn02.close ? ' aria-label="닫기"' : '' %>>
+              <%= typeof btn02.text !== 'undefined' &&  btn02.text ? btn02.text : '' %>
+          </button>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
