@@ -1,0 +1,892 @@
+@import "base/variables";
+
+// Font Color
+$fColor_midGray: #666;
+$fColor_gray: #999;
+$fColor_red: #ef3f43;
+$fColor_yellow: #dc941b;
+
+// Line Color
+$lColor_darkGray: #333;
+$lColor_midGray: #b6bdc7;
+$lColor_gray: #e3e4e8;
+
+// BG Color
+$bColor_lightGray: #f6f6f6;
+$bColor_darkGray: #333;
+
+// 클릭요소 active 상태에 적용
+@function color-shade($color, $amount: 5%) {
+    $lightness: lightness($color); //밝기 체크
+    $shade: #fff; //어두운색이라면 하얀색으로,
+    @if ($lightness > 50) { //밝은색이라면
+        $shade: #000; //어두운색으로 아래에서 믹싱한 컬러값을 리턴합니다.
+    }
+
+    @return mix($shade, $color, $amount);
+}
+
+.goodsList {
+    margin-bottom: 30px;
+
+    & > li {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        border-bottom: 1px solid $lColor_gray;
+
+        &.loading {
+            position: relative;
+            display: block;
+            height: 224px;
+            padding: 30px 0;
+
+            &:before {
+                z-index: 2;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                border-bottom: 1px solid $lColor_gray;
+                background: #fff;
+                content: "";
+            }
+
+            &:after {
+                z-index: 3;
+                position: absolute;
+                top: 30px;
+                right: 0;
+                bottom: 30px;
+                left: 0;
+                background: #f5f6fa;
+                content: "";
+            }
+
+            .fullWrap {
+                display: none;
+            }
+        }
+    }
+
+    .col {
+        display: table-cell;
+        padding: 30px 20px 27px;
+        vertical-align: top;
+        box-sizing: border-box;
+
+        &.photo {
+            width: 180px;
+            padding-right: 0;
+
+            a {
+                display: block;
+            }
+
+            .img {
+                overflow: hidden;
+                display: block;
+                width: 100%;
+                height: 223px;
+                background: $bColor_lightGray;
+
+                img {
+                    width: auto;
+                    min-width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    [data-row] {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        [data-cell] {
+            display: table-cell;
+            padding-right: 20px;
+            vertical-align: top;
+        }
+
+        [data-cell="sub"] {
+            width: 117px;
+        }
+    }
+
+    .titArea {
+        height: 118px;
+        padding-bottom: 20px;
+        box-sizing: border-box;
+
+        a {
+            display: block;
+
+            &:hover {
+                .tit {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .tagSpot {
+            display: block;
+            margin-top: -5px;
+            min-height: 27px;
+            margin-bottom: 8px;
+            font-size: 0;
+
+            .tag {
+                display: inline-block;
+                height: 22px;
+                margin: 5px 5px 0 0;
+                padding: 0 5px;
+                font-size: 12px;
+                color: $fColor_midGray;
+                line-height: 21px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                box-sizing: border-box;
+
+                &.KTO {
+                    &:before {
+                        content: "";
+                        width: 12px;
+                        height: 20px;
+                        background: url("#{$base}/pages/checkinnow/housing/search/tagKTO.png") no-repeat center;
+                        display: inline-block;
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+
+        .tit {
+            overflow: hidden;
+            display: block;
+            width: 300px;
+            margin-bottom: 3px;
+            font-size: 18px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .tip {
+            color: $fColor_gray;
+            font-size: 14px;
+        }
+    }
+
+    .priceArea {
+        padding-top: 9px;
+
+        .promo {
+            display: block;
+            min-height: 19px;
+            color: $fColor_midGray;
+            font-size: 14px;
+        }
+
+        .price {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 20px;
+        }
+
+        .secretPrice {
+            display: block;
+            margin-bottom: 7px;
+            color: #ef3f43;
+            font-size: 20px;
+
+            &Txt {
+                margin-bottom: 8px;
+                font-size: 14px;
+                color: #ef3f43;
+
+                & + .secretPriceTxt {
+                    margin-top: -8px;
+                }
+            }
+        }
+
+        .discount {
+            display: block;
+            margin: -2px 0 6px;
+            font-size: 16px;
+
+            del {
+                padding-right: 5px;
+                color: $fColor_gray;
+            }
+
+            .rate {
+                color: $fColor_yellow;
+
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    width: 9px;
+                    height: 14px;
+                    margin-left: 3px;
+                    background: url("#{$base}/pages/checkinnow/housing/common/asset_goodslist.png") no-repeat -30px -10px;
+                }
+            }
+        }
+
+        .lefts {
+            display: block;
+            color: $fColor_midGray;
+            font-size: 12px;
+        }
+    }
+
+    .infoArea {
+        height: 70px;
+        padding-bottom: 12px;
+        box-sizing: border-box;
+
+        & > span {
+            display: block;
+            color: $fColor_gray;
+            font-size: 12px;
+
+            ~ span {
+                margin-top: 5px;
+            }
+
+            &.inline {
+                font-size: 0;
+
+                span {
+                    font-size: 12px;
+
+                    ~ span {
+                        &:before {
+                            content: "/";
+                        }
+                    }
+                }
+            }
+        }
+
+        .emph {
+            color: $fColor_midGray;
+        }
+
+        .mapBtn {
+            overflow: visible;
+            position: relative;
+            margin-left: 5px;
+            padding-left: 11px;
+            color: $fColor_midGray;
+            font-size: inherit;
+            line-height: 1;
+            text-decoration: underline;
+            vertical-align: baseline;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 10px;
+                height: 12px;
+                margin-top: -5px;
+                background: url("#{$base}/pages/checkinnow/housing/common/asset_goodslist.png") no-repeat -10px -10px;
+            }
+        }
+    }
+
+    .amenities {
+        height: 25px;
+        padding-top: 10px;
+
+        .iconList {
+            & > li {
+                display: inline-block;
+                margin-right: 14px;
+                width: 26px;
+                height: 100%;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .ratingArea {
+        .score {
+            display: block;
+            margin-bottom: 4px;
+            color: $fColor_gray;
+            font-size: 12px;
+
+            .num {
+                font-size: 16px;
+            }
+        }
+
+        .reviews {
+            display: block;
+            color: $fColor_gray;
+            font-size: 12px;
+
+            .num {
+                color: $fColor_yellow;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    // 배너
+    .oneBanner {
+        display: block;
+        margin: -1px 0;
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    // 달력
+    .calWrap {
+        font-size: 0;
+
+        &.active {
+            .calBox {
+                display: inline-block;
+            }
+
+            .infoWrap {
+                display: block;
+
+                .calToggleBtn {
+                    &:before {
+                        margin: -2px -4px;
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+        }
+
+        .fullWrap {
+            margin: 30px -40px -27px -200px;
+            padding: 0 20px;
+            background: #f5f6fa;
+        }
+
+        .calBlock {
+            background: #fff;
+        }
+
+        .infoWrap {
+            position: relative;
+            overflow: hidden;
+            display: none;
+            width: auto;
+            height: 30px;
+            padding-top: 14px;
+            font-size: 0;
+            text-align: right;
+
+            &:first-child {
+                display: block;
+
+                .price {
+                    color: #000;
+                }
+            }
+
+            .titWrap {
+                float: left;
+
+                i {
+                    display: inline-block;
+                    margin-right: 6px;
+                    padding: 2px 4px;
+                    font-size: 12px;
+                    color: #666;
+                    border: 1px solid #999;
+                    border-radius: 2px;
+                    background: #f5f6fa;
+                }
+
+                .tit {
+                    font-size: 14px;
+                    color: #000;
+                }
+            }
+
+
+            .date {
+                font-size: 14px;
+                color: #000;
+            }
+
+            .price {
+                margin: 0 30px 0 10px;
+                font-weight: bold;
+                font-size: 14px;
+                color: #ef3f43;
+            }
+        }
+
+        .calBox {
+            display: none;
+            width: 295px;
+            margin: 20px 25px;
+            text-align: center;
+
+            ~ .calBox {
+                margin-left: -9px;
+            }
+
+            .monArea {
+                position: relative;
+                margin-bottom: 17px;
+
+                .month {
+                    color: #333;
+                    font-size: 20px;
+                }
+
+                .prevBtn,
+                .nextBtn {
+                    overflow: hidden;
+                    position: absolute;
+                    top: 50%;
+                    width: 37px;
+                    height: 30px;
+                    margin-top: -15px;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    border: 1px solid #e4e4e4;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        width: 7px;
+                        height: 14px;
+                        margin-top: -7px;
+                        background: url("#{$base}/pages/checkinnow/popups/asset_popup.png") no-repeat 0 -10px;
+                    }
+
+                    &:active {
+                        background-color: color-shade(#fff);
+                    }
+                }
+
+                .prevBtn {
+                    left: 0;
+
+                    &:before {
+                        margin-left: -3px;
+                        background-position-x: -40px;
+                    }
+                }
+
+                .nextBtn {
+                    right: 0;
+
+                    &:before {
+                        margin-left: -2px;
+                        background-position-x: -70px;
+                    }
+                }
+            }
+
+            .calendar {
+                width: 100%;
+                table-layout: fixed;
+
+                td,
+                th {
+                    height: 28px;
+                    vertical-align: middle;
+                }
+
+                thead {
+                    th {
+                        color: #fff;
+                        font-size: 12px;
+                        font-weight: normal;
+                        background: #666;
+                        border: 1px solid #555;
+
+                        &:first-child {
+                            background: #d14339;
+                            border-color: #d14339;
+                        }
+                    }
+                }
+
+                tbody {
+                    td {
+                        color: #e4e4e4;
+                        border: 1px solid #e4e4e4;
+                        background: #f9f9f9;
+
+                        &:first-child,
+                        &.off {
+                            button {
+                                color: #e25147;
+
+                                &.active ,
+                                &.from ,
+                                &.mid ,
+                                &.to {
+                                    color: #fff;
+                                }
+                            }
+                        }
+
+                        &.sat {
+                            button {
+                                color: #3b9dda;
+
+                                &.active ,
+                                &.from ,
+                                &.mid ,
+                                &.to {
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    width: 100%;
+                    height: 100%;
+                    color: #666;
+                    background: #fff;
+
+                    &:active {
+                        background: color-shade(#fff);
+                    }
+
+                    &.active {
+                        color: #fff;
+                        background: #d14339;
+                    }
+
+                    &.from {
+                        color: #fff;
+                        background: #3b9dda;
+                    }
+
+                    &.mid {
+                        color: #fff;
+                        background: #999;
+                    }
+
+                    &.to {
+                        color: #fff;
+                        background: #01a89e;
+                    }
+                }
+            }
+        }
+
+        .calToggleBtn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            text-indent: -9999px;
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 7px;
+                height: 7px;
+                margin: -6px -4px;
+                border: 1px solid #000;
+                border-right: 0;
+                border-bottom: 0;
+                transform: rotate(225deg);
+                content: "";
+            }
+        }
+    }
+
+    // 결합상품
+    .combinedWrap {
+        &:after {
+            display: block;
+            margin-bottom: -17px;
+            content: "";
+        }
+
+        .combinedTit {
+            position: relative;
+            margin-top: 30px;
+            padding: 24px 20px 0;
+            line-height: 1;
+            font-size: 16px;
+            color: #000;
+
+            &:before {
+                position: absolute;
+                top: 0;
+                right: -20px;
+                left: -20px;
+                border-top: 1px dotted #e9edf3;
+                content: "";
+            }
+        }
+
+        .combinedItem {
+            display: block;
+            margin: 10px 20px 20px;
+            padding: 18px 0;
+            line-height: 1;
+
+            &:after {
+                display: block;
+                clear: both;
+                content: "";
+            }
+
+            &:active {
+                background: color-shade(#fff);
+            }
+
+            &:hover {
+                .tit {
+                    text-decoration: underline;
+                }
+            }
+
+            .tit {
+                display: block;
+                margin-bottom: 10px;
+                font-size: 16px;
+                color: #000;
+            }
+
+            .info {
+                line-height: 1.6;
+                font-size: 12px;
+                color: #666;
+            }
+
+            .visualImg {
+                float: left;
+                width: 130px;
+                height: 130px;
+                margin: -18px 18px -18px 0;
+            }
+
+            .price {
+                margin-top: 10px;
+                font-size: 18px;
+
+                &:before {
+                    display: block;
+                    margin-top: 10px;
+                    content: "";
+                }
+            }
+
+            .discount {
+                margin-left: 5px;
+                font-size: 14px;
+                color: #999;
+            }
+        }
+    }
+
+    // 추가상품
+    .moreSearchWrap {
+        color: #3f3f3f;
+        line-height: 1;
+        font-size: 16px;
+
+        .fullWrap {
+            overflow: hidden;
+            margin: 30px -40px -27px -200px;
+        }
+
+        .tit {
+            float: left;
+            padding: 14px 20px;
+        }
+
+        .btnWrap {
+            float: right;
+            padding: 9px 15px;
+
+            button {
+                position: relative;
+                min-width: 110px;
+                height: 26px;
+                margin-right: 5px;
+                padding: 0 19px 0 8px;
+                text-align: left;
+                border: 1px solid;
+                font-size: 13px;
+                color: #666;
+                background: #fff;
+
+                &:active {
+                    background: color-shade(#fff);
+                }
+
+                &:after {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 4px;
+                    height: 4px;
+                    border: 1px solid;
+                    border-left: 0;
+                    border-bottom: 0;
+                    transform: rotate(45deg);
+                    content: "";
+                }
+            }
+        }
+
+        &.remainingRoom {
+            .fullWrap {
+                background: #e8f3f5;
+
+                button {
+                    border-color: #c3e0e5;
+
+                    &:after {
+                        border-color: #a1c5cc;
+                    }
+                }
+            }
+        }
+
+        &.popularArea {
+            .fullWrap {
+                background: #f1e8f5;
+
+                button {
+                    border-color: #dec4ea;
+
+                    &:after {
+                        border-color: #e6d2ef;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.paging {
+    font-size: 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+        line-height: 45px;
+        vertical-align: top;
+        border: 1px solid $lColor_midGray;
+
+        &:active {
+            background-color: color-shade(#fff);
+        }
+
+        &.prevBtn,
+        &.nextBtn,
+        &.firstBtn,
+        &.lastBtn {
+            overflow: hidden;
+            position: relative;
+            text-indent: 100%;
+            white-space: nowrap;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 7px;
+                height: 13px;
+                margin-top: -6px;
+                margin-left: -4px;
+                background: url("#{$base}/pages/checkinnow/housing/common/asset_paging.png") no-repeat -10px -10px;
+            }
+        }
+
+        &.nextBtn {
+            &:before {
+                margin-left: -2px;
+                background-position-x: -30px;
+            }
+        }
+
+        &.firstBtn,
+        &.lastBtn {
+            &:before {
+                width: 16px;
+                margin-left: -9px;
+            }
+        }
+
+        &.firstBtn {
+            margin-right: -1px;
+
+            &:before {
+                background-position-x: -50px;
+            }
+        }
+
+        &.lastBtn {
+            margin-left: -1px;
+
+            &:before {
+                background-position-x: -80px;
+                margin-left: -7px;
+            }
+        }
+    }
+
+    .index {
+        margin: 0 10px;
+
+        a {
+            ~ a {
+                margin-left: -1px;
+            }
+
+            &.current {
+                position: relative;
+                color: #fff;
+                border-color: $bColor_darkGray;
+                background: $bColor_darkGray;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 0) and (min-resolution: #{+72}dpi) {
+    .goodsList {
+        .col {
+            &.photo {
+                .img {
+                    img {
+                        margin-left: 50%;
+                        -ms-transform: translateX(-50%);
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+    }
+}

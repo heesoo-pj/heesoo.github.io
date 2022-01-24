@@ -1,16 +1,7 @@
-<% if (isMobile) { %>
-  <script src="/scripts/plugins/velocity/velocity.min.js"></script>
-  <% if (typeof page.scripts !== 'undefined' && page.scripts.mobile instanceof Array) { %>
-    <% page.scripts.mobile.forEach(function(mobileJsPath) { %>
-      <script src="<%= mobileJsPath %>"></script>
-    <% }) %>
-  <% } %>
-<% } else { %>
-  <% if (typeof page.scripts !== 'undefined' && page.scripts.desktop instanceof Array) { %>
-    <% page.scripts.desktop.forEach(function(desktopJsPath) { %>
-      <script src="<%= desktopJsPath %>"></script>
-    <% }) %>
-  <% } %>
+<% if (typeof page.scripts !== 'undefined' && page.scripts.desktop instanceof Array) { %>
+  <% page.scripts.desktop.forEach(function(desktopJsPath) { %>
+    <script src="<%= desktopJsPath %>"></script>
+  <% }) %>
 <% } %>
 
 <% if (typeof page.scripts !== 'undefined' && page.scripts.common instanceof Array) { %>
@@ -22,7 +13,4 @@
 
 <% if (!page.metaPage || (typeof page.metaPage !== 'undefined' && page.metaPage.header)) { %>
   <script src="/scripts/common/header.js"></script>
-<% } %>
-<% if (!page.metaPage || (typeof page.metaPage !== 'undefined' && page.metaPage.footer)) { %>
-  <script src="/scripts/components/<%= isMobile ? 'mobile' : 'desktop' %>/intFooter.js"></script>
 <% } %>

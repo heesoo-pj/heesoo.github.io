@@ -1,0 +1,26 @@
+<%
+  var d2, d3;
+  if (typeof d2 === 'undefined') d2 = '2D';
+%>
+
+<p class="ui-location">
+  <span class="home">
+    <a href="#">HOME</a>
+  </span>
+  <span>
+    <% if (typeof d3 === 'undefined') { %>
+      <%= d2 %>
+    <% } else { %>
+      <a href="#"><%= d2 %></a>
+    <% } %>
+  </span>
+  <% if (typeof d3 !== 'undefined') { %>
+    <span><%= d3 %></span>
+  <% } %>
+</p>
+
+<em class="txt-banner">
+  <a href="#">
+    <img src="<%- page.base %>/common/header/gnbmenu/txt_banner01.jpg" alt="대한민국 NO1.온라인 여행 파트너!">
+  </a>
+</em>

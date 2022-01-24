@@ -1,0 +1,99 @@
+<div class="cateInfoContentsWrap <%= cateData.class %>">
+  <div class="categoriesWrap">
+    <div class="titleWrap">
+      <a href="<%= cateData.title.link %>">
+        <h1 class="title"><%= cateData.title.ko %></h1>
+        <p class="sub"><%- cateData.title.en %></p>
+      </a>
+    </div>
+
+    <!-- <div class="searchWrap">
+      <h2 class="title">상품검색</h2>
+
+      <div class="searchInputWrap">
+        <label class="searchInput">
+          <input type="text" placeholder="전체 상품 검색">
+
+          <button type="button" class="searchBtn">
+            <span>검색</span>
+          </button>
+        </label>
+      </div>
+    </div> -->
+
+    <%
+      Array.prototype.chunk = function(chunkSize) {
+        var array = this;
+        return [].concat.apply([],
+          array.map(function(elem, i) {
+            return i%chunkSize ? [] : [array.slice(i, i+chunkSize)];
+          })
+        );
+      }
+
+      var $cateChunkList = cateData.cate.chunk(2);
+    %>
+
+    <% $cateChunkList.forEach(function($cateList, $i) { %>
+      <% $cateList.forEach(function($categories) { %>
+        <div class="categories">
+          <h2 class="subTitle"><%= $categories.subTitle %></h2>
+          <div class="cateList">
+            <ul>
+              <% $categories.list.forEach(function($cate, $i) { %>
+                <li<% if ($i === 0) { %> class="current"<% } %>>
+                  <a href="<%= $cate.link %>">
+                    <%= $cate.label %>
+                    <% if ($cate.new) { %>
+                      <span class="new">new</span>
+                    <% } %>
+                  </a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      <% }) %>
+
+      <% if (cateData.adBanner && $i === 0) { %>
+        <div class="adBannerWrap">
+          <% cateData.adBanner.forEach(function($adBanner) { %>
+            <div class="banner">
+              <a href="<%= $adBanner.link %>">
+                <img src="<%= $adBanner.img %>" alt="<%= $adBanner.label %>">
+              </a>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+    <% }) %>
+  </div>
+
+  <% var useInfo; %>
+  <%- include('/pages/checkinnow/housing/_partials/_categoryContentsBtm', {
+    cateData: cateData,
+    useInfo: useInfo && undefined,
+    adBanner: false
+  }); %>
+
+  <div class="keywordBannerWrap">
+    <h2 class="title">키워드배너</h2>
+    <ul>
+      <% cateData.keywordBanner.forEach(function($keywordBanner) { %>
+        <li<% if($keywordBanner.onlyImage) { %> class="onlyImage"<% } %>>
+          <a href="<%= $keywordBanner.link %>" target="_blank">
+            <div class="imgWrap">
+              <img src="<%= $keywordBanner.img %>" alt="<%= $keywordBanner.label %>">
+            </div>
+            <% if (!$keywordBanner.onlyImage) { %>
+              <div class="prodWrap">
+                <p class="copy"><%= $keywordBanner.copy %></p>
+                <p class="name"><%= $keywordBanner.label %></p>
+              </div>
+            <% } %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>

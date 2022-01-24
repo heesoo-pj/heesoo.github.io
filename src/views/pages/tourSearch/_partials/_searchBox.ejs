@@ -1,0 +1,273 @@
+<%
+  const filteredType = typeof filtered !== 'undefined' && filtered === true;
+  const thinType = typeof thin !== 'undefined' && thin === true;
+  const category = [
+    {
+      title: filteredType ? '지역' : '여행지, 숙소',
+      text: filteredType ? '지역을 검색해보세요.' : '검색해보세요.',
+      value: '',
+      class: filteredType ? 'Region' : 'Destination'
+    },
+    {
+      title: '날짜',
+      text: '06.15(화) - 06.17(수), 1박',
+      class: 'Date'
+    },
+    {
+      title: '인원, 객실',
+      text: '성인2, 소아0, 객실1',
+      class: 'Room'
+    }
+  ]
+%>
+
+<div class="searchBox<%= filteredType ? ' filtered' : '' %><%= thinType ? ' thin' : '' %>">
+  <% category.forEach(function(item, index) {%>
+    <div class="searchItem search<%= item.class %>">
+    <% if (index !== 0) { %>
+    <a href="#" class="openLayerBtn" aria-controls="search<%= item.class %>Layer<%= filteredType ? 'Filtered' : '' %>" title="<%= item.title %> 레이어 열기">
+    <% } else { %>
+    <div class="openLayerBox" aria-controls="search<%= item.class %>Layer<%= filteredType ? 'Filtered' : '' %>">
+    <% } %>
+      <h1> <%= item.title %></h1>
+    <% if (index !== 0) { %>
+      <p><%= item.text %></p>
+    </a>
+    <% } else { %>
+      <input type="text" class="jsSearch" placeholder="<%= item.text %>" value="<%= item.value %>"<%- filteredType ? ' readonly' : '' %>>
+    </div>
+    <% } %>
+
+    <div id="search<%= item.class %>Layer<%= filteredType ? 'Filtered' : '' %>" class="searchLayer" role="dialog" aria-modal="true">
+      <h1>
+        <%= item.title %>
+      </h1>
+      <button type="button" class="btnClose" aria-label="닫기">닫기</button>
+      <% if (index === 0) {
+          const region = [
+            {
+              button: '추천지역',
+              list: ['추천지역1', '추천지역2', '추천지역3']
+            },
+            {
+              button: '서울',
+              list: ['서울 전체', '강남/서초', '송파/강동', '강북/성북/노원/도봉', '영등포/강서', '관악/동작', '동대문/성동/중랑/광진구', '구로/금천', '마포/서대문/은평/용산', '종로', '중구']
+            },
+            {
+              button: '경기',
+              list: ['경기 전체', '가평/포천', '파주/고양/김포', '과천/안양/의왕/군포', '부천/광명', '성남/광주', '남양주/구리/하남', '동두천/연천', '수원/화성', '안산/시흥', '용인/평택/안성/오산', '의정부/양주', '양평', '여주/이천']
+            },
+            {
+              button: '인천',
+              list: ['인천 전체', '부평/계양', '남구/남동구', '동구', '서구/중구', '연수/옹진', '강화']
+            },
+            {
+              button: '강원',
+              list: ['강원 전체', '강릉', '속초/양양/고성', '동해/정선/태백/삼척', '춘천/인제/양구/화천/철원', '횡성/원주/영월', '평창/홍천']
+            },
+            {
+              button: '제주',
+              list: ['제주 전체', '서귀포시', '제주시']
+            },
+            {
+              button: '부산',
+              list: ['부산 전체', '해운대', '사상/강서/북구', '동구/사하/중구/서구/영도', '부산진구', '동래/연제/금정/기장', '수영/남구']
+            },
+            {
+              button: '경상',
+              list: ['경상 전체', '대구/구미/안동/문경', '경주', '울산/양산', '거제/통영', '포항/영덕/울진/청송', '창원/마산/진해/김해/창녕', '남해/사천/하동/진주/함양']
+            },
+            {
+              button: '전라',
+              list: ['전라 전체', '전주', '여수', '광주/나주', '순천/광양/구례/목포/보성/화순', '남원/무주/완주/익산', '군산/부안/고창/진안']
+            },
+            {
+              button: '충청',
+              list: ['충청 전체', '대전/세종', '천안/아산/당진/예산', '태안/안면도/서산', '보령/부여/공주/금산', '청주/음성/진천', '충주/제천/단양']
+            }
+          ];
+
+        if (filteredType) { %>
+        <div class="searchLayerInner">
+          <div>
+        <%
+          region.forEach(function(item, idx) {
+            if (idx%2 === 0) {
+        %>
+            <div class="regionRow">
+              <div class="regionItem">
+                <div class="regionButtonBox">
+                  <% for (var i = 0; i < 2; i++) { %>
+                    <% if (region[idx + i] !== undefined) { %>
+                      <button type="button" class="regionButton" aria-expanded="false"><%= region[idx + i].button %></button>
+                    <% } %>
+                  <% } %>
+                </div>
+                <div class="regionContentBox">
+                  <% for (var i = 0; i < 2; i++) { %>
+                    <% if (region[idx + i] !== undefined) { %>
+                      <ul class="regionContent">
+                        <% region[idx + i].list.forEach(function(listItem) { %>
+                        <li>
+                          <a href="#" tabindex="-1"><%= listItem %></a>
+                        </li>
+                        <% }) %>
+                      </ul>
+                    <% } %>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+        <%
+          }
+            })
+        %>
+          </div>
+        </div>
+        <% } else { %>
+          <div class="searchLayerInner">
+            <div data-searched="true">
+              <%
+                const locationArr = [
+                {
+                  itemType: 'Location',
+                  title: '제주, 전체'
+                },
+                {
+                  itemType: 'Accom',
+                  title: '라마다 제주시티호텔',
+                  sub: '제주특별자치도 제주시 중앙로'
+                },
+                {
+                  itemType: 'Traffic',
+                  title: '제주국제공항'
+                },
+                {
+                  itemType: 'Sights',
+                  title: '거제 관광모노레일'
+                },
+                {
+                  itemType: 'Location',
+                  title: '거제, 경남'
+                },
+                {
+                  itemType: 'Accom',
+                  title: '라마다 제주시티호텔',
+                  sub: '제주특별자치도 제주시 중앙로'
+                },
+                {
+                  itemType: 'Traffic',
+                  title: '제주국제공항'
+                },
+                {
+                  itemType: 'Sights',
+                  title: '거제 관광모노레일'
+                }
+              ];
+              %>
+              <%- include('../_partials/_uiSearchAutocomplete', { list: locationArr }); %>
+            </div>
+
+            <div data-searched="false">
+              <div class="searchRecentBox">
+                <h1>최근검색</h1>
+                <button type="button" class="btnRemoveAll">전체 삭제</button>
+                <%
+                  const recentList = [
+                    {
+                      title: '강릉시 강원',
+                      sub: '4.16(금) ~ 4.17(토) / 성인2, 소아0, 객실1'
+                    },
+                    {
+                      title: '세인트존스 호텔',
+                      sub: '4.16(금) ~ 4.17(토) / 성인2, 소아0, 객실1'
+                    },
+                    {
+                      title: '홍대입구역',
+                      sub: '5.5(수) ~ 5.6(목) / 성인2, 소아1, 객실1'
+                    }
+                  ]
+                %>
+                <ul class="searchRecent">
+                  <% recentList.forEach(function(item) { %>
+                    <li>
+                      <a href="#">
+                        <div class="title"><%= item.title %></div>
+                        <div class="sub"><%= item.sub %></div>
+                      </a>
+                      <button type="button" class="btnClose">닫기</button>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
+              <div>
+                <h1>인기여행지</h1>
+                <%- include('../_partials/_uiKeyword', {list: ['강원', '제주', '서울', '부산']}); %>
+              </div>
+              <div class="searchPopularKeyword">
+                <h1>인기 키워드</h1>
+                <%- include('../_partials/_uiKeyword', {list: ['최대30시간스테이', '스키장싹다모아!', '제주실시간렌터카', '언텍트체크인', '설연휴특가', '겨울감성캠핑']}); %>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      <% } else if (index === 1) { %>
+        <%- include('../_partials/_housingCalendar'); %>
+      <% } else if (index === 2) { %>
+        <div class="searchLayerInner">
+          <div
+            class="searchRoomCountForm quantityWrapper">
+            <dl class="searchRoomCount">
+              <dt>
+                <strong>객실</strong>
+                <span>객실 당 최대 성인20명, 소아6명</span>
+              </dt>
+              <dd>
+                <div class="quantitySelector">
+                  <button type="button" class="controller minus" disabled>
+                    <span>줄이기</span>
+                  </button>
+                  <label class="currentQuantity">
+                    <span
+                      class="iText jsRoomCount"
+                      data-max-number="10"
+                      data-min-number="1"
+                      data-error-msg=""
+                    >1</span>
+                  </label>
+                  <button type="button" class="controller plus">
+                    <span>늘리기</span>
+                  </button>
+                </div>
+              </dd>
+            </dl>
+
+            <div class="guestRoomWrap"></div>
+          </div>
+
+          <div class="searchStandard">
+            <h1>객실별 투숙인원 조회 기준</h1>
+            <div class="radioWrap">
+              <span class="radioItem">
+                <input id="searchMin<%= filteredType ? 'Filtered' : '' %>" type="radio" name="numberOfGuests<%= filteredType ? 'Filtered' : '' %>" checked>
+                <label for="searchMin<%= filteredType ? 'Filtered' : '' %>">가장 적은 인원</label>
+              </span>
+              <span class="radioItem">
+                <input id="searchMax<%= filteredType ? 'Filtered' : '' %>" type="radio" name="numberOfGuests<%= filteredType ? 'Filtered' : '' %>">
+                <label for="searchMax<%= filteredType ? 'Filtered' : '' %>">가장 많은 인원</label>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="searchLayerButtonBox">
+          <button type="button" class="searchLayerButton" aria-label="닫기">선택완료</button>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <% })%>
+
+  <div class="searchBtn">
+    <button type="button">검색하기</button>
+  </div>
+</div>

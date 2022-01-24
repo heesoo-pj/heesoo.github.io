@@ -1,0 +1,10 @@
+  <ul class="uiSearchStrong">
+  <% list.forEach(function(listItem) { %>
+      <li class="type<%= listItem.itemType %>">
+        <a href="#">
+          <p><%= listItem.title %></p>
+          <%- typeof listItem.sub !== 'undefined' ? '<span>' + listItem.sub + '</span>' : '' %>
+        </a>
+      </li>
+  <% }) %>
+</ul>

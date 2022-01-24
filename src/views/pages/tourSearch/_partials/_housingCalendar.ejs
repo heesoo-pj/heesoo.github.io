@@ -1,0 +1,141 @@
+<%
+  var calNum;
+  var calClass = calClass === undefined ? '' : calClass;
+  var price = price === undefined ? false : price;
+
+  if (typeof calNum === 'undefined') calNum = 2;
+
+  var data = [
+    {
+      "blank": 5,
+      "end": 30,
+      "today": 14
+    },
+    {
+      "blank": 0,
+      "end": 31
+    }
+  ];
+%>
+
+<div class="searchLayerInner">
+  <div class="calBlock">
+    <h3 class="screenOut">달력</h3>
+    <div class="calBox">
+      <div class="monArea">
+        <strong class="month">2018.06</strong>
+        <button class="prevBtn disabled" type="button" title="이전달">이전달 보기</button>
+        <% if (calNum === 1) { %>
+          <button class="nextBtn" type="button" title="이전달">이전달 보기</button>
+        <% } %>
+      </div>
+      <table class="calendar <%= calClass ? calClass : '' %>">
+        <caption>달력</caption>
+        <thead>
+          <tr>
+            <th scope="col">일</th>
+            <th scope="col">월</th>
+            <th scope="col">화</th>
+            <th scope="col">수</th>
+            <th scope="col">목</th>
+            <th scope="col">금</th>
+            <th scope="col">토</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i=0; i<5; i++) { %>
+            <tr>
+              <% for (var j=1; j<=7; j++) { %>
+                <%
+                  var day = (i*7)+j - data[0].blank;
+                %>
+
+                <td<% if (day === 6) { %> class="off"<% } %>>
+                  <% if (day > 0 && day <= data[0].end) { %>
+                    <% if (day < data[0].today) { %>
+                      <span class="day disabled">
+                        <%= day %>
+                      </span>
+                    <% } else { %>
+                      <%
+                        var btnClass = '';
+                        
+                        if (day === 20) {
+                          btnClass = '';
+                        } else if (day === 22) {
+                          btnClass = 'disabled soldout';
+                        } else if (day === 27) {
+                          btnClass = 'from';
+                        } else if (day === 28 || day === 29) {
+                          btnClass = 'mid';
+                        } else if (day === 30) {
+                          btnClass = 'to';
+                        }
+                      %>
+                      <button class="<%= btnClass %>" type="button">
+                        <span class="day">
+                          <%= day %>
+                        </span>
+                        <% if (price && day >= data[0].today) { %>
+                          <% if (day === 22) { %>
+                          <span class="soldout">
+                            마감
+                          </span>
+                          <% } else { %>
+                          <span class="price">
+                            9,999,999
+                          </span>
+                          <% } %>
+                        <% } %>
+                      </button>
+                    <% } %>
+                  <% } %>
+                </td>
+              <% } %>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% if (calNum > 1) { %>
+      <div class="calBox">
+        <div class="monArea">
+          <strong class="month">2018.07</strong>
+          <button class="nextBtn" type="button" title="다음달">다음달 보기</button>
+        </div>
+        <table class="calendar">
+          <caption>달력</caption>
+          <thead>
+            <tr>
+              <th scope="col">일</th>
+              <th scope="col">월</th>
+              <th scope="col">화</th>
+              <th scope="col">수</th>
+              <th scope="col">목</th>
+              <th scope="col">금</th>
+              <th scope="col">토</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i=0; i<5; i++) { %>
+              <tr>
+                <% for (var j=1; j<=7; j++) { %>
+                  <td>
+                    <% var day = (i*7)+j - data[1].blank; %>
+                    <% if (day > 0 && day <= data[1].end) { %>
+                      <button type="button">
+                        <span class="day">
+                          <%= day %>
+                        </span>
+                      </button>
+                    <% } %>
+                  </td>
+                <% } %>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+</div>

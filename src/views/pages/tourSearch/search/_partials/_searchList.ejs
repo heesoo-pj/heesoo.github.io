@@ -1,0 +1,112 @@
+<ul class="resultList">
+  <% data.searchList.product.forEach(function(p, idx) { %>
+    <li class="listItem">
+      <div class="thumb">
+        <div class="imgWrap">
+          <a href="#" title="상품 바로가기">
+            <img src="<%= p.img %>" alt="">
+          </a>
+        </div>
+        <%- include('../../_partials/_btnDibs'); %>
+
+        <% if(p.ad) {  %>
+          <div class="adBox">
+            <span class="adOver" tabindex="1"><em>광고</em></span>
+            <div class="adLayer">
+              <div class="LayerBox">
+                <span>광고 구매한 숙박상품으로 연관도와 입찰가,<br>
+                  광고 품질 등의 기준으로 노출됩니다.</span>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+
+      <div class="infoWrap">
+        <% if (p.tag) { %>
+          <div class="tags">
+            <% for (var i of p.tag) { %>
+              <span class="tag <%= (i === '인증') ? 'kto' : '' %>"><%= i %></span>
+            <% } %>
+          </div>
+        <% } %>
+
+        <div class="productInfo">
+          <a href="#" title="상품 바로가기">
+            <p class="title"><%= p.tit %></p>
+
+            <div class="label">
+              <% for (var i of p.label) { %>
+                <span><%= i %></span>
+              <% } %>
+            </div>
+          </a>
+
+
+
+          <div class="address">
+            <span><%= p.addr %> </span><button class="mapBtn openLayerBtn" aria-controls="mapViewNew" type="button">지도보기</button>
+          </div>
+
+          <div class="bottomWrap">
+            <p class="tip"><%= p.tip %></p>
+
+            <% if(p.filterList) { %>
+            <div id="amenitiesContent<%= idx + 1 %>" class="amenities">
+              <% for (var i of p.filterList) { %>
+                <span><%= i %></span>
+              <% } %>
+              <button type="button" class="btnListMore" aria-expanded="false" aria-controls="amenitiesContent<%= idx + 1 %>">더보기</button>
+            </div>
+            <% } %>
+          </div>
+
+        </div>
+
+        <div class="priceInfo <%= p.type === 'secret' ? 'secret' : '' %>">
+          <a href="#">
+            <div class="productPrice">
+              <% if(p.price) { %>
+                <% if(p.priceSubTxt) { %>
+                  <em class="subText"><%= p.priceSubTxt %></em>
+                <% } %>
+                <em class="price"><%= $.withCommas(p.price) %>원</em>
+              <% } else { %>
+                <% if(p.priceSubTxt) { %>
+                  <em class="subText"><%= p.priceSubTxt %></em>
+                <% } %>
+                <% if(p.priceSubTxtBig) { %>
+                  <span class="price"><%= p.priceSubTxtBig %></span>
+                <% } %>
+              <% } %>
+
+              <% if(p.origin) { %>
+                <em class="priceOrigin"><%= $.withCommas(p.origin) %><span class="currency">원</span></em>
+              <% } %>
+
+              <% if (p.percent) { %>
+                <span class="productPercent">
+                  <em><%= p.percent %>%</em>
+                </span>
+              <% } %>
+            </div>
+
+            <span class="score">
+              <span class="productStar">
+                <i class="starRate" data-star-rate="<%= p.score %>"><span class="blind"><%= p.score %></span></i>
+              </span>
+
+              <span class="review">
+                <span class="currency">리뷰</span> <em><%= p.review %></em>
+              </span>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </li>
+  <% }) %>
+
+
+</ul>
+

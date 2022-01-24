@@ -1,0 +1,46 @@
+<%
+  var topBaseData = [
+    {
+      "link": "#",
+      "img": "/data/images/pages/checkinnow/housing/topBanner_sum01.jpg",
+      "label": "기본 콘래드호텔",
+      "mainCopy": "디럭스+조식+각종혜택",
+      "subCopy": "5주년기념 290,910원~"
+    },
+    {
+      "link": "#",
+      "img": "/data/images/pages/checkinnow/housing/topBanner_sum02.jpg",
+      "label": "양양 낙산비치호텔",
+      "mainCopy": "단독 낙산사입장권 2매",
+      "subCopy": "전객실리모델링 63,640원~"
+    }
+  ]
+
+  var $topBannerData = typeof topData !== 'undefined' && typeof cate !== 'undefined' ? topData[cate] : topBaseData;
+%>
+
+<div class="topContentsWrap">
+  <% if ($topBannerData) { %>
+    <div class="topBannerWrap">
+      <h3 class="title">상단키워드배너</h3>
+      <div class="topBanner">
+        <ul>
+          <% $topBannerData.forEach(function($topBanner) { %>
+            <li>
+              <a href="<%= $topBanner.link %>">
+                <div class="prodWrap">
+                  <p class="name"><%= $topBanner.label %></p>
+                  <p class="mainCopy"><%= $topBanner.mainCopy %></p>
+                  <p class="subCopy"><%= $topBanner.subCopy %></p>
+                </div>
+                <div class="imgWrap">
+                  <img src="<%= $topBanner.img %>" alt="<%= $topBanner.label %>">
+                </div>
+              </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  <% } %>
+</div>

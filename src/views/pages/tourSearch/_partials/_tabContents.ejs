@@ -1,0 +1,48 @@
+<%
+  var category = [
+    {
+      'cate': 'topSearch',
+      'label': '호텔검색',
+      'link': '#'
+    },
+    {
+      'cate': 'hotel',
+      'label': '국내호텔',
+      'link': '#'
+    },
+    {
+      'cate': 'resort',
+      'label': '리조트',
+      'link': '#'
+    },
+    {
+      'cate': 'pension',
+      'label': '펜션',
+      'link': '#'
+    },
+    {
+      'cate': 'useTicket',
+      'label': '이용권',
+      'link': '#'
+    },
+    {
+      'cate': 'travelInfo',
+      'label': '여행정보',
+      'link': '#'
+    }
+  ];
+%>
+
+<div class="tabContentsWrap">
+  <div class="categoryTabWrap">
+    <ul>
+      <% category.forEach(function($cate) { %>
+        <li class="<%= $cate.cate %><% if (cate === $cate.cate) { %> current<% } %>">
+          <a href="<%= $cate.link %>">
+            <span><%= $cate.label %></span>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>

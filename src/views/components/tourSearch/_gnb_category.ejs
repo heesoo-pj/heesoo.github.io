@@ -1,0 +1,959 @@
+<%
+  var category = [
+  {
+    "titleImg": "/common/header/gnbmenu/tit_sitemap02_on.gif",
+    "label": "국내",
+    "cateList": [
+      {
+        "part": [
+          {
+            "subTitle": "국내항공",
+            "list": [
+              {
+                "label": "땡처리 할인항공권"
+              },
+              {
+                "label": "국내실시간 항공 예약",
+                "icon": true
+              }
+            ]
+          },
+          {
+            "subTitle": "제주도",
+            "list": [
+              {
+                "label": "제주여행만들기",
+                "icon": true
+              },
+              {
+                "label": "국내 항공권"
+              },
+              {
+                "label": "국내 숙박"
+              },
+              {
+                "label": "제주 실시간 렌터카",
+                "icon": true
+              },
+              {
+                "label": "황금연휴/제주PASS",
+                "icon": true
+              },
+              {
+                "label": "항공+숙박"
+              },
+              {
+                "label": "숙박+렌터카"
+              },
+              {
+                "label": "버스관광패키지"
+              },
+              {
+                "label": "골프",
+                "icon": true
+              },
+              {
+                "label": "허니문",
+                "icon": true
+              },
+              {
+                "label": "신규숙박지"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "국내여행",
+            "list": [
+              {
+                "label": "금주 출발확정",
+                "icon": true
+              },
+              {
+                "label": "추천여행"
+              },
+              {
+                "label": "당일여행"
+              },
+              {
+                "label": "숙박여행"
+              },
+              {
+                "label": "섬여행"
+              },
+              {
+                "label": "비행기타고 국내여행",
+                "icon": true
+              },
+              {
+                "label": "예술여행 대표도시 광주",
+                "icon": true
+              },
+              {
+                "label": "부산출발 국내여행",
+                "icon": true
+              },
+              {
+                "label": "내륙 실시간 렌터카"
+              },
+              {
+                "label": "골프"
+              },
+              {
+                "label": "대한민국 테마여행 10선",
+                "icon": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "국내호텔",
+            "list": [
+              {
+                "label": "서울 | 인천 | 경기"
+              },
+              {
+                "label": "부산 | 강원 | 경주/경상"
+              },
+              {
+                "label": "전라 | 충청 | 제주"
+              }
+            ]
+          },
+          {
+            "subTitle": "액티비티",
+            "list": [
+              {
+                "label": "서울"
+              },
+              {
+                "label": "제주"
+              },
+              {
+                "label": "부산"
+              },
+              {
+                "label": "강원"
+              },
+              {
+                "label": "인천"
+              },
+              {
+                "label": "전라"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "국내리조트",
+            "list": [
+              {
+                "label": "강원 | 경기/인천"
+              },
+              {
+                "label": "경주 | 경상 | 부산"
+              },
+              {
+                "label": "충청 | 전라 | 제주"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "국내펜션",
+            "list": [
+              {
+                "label": "가평/양평 | 경기"
+              },
+              {
+                "label": "인천 | 강원 | 충청"
+              },
+              {
+                "label": "전라 | 경주/경상 | 제주"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titleImg": "/common/header/gnbmenu/tit_sitemap01_off.gif",
+    "label": "해외",
+    "cateList": [
+      {
+        "part": [
+          {
+            "subTitle": "해외항공",
+            "list": [
+              {
+                "label": "해외항공권 원스탑 예약"
+              },
+              {
+                "label": "다구간 항공권 예약"
+              },
+              {
+                "label": "해외출발 항공권"
+              },
+              {
+                "label": "해외항공권 예약"
+              },
+              {
+                "label": "주요도시 할인항공권"
+              },
+              {
+                "label": "모바일 항공권"
+              },
+              {
+                "label": "부산 출발 항공권"
+              },
+              {
+                "label": "오늘의 특가"
+              },
+              {
+                "label": "땡처리 항공권"
+              },
+              {
+                "label": "학생 할인 항공권"
+              },
+              {
+                "label": "지방출발 항공권"
+              },
+              {
+                "label": "비즈니스 클래스"
+              },
+              {
+                "label": "단체항공문의"
+              },
+              {
+                "label": "법인/상용문의"
+              },
+              {
+                "label": "여행사전용 항공권"
+              }
+            ]
+          },
+          {
+            "subTitle": "항공+호텔",
+            "list": [
+              {
+                "label": "도쿄| 오사카| 후쿠오카"
+              },
+              {
+                "label": "홍콩| 마카오| 타이페이"
+              },
+              {
+                "label": "싱가포르| 세부| 방콕"
+              },
+              {
+                "label": "다낭| 발리| 괌"
+              },
+              {
+                "label": "하와이(호놀룰루)| 뉴욕"
+              },
+              {
+                "label": "칸쿤| 런던| 파리| 프라하"
+              },
+              {
+                "label": "해외렌터카"
+              },
+              {
+                "label": "캐리어 보관/배송"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "해외호텔",
+            "list": [
+              {
+                "label": "도쿄|오사카|후쿠오카"
+              },
+              {
+                "label": "교토|삿포로|오키나와"
+              },
+              {
+                "label": "홍콩|마카오|타이페이"
+              },
+              {
+                "label": "싱가포르|세부|방콕"
+              },
+              {
+                "label": "푸켓|발리|괌"
+              },
+              {
+                "label": "하와이(호놀룰루)|뉴욕"
+              },
+              {
+                "label": "로스앤젤레스|라스베가스"
+              },
+              {
+                "label": "샌프란시스코"
+              },
+              {
+                "label": "파리|런던|바르셀로나"
+              },
+              {
+                "label": "로마|프라하|인터라켄"
+              },
+              {
+                "label": "1박 무료 호텔|일본료칸"
+              },
+              {
+                "label": "허니문|럭셔리호텔 유럽"
+              },
+              {
+                "label": "럭셔리호텔 동남아"
+              },
+              {
+                "label": "스페셜 칸쿤리조트"
+              },
+              {
+                "label": "크루즈"
+              },
+              {
+                "label": "10박하면 1박 무료!"
+              },
+              {
+                "label": "해외렌터카"
+              },
+              {
+                "label": "캐리어 보관/배송"
+              }
+            ]
+          },
+          {
+            "subTitle": "테마여행",
+            "list": [
+              {
+                "label": "골프"
+              },
+              {
+                "label": "크루즈"
+              },
+              {
+                "label": "오로라"
+              },
+              {
+                "label": "럭셔리 브랜드 리조트",
+                "icon": true
+              },
+              {
+                "label": "허니문"
+              },
+              {
+                "label": "클럽메드"
+              },
+              {
+                "label": "PIC"
+              },
+              {
+                "label": "일본료칸"
+              },
+              {
+                "label": "베트남",
+                "icon": true
+              },
+              {
+                "label": "캐나다",
+                "icon": true
+              },
+              {
+                "label": "마카오",
+                "icon": true
+              },
+              {
+                "label": "호주",
+                "icon": true
+              },
+              {
+                "label": "두바이"
+              },
+              {
+                "label": "싱가포르"
+              },
+              {
+                "label": "하와이"
+              },
+              {
+                "label": "몰디브"
+              },
+              {
+                "label": "모리셔스세이셸"
+              },
+              {
+                "label": "캐리어 보관/배송"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "패키지/얼린여행",
+            "list": [
+              {
+                "label": "태국(방콕,푸켓,크라비)"
+              },
+              {
+                "label": "베트남(다낭,하노이,나트랑)"
+              },
+              {
+                "label": "필리핀(보라카이,세부,팔라완)"
+              },
+              {
+                "label": "코타/발리/싱가포르/브루나이"
+              },
+              {
+                "label": "홍콩/마카오/대만"
+              },
+              {
+                "label": "서유럽"
+              },
+              {
+                "label": "동유럽/발칸"
+              },
+              {
+                "label": "스페인/포르투칼/모로코"
+              },
+              {
+                "label": "터키/그리스/이집트/두바이"
+              },
+              {
+                "label": "북유럽/러시아/발틱/특수지역"
+              },
+              {
+                "label": "테마/축제/DAY투어"
+              },
+              {
+                "label": "미국/중남미/캐나다"
+              },
+              {
+                "label": "괌/사이판/팔라우"
+              },
+              {
+                "label": "호주/뉴질랜드/피지"
+              },
+              {
+                "label": "극동러시아/중국"
+              },
+              {
+                "label": "일본"
+              },
+              {
+                "label": "부산출발"
+              },,
+              {
+                "label": "대구출발"
+              },
+              {
+                "label": "다시설렘 황금연휴"
+              },
+              {
+                "label": "얼린 항공권"
+              },
+              {
+                "label": "얼린 호텔/리조트"
+              },
+              {
+                "label": "얼린 패키지"
+              },
+              {
+                "label": "얼린 허니문"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "자유여행",
+            "list": [
+              {
+                "label": "방콕/푸켓/카오락/치앙마이"
+              },
+              {
+                "label": "베트남/라오스/캄보디아"
+              },
+              {
+                "label": "필리핀(보라카이,세부,팔라완)"
+              },
+              {
+                "label": "싱가포르"
+              },
+              {
+                "label": "발리/코타키나발루"
+              },
+              {
+                "label": "홍콩/마카오/대만"
+              },
+              {
+                "label": "유럽/두바이"
+              },
+              {
+                "label": "미국 동서부/캐나다/중남미"
+              },
+              {
+                "label": "하와이"
+              },
+              {
+                "label": "괌/사이판/팔라우"
+              },
+              {
+                "label": "호주/뉴질랜드"
+              },
+              {
+                "label": "몰디브/모리셔스/칸쿤/타히티"
+              },
+              {
+                "label": "극동러시아/중국"
+              },
+              {
+                "label": "일본"
+              },
+              {
+                "label": "부산출발"
+              },
+              {
+                "label": "대구/청주/무안출발",
+                "icon": true
+              },
+              {
+                "label": "프리야걸즈"
+              },
+              {
+                "label": "주말여행"
+              },
+              {
+                "label": "가족여행"
+              },
+              {
+                "label": "혼자여행"
+              },
+              {
+                "label": "풀빌라 자유여행"
+              },
+              {
+                "label": "해외렌터카"
+              },
+              {
+                "label": "캐리어 보관/배송"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "허니문",
+            "list": [
+              {
+                "label": "유럽"
+              },
+              {
+                "label": "하와이/미주"
+              },
+              {
+                "label": "칸쿤/로스카보스"
+              },
+              {
+                "label": "태국"
+              },
+              {
+                "label": "발리/롬복"
+              },
+              {
+                "label": "필리핀/브루나이"
+              },
+              {
+                "label": "베트남/코타키나발루"
+              },
+              {
+                "label": "괌/사이판/팔라우"
+              },
+              {
+                "label": "몰디브"
+              },
+              {
+                "label": "모리셔스/세이셸"
+              },
+              {
+                "label": "호주/뉴질랜드"
+              },
+              {
+                "label": "타히티/피지/뉴칼레도니아"
+              },
+              {
+                "label": "크루즈"
+              }
+            ]
+          },
+          {
+            "subTitle": "액티비티",
+            "list": [
+              {
+                "label": "현지투어"
+              },
+              {
+                "label": "테마/입장권"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titleImg": "/common/header/gnbmenu/tit_sitemap03_off.gif",
+    "label": "정보",
+    "cateList": [
+      {
+        "part": [
+          {
+            "subTitle": "마이페이지",
+            "list": [
+              {
+                "label": "나의 예약/결제내역"
+              },
+              {
+                "label": "나의 상품평"
+              },
+              {
+                "label": "나의 상담/맞춤견적"
+              },
+              {
+                "label": "나의 예약상담 내역"
+              },
+              {
+                "label": "나의 상품 Q&A"
+              },
+              {
+                "label": "나의 찜한상품"
+              },
+              {
+                "label": "나의 프리야"
+              },
+              {
+                "label": "항공+호텔 장바구니"
+              },
+              {
+                "label": "나의 할인쿠폰"
+              },
+              {
+                "label": "나의 I-Point"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "고객센터",
+            "list": [
+              {
+                "label": "공지사항"
+              },
+              {
+                "label": "자주묻는질문"
+              },
+              {
+                "label": "고객상담/맞춤견적"
+              },
+              {
+                "label": "전화상담 안내"
+              },
+              {
+                "label": "모이는 장소 안내"
+              },
+              {
+                "label": "저작권고지"
+              },
+              {
+                "label": "국외여행 약관"
+              },
+              {
+                "label": "국내여행 약관"
+              },
+              {
+                "label": "우수회원제도"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "이벤트혜택존",
+            "list": [
+              {
+                "label": "이벤트&기획전"
+              },
+              {
+                "label": "이달의 BEST상품평"
+              },
+              {
+                "label": "공감투표"
+              },
+              {
+                "label": "I-포인트&우수회원혜택"
+              },
+              {
+                "label": "신용카드혜택"
+              },
+              {
+                "label": "인터파크 비자센터"
+              },
+              {
+                "label": "당첨자발표"
+              },
+              {
+                "label": "인터파크투어 소식"
+              },
+              {
+                "label": "고객혜택모음 EasyPack"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "여행정보",
+            "list": [
+              {
+                "label": "싱가포르 | 보라카이 | 방콕"
+              },
+              {
+                "label": "타이페이 | 세부 | 발리"
+              },
+              {
+                "label": "방비엥"
+              },
+              {
+                "label": "도쿄 | 오사카 | 후쿠오카"
+              },
+              {
+                "label": "오키나와 | 삿포로"
+              },
+              {
+                "label": "홍콩 | 상해 | 북경"
+              },
+              {
+                "label": "마카오"
+              },
+              {
+                "label": "런던 | 파리 | 취리히"
+              },
+              {
+                "label": "루체른 | 비엔나(빈)"
+              },
+              {
+                "label": "뮌헨"
+              },
+              {
+                "label": "로마 | 바르셀로나"
+              },
+              {
+                "label": "플리트비체 | 산토리니"
+              },
+              {
+                "label": "프라하 | 부다페스트"
+              },
+              {
+                "label": "시드니 | 골드코스트"
+              },
+              {
+                "label": "퀸스타운 | 괌"
+              },
+              {
+                "label": "하와이 | 뉴욕 | 라스베가스"
+              },
+              {
+                "label": "토론토 | 옐로우나이프"
+              },
+              {
+                "label": "밴쿠버 | 밴프/로키"
+              },
+              {
+                "label": "빅토리아 | 몬트리올"
+              },
+              {
+                "label": "캘거리 | 에드먼튼"
+              },
+              {
+                "label": "부산 | 제주도 | 경주| 인천"
+              },
+              {
+                "label": "전주 | 강릉 | 통영 | 태안"
+              },
+              {
+                "label": "춘천"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": [
+          {
+            "subTitle": "기타정보",
+            "list": [
+              {
+                "label": "프리야 핫토픽"
+              },
+              {
+                "label": "여행의 발견"
+              },
+              {
+                "label": "플레이 프리야"
+              },
+              {
+                "label": "전담가이드"
+              },
+              {
+                "label": "날씨정보"
+              },
+              {
+                "label": "환율정보"
+              },
+              {
+                "label": "시차정보"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+%>
+
+<!-- 전체보기 / 서비스 카테고리 Start  -->
+<h2>
+  <a href="#" onclick="allCategoryView('allCategory', 'toggle');">
+    <span id="spAllcate" class="sprite-hd category_view01_off"></span>전체메뉴
+  </a>
+</h2>
+
+<div id="allCategory" class="sitemap-module" style="display:none;">
+  <% category.forEach(function($cate, i) { %>
+    <div id="allCate<%= i+1 %>" class="sitemap-cover add<%= i+1 %> on">
+      <h3 class="h3-tit <% if(i === 0) { %>first-child<% } %>">
+        <a href="#" onclick="allCategoryPartView('allCate<%= i+1 %>');">
+          <img id="imgallCate<%= i+1 %>" src="<%= page.base + $cate.titleImg %>" alt="<%= $cate.label %>">
+        </a>
+      </h3>
+
+      <% $cate.cateList.forEach(function($part, j) { %>
+        <div class="spot <% if(j === 0) { %>first-child<% } %>">
+          <% $part.part.forEach(function($depth) { %>
+            <h4 class="tit">
+              <a href="#"><%= $depth.subTitle %></a>
+            </h4>
+            <ul>
+              <% $depth.list.forEach(function($list) { %>
+                <li>
+                  <a href="#"><%= $list.label %></a>
+                  <% if ($list.icon) { %>
+                    <img src="<%- page.base %>/common/header/gnbmenu/icon_new.gif" alt="NEW" class="icon">
+                  <% } %>
+                </li>
+              <% }) %>
+            </ul>
+          <% }) %>
+        </div>
+      <% }) %>
+
+      <a href="#" onclick="allCategoryPartView('allCate<%= i+1 %>');">
+        <img src="<%- page.base %>/common/header/gnbmenu/btn_open02.gif" alt="열기" class="btn-open">
+      </a>
+
+      <a href="#" onclick="allCategoryView('allCategory', 'none');">
+        <img src="<%- page.base %>/common/header/gnbmenu/btn_close02.gif" alt="닫기" class="btn-close">
+      </a>
+    </div>
+  <% }) %>
+</div>
+
+<div class="mall-module">
+  <h2>
+    <a href="#" onclick="MallView('block');">
+      <span id="spMall" class="sprite-hd category_view02_off"></span>서비스
+    </a>
+  </h2>
+
+  <div id="mallArea" class="mall-list" <% if (typeof mallArea !== 'undefined' && mallArea === false) { %>style="display:none"<% } %>>
+    <div id="areaTourService">
+      <img usemap="#GnbService" src="//openimage.interpark.com//tourpark/tour/common/docu_head/gnb_service_211125.gif" alt="전문몰">
+      <span class="btn-area">
+        <a href="#">
+          <img src="<%- page.base %>/common/header/gnbmenu/gn_tv.jpg" alt="여행TV 여보세요">
+        </a>
+        <a href="#">
+          <img src="<%- page.base %>/common/header/gnbmenu/gn_wedding.jpg" alt="웨딩">
+        </a>
+      </span>
+    </div>
+
+    <div id="areaTourMall" style="display:none;">
+      <img usemap="#GnbMall" src="<%- page.base %>/common/header/gnbmenu/gnb_mall_on3.gif" alt="전문몰">
+    </div>
+
+    <map name="GnbService">
+      <area shape="rect" coords="0,0,92,30" href="#" target="" alt="제주여행만들기">
+      <area shape="rect" coords="93,0,181,30" href="#" target="" alt="엑티비티/뷔페">
+      <area shape="rect" coords="182,0,254,30" href="#" target="" alt="국내랜터카">
+      <area shape="rect" coords="255,0,317,30" href="#" target="" alt="부산출발">
+      <area shape="rect" coords="318,0,369,30" href="#" target="" alt="허니문">
+      <area shape="rect" coords="370,0,411,30" href="#" target="" alt="골프">
+      <area shape="rect" coords="412,0,474,30" href="#" target="" alt="클럽메드">
+      <area shape="rect" coords="475,0,545,30" href="#" target="" alt="PIC리조트">
+    </map>
+
+    <map name="GnbMall">
+      <area shape="rect" coords="0,4,43,35"  alt="골프"  href="#">
+      <area shape="rect" coords="46,4,100,35"  alt="크루즈"  href="#">
+      <area shape="rect" coords="104,4,154,35"  alt="오로라"  href="#">
+      <area shape="rect" coords="160,4,202,35"  alt="스키"  href="#">
+      <area shape="rect" coords="208,4,266,35"  alt="클럽메드"  href="#">
+      <area shape="rect" coords="273,4,308,35"  alt="PIC"  href="#">
+      <area shape="rect" coords="314,4,373,35"  alt="일본료칸"  href="#">
+      <area shape="rect" coords="377,4,425,35"  alt="베트남"  href="#">
+      <area shape="rect" coords="429,4,481,35"  alt="캐나다"  href="#">
+      <area shape="rect" coords="484,4,536,35"  alt="마카오"  href="#">
+      <area shape="rect" coords="541,4,585,35"  alt="호주"  href="#">
+      <area shape="rect" coords="590,4,639,35"  alt="두바이"  href="#">
+      <area shape="rect" coords="643,4,697,35"  alt="싱가포르"  href="#">
+      <area shape="rect" coords="703,4,746,35"  alt="하와이"  href="#">
+   </map>
+
+  </div>
+
+  <a href="#" onclick="MallView('toggle'); return false;">
+    <img id="imgClose" src="<%- page.base %>/common/header/gnbmenu/btn_close01.gif" alt="닫기" class="btn-close">
+  </a>
+</div>
+
+<% if(typeof location === 'undefined' || location !== false) { %>
+<% } %>

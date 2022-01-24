@@ -1,0 +1,579 @@
+@charset "utf-8";
+@import "base/variables";
+@import "../_partials/housingVariables";
+@import "../_partials/searchBox";
+@import "../_partials/btnDibs";
+@import "../_partials/uiRadio";
+
+@mixin over-shadow {
+    &:hover .imageWrap {
+        box-shadow: 0 10px 15px 0 rgba(0, 0, 0, .3);
+        transition: all .2s;
+    }
+}
+
+.mainWrapper {
+    padding-bottom: 115px;
+    overflow: hidden;
+
+    > div {
+        margin-top: 60px;
+        font-size: 20px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .mainContent {
+            position: relative;
+            width: 1280px;
+            margin: 0 auto;
+
+            > h1 {
+                margin-bottom: 20px;
+                padding-left: 10px;
+            }
+        }
+    }
+
+    .slideWrap {
+        .bx-wrapper {
+            li {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .product {
+        &List {
+            @include clearfix();
+            display: inline-block;
+        }
+
+        &Item {
+            @include btnDibs(15);
+            float: left;
+            width: 232px;
+            margin-left: 30px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                display: block;
+                color: #000;
+            }
+
+            .imageWrap {
+                @include noImage(122px);
+                position: relative;
+                width: 100%;
+                height: 232px;
+                overflow: hidden;
+                border-radius: 10px;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .textWrap {
+                margin: 15px 5px 0;
+
+                .titleWrap {
+                    h1 {
+                        @include line-clamp(2, 18);
+                        font-size: 14px;
+                    }
+
+                    .sub {
+                        @include clearfix();
+                        margin-top: 5px;
+
+                        span {
+                            display: block;
+                            position: relative;
+                            float: left;
+                            padding-left: 10px;
+                            font-size: 14px;
+                            color: #666;
+
+                            &:first-child {
+                                padding-left: 0;
+                            }
+
+                            &::before {
+                                position: absolute;
+                                content: "";
+                                display: block;
+                                top: 50%;
+                                left: 5px;
+                                width: 1px;
+                                height: 14px;
+                                margin-top: -7px;
+                                background-color: #d8d8d8;
+                            }
+
+                            &:first-child {
+                                padding-left: 0;
+
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .priceWrapper {
+                    @include clearfix();
+                    margin-top: 5px;
+                    font-size: 18px;
+                    font-weight: $boldWeight;
+
+                    .price,
+                    .percent {
+                        @include clearfix();
+                        float: left;
+                        line-height: 24px;
+
+                        > * {
+                            float: left;
+                        }
+                    }
+
+                    .percent {
+                        margin-left: 5px;
+                        color: $housingGold;
+
+                        &::after {
+                            @include percent-arrow-down();
+                        }
+                    }
+                }
+
+                .popularity {
+                    @include clearfix();
+                    margin-top: 10px;
+
+                    .starRate,
+                    .review {
+                        float: left;
+                    }
+
+                    .starRate {
+                        @include starRate();
+                        position: relative;
+                        top: 2px;
+
+                        &.big {
+                            @include starRate(32px, 30px, 7px);
+                        }
+                    }
+
+                    .review {
+                        margin-left: 5px;
+                        font-size: 14px;
+                        color: #999;
+                    }
+                }
+            }
+        }
+    }
+
+    .mainCategory {
+        margin-top: 54px;
+
+        ul {
+            @include clearfix();
+            width: 1200px;
+            margin: 0 auto;
+
+            li {
+                float: left;
+                width: 150px;
+                margin: 40px auto 0;
+
+                a {
+                    display: block;
+                    position: relative;
+                    width: 100%;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #666;
+
+                    > .icon {
+                        position: relative;
+                        width: 80px;
+                        height: 80px;
+                        margin: 0 auto 10px;
+                        background-color: #f2f2f2;
+                        border-radius: 50%;
+
+                        img {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-top: -25px;
+                            margin-left: -25px;
+                            display: block;
+                            width: 50px;
+                            height: 50px;
+                        }
+                    }
+
+                    > span {
+                        position: absolute;
+                        top: -11px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 0 6px;
+                        height: 21px;
+                        line-height: 20px;
+                        background-color: #dc941b;
+                        border-radius: 16px;
+                        color: #fff;
+                        font-size: 11px;
+                        font-weight: $boldWeight;
+                        letter-spacing: -.5px;
+
+                        &::after {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            bottom: -5px;
+                            left: 50%;
+                            margin-left: -3px;
+                            width: 0;
+                            height: 0;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-top: 6px solid #dc941b;
+                        }
+                    }
+                }
+            }
+        }
+
+        + .mainBannerSlide {
+            margin-top: 50px;
+        }
+    }
+
+    .mainBannerSlide {
+        .mainContent {
+            width: 1281px;
+            text-align: center;
+        }
+
+        .bx-wrapper {
+            li {
+                margin-left: 0;
+            }
+        }
+
+        .slideWrap {
+            ul {
+                @include clearfix();
+            }
+        }
+
+        li {
+            float: left;
+            margin-left: 30px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                @include noImage(122px);
+                display: block;
+                width: 407px;
+                height: 115px;
+                border-radius: 10px;
+                border: solid 1px rgba(0, 0, 0, .05);
+                box-sizing: border-box;
+                overflow: hidden;
+
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+
+        .bx-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            margin-top: -35px;
+            text-indent: -9999px;
+
+            .bx-prev,
+            .bx-next {
+                position: absolute;
+                display: block;
+                width: 70px;
+                height: 70px;
+                background: url("#{$base}/pages/checkinnow/housing/main/icon_banner_arrow.png") no-repeat 0 0;
+
+                &:hover {
+                    background-position-y: bottom;
+                }
+            }
+
+            .bx-prev {
+                left: -75px;
+            }
+
+            .bx-next {
+                right: -75px;
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .mainSearch {
+        height: 170px;
+        background: #bbebef url("#{$base}/pages/checkinnow/housing/main/bg_top.png") no-repeat top center;
+
+        .mainContent {
+            padding-top: 60px;
+            box-sizing: border-box;
+        }
+    }
+
+    .mainSpecialPrice {
+        text-align: center;
+        background-color: #f4f6f9;
+
+        .mainContent {
+            width: 1310px;
+            padding: 50px 0 60px;
+
+            > h1 {
+                font-size: 24px;
+                padding-left: 0;
+            }
+        }
+
+        .productItem {
+            @include over-shadow();
+            text-align: center;
+
+            .btnDibs {
+                top: 36px;
+                right: 40px;
+            }
+
+            .imageWrap {
+                border-radius: 50%;
+                background-color: #fff;
+            }
+
+            .textWrap {
+                margin-top: 20px;
+
+                .sub {
+                    margin-top: 10px;
+
+                    span {
+                        @include line-clamp(2, 18);
+                        display: block;
+                        width: 100%;
+                        height: 36px;
+                    }
+                }
+
+                .priceWrapper {
+                    display: inline-block;
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        .slideControls {
+            position: absolute;
+            top: 90px;
+            width: 100%;
+            text-indent: -9999px;
+
+            .prev,
+            .next {
+                position: absolute;
+
+                a {
+                    display: block;
+                    width: 51px;
+                    height: 51px;
+                    background: url("#{$base}/pages/checkinnow/housing/main/icon_product_arrow.png") no-repeat 0 0;
+
+                    &:hover {
+                        background-position-y: bottom;
+                    }
+                }
+            }
+
+            .prev {
+                left: -36px;
+            }
+
+            .next {
+                right: -36px;
+                transform: rotate(180deg);
+            }
+
+            &Wrapper {
+                position: relative;
+            }
+        }
+
+        .bx-wrapper {
+            overflow: hidden;
+
+            .bx-viewport {
+                padding: 0 15px;
+            }
+        }
+    }
+
+    .mainRecommendSpa {
+        ~ div {
+            margin-top: 80px;
+        }
+
+        .mainContent {
+            width: 1282px;
+        }
+
+        .productItem {
+            width: 298px;
+
+            > a {
+                @include over-zoom();
+
+                .imageWrap {
+                    height: 198px;
+                }
+            }
+        }
+
+        .slideControlsWrapper {
+            @include clearfix();
+            position: absolute;
+            top: 7px;
+            right: 10px;
+        }
+
+        .slideCount {
+            @include clearfix();
+            float: left;
+            display: none;
+
+            dt,
+            dd {
+                float: left;
+            }
+
+            dt {
+                @include blind();
+            }
+
+            dd {
+                font-size: 14px;
+                color: #999;
+            }
+
+            dd.slideCountAll::before {
+                float: left;
+                content: "/";
+                display: block;
+            }
+        }
+
+        .slideControls {
+            @include clearfix();
+            float: left;
+            margin-left: 10px;
+
+            .prev,
+            .next {
+                float: left;
+                text-indent: -9999px;
+
+                a {
+                    position: relative;
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #b6bdc7;
+                    box-sizing: border-box;
+
+                    &::after {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -5px;
+                        margin-left: -3px;
+                        content: "";
+                        display: block;
+                        width: 0;
+                        height: 0;
+                        border-top: 5px solid transparent;
+                        border-bottom: 5px solid transparent;
+                        border-right: 5px solid black;
+                    }
+                }
+            }
+
+            .next a {
+                background-position-y: bottom;
+                border-left: none;
+
+                &::after {
+                    margin-left: -2px;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .mainRecommendAccom {
+        .btnDibs {
+            top: 14px;
+            right: 14px;
+        }
+
+        .productItem {
+            height: 340px;
+            margin-top: 45px;
+            margin-left: 30px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:nth-child(5n + 1) {
+                margin-left: 0;
+            }
+
+            &:nth-child(-n + 5) {
+                margin-top: 0;
+            }
+
+            > a {
+                @include over-zoom();
+            }
+        }
+    }
+}

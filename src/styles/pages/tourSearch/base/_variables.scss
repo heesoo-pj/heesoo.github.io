@@ -1,0 +1,41 @@
+$base-font: Arial, Helvetica, sans-serif;
+
+$system-font: -apple-system, system-ui, BlinkMacSystemFont, "맑은 고딕", "Malgun Gothic", "돋움", Dotum, Helvetica, "Apple SD Gothic Neo", sans-serif;
+$dotum-font: "돋움", Dotum, $base-font;
+$gulim-font: "굴림", Gulim, $base-font;
+$tahoma-font: "Tahoma", Dotum, $base-font;
+
+$base: "/images" !default;
+$imgPath: "//openimage.interpark.com/tourpark";
+
+$color-red: #ef3e43;
+$color-orange: #dc941b;
+$color-mint: #1eb19e;
+
+@mixin srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+}
+
+@mixin ellipsis($lines: 1, $lineHeight: auto) {
+    @if ($lines == 1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        height: $lines * $lineHeight;
+        overflow: hidden;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        line-height: $lineHeight;
+    }
+}

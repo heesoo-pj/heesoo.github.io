@@ -1,0 +1,304 @@
+@charset "utf-8";
+
+@import "../base/variables";
+@import "../base/housingVariables";
+@import "../_partials/uiRadio";
+
+@import "_partials/mapViewNew"; // 팝업
+
+$imgPath: "/images/pages/checkinnow/housing/search";
+$searchImg: "pages/checkinnow/housing/search";
+$maxWidth: 1280px;
+
+body,
+html {
+    width: 100%;
+    min-width: $maxWidth;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    padding: 0;
+    font-family: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &:active {
+        opacity: .9;
+    }
+}
+
+
+// 컨텐츠
+.housingCateWrapper {
+    color: #000;
+    line-height: 1.2;
+    overflow: hidden;
+
+    .container {
+        position: relative;
+        width: $maxWidth;
+        margin: 63px auto 0;
+
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+
+    .searchHeader {
+        position: relative;
+        width: 100%;
+        min-width: $maxWidth;
+        height: 120px;
+        margin-bottom: 33px;
+        background: url("#{$base}/#{$searchImg}/bg_search.jpg") #c5eaee no-repeat center;
+
+        @import "../_partials/searchBox";
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: inline-block;
+            width: 100px;
+            height: 120px;
+            margin-left: -900px;
+            background: linear-gradient(to left, rgba(228, 246, 248, 0) 0%, #c5eaee 50%, #c5eaee 100%);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 50%;
+            display: inline-block;
+            width: 100px;
+            height: 120px;
+            margin-right: -900px;
+            background: linear-gradient(to right, rgba(228, 246, 248, 0) 0%, #c5eaee 90%, #c5eaee 100%);
+        }
+
+        .searchBox {
+            border-radius: 20px;
+        }
+
+        .searchBoxWrap {
+            padding-top: 50px;
+        }
+    }
+
+
+    // 좌측 필터
+    .colLeft {
+        position: relative;
+        display: table-cell;
+        width: 200px;
+        height: 100%;
+        vertical-align: top;
+
+        .mapViewBtn {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            color: #666;
+            font-size: 16px;
+
+            span {
+                display: inline-block;
+                margin-right: 5px;
+                vertical-align: text-bottom;
+                font-weight: $boldWeight;
+            }
+
+            &::before {
+                display: inline-block;
+                width: 17px;
+                height: 16px;
+                margin-right: 6px;
+                vertical-align: -1px;
+                background: url("#{$base}/#{$searchImg}/icon_mapLine.svg") no-repeat;
+                content: "";
+            }
+        }
+
+        //filter
+        @import "./_partials/_filter";
+    }
+
+    // 우측 컨텐츠
+    .colRight {
+        display: table-cell;
+        width: calc(100% - 200px);
+        padding-left: 30px;
+        vertical-align: top;
+        box-sizing: border-box;
+
+        .emptyBox {
+            width: 100%;
+            height: 484px;
+            margin-top: 30px;
+        }
+    }
+
+    .sortMenuInTab {
+        position: relative;
+        width: 100%;
+        padding: 0 20px 20px 20px;
+        font-size: 0;
+        border-bottom: 1px solid #e9edf3;
+        box-sizing: border-box;
+
+        .tit {
+            display: inline-block;
+            width: 660px;
+            margin-top: 7px;
+            font-weight: $boldWeight;
+            font-size: 24px;
+            color: #000;
+
+            em {
+                display: inline-block;
+                max-width: 490px;
+                vertical-align: bottom;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            span {
+                font-size: 14px;
+                color: #666;
+                font-weight: normal;
+
+                &::before {
+                    margin-left: 10px;
+                    content: "(";
+                }
+
+                &::after {
+                    content: ")";
+                }
+            }
+        }
+
+        .sort {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+
+            li {
+                float: left;
+                padding: 0 10px;
+
+                &:first-child {
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+
+                &::before {
+                    content: "";
+                    position: relative;
+                    left: -10px;
+                    display: inline-block;
+                    width: 1px;
+                    height: 15px;
+                    vertical-align: bottom;
+                    background: #d8d8d8;
+                }
+            }
+
+            button {
+                font-size: 14px;
+                color: #666;
+
+                &.active {
+                    font-weight: $boldWeight;
+                    color: #000;
+                }
+            }
+        }
+    }
+
+    .regionGoodsBlock {
+        .searchList {
+            padding-bottom: 165px;
+        }
+
+        // 상품리스트
+        @import "./_partials/_searchList";
+    }
+
+    .emptyBox {
+        width: $maxWidth;
+        margin: 0 auto;
+        text-align: center;
+
+        .wrap {
+            padding: 300px 0;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: $boldWeight;
+        }
+
+        p {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .iconLoading {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .btnListMore {
+        position: relative;
+        padding-right: 15px;
+        color: #999;
+        font-size: 14px;
+        border-bottom: 1px solid #999;
+        vertical-align: bottom;
+        margin-bottom: -2px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 2px;
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-top: 1px solid #999;
+            border-right: 1px solid #999;
+            transform: rotate(135deg);
+        }
+
+        &[aria-expanded="true"] {
+            &::after {
+                top: 8px;
+                transform: rotate(315deg);
+            }
+        }
+    }
+
+    // 페이징
+    @import "./_partials/_paging";
+}

@@ -1,0 +1,220 @@
+<div class="popup mapViewNew" id="<%= id %>" role="dialog" aria-modal="false">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">지도보기</h2>
+      <button class="btnClose" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <div class="popupContents">
+      <div class="contents">
+        <% if(state !== 'mapViewNewOnly') { %>
+        <div class="searchWrapper">
+          <%- include('_filterWrap', {popup: true}); %>
+        </div>
+        <% } %>
+
+        <div id="map" class="mapWrapper">
+          <!-- 로컬에서 지도 확인하려면 http://localhost/ -->
+          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06657741574e76df01361bd3f3685abf&libraries=services,clusterer,drawing"></script>
+          <script>
+              var mapContainer = document.getElementById('map'),
+                  mapOption = {
+                    center: new kakao.maps.LatLng(33.49397995448857, 126.48358528984976),
+                    level: 3
+                  };
+              var map = new kakao.maps.Map(mapContainer, mapOption);
+              var zoomControl = new kakao.maps.ZoomControl(); // 지도 확대 축소
+
+              map.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
+
+              var positions = [
+                {
+                  title: 'example1',
+                  latlng: new kakao.maps.LatLng(33.4905305, 126.4865181)
+                },
+                {
+                  title: 'example2',
+                  latlng: new kakao.maps.LatLng(33.4896835, 126.487785)
+                },
+                {
+                  title: 'example3',
+                  latlng: new kakao.maps.LatLng(33.4916488, 126.4854365)
+                },
+                {
+                  title: 'example4',
+                  latlng: new kakao.maps.LatLng(33.4911343, 126.4880578)
+                },
+                {
+                  title: 'example5',
+                  latlng: new kakao.maps.LatLng(33.4902916, 126.485586)
+                },
+                {
+                  title: 'example6',
+                  latlng: new kakao.maps.LatLng(33.4911116, 126.4863092)
+                }
+              ];
+
+              var num = '252,000';
+              var content = '<div class="pinInfoBox type0">'+ num +'원</div>';
+              var activeContent = '<div class="pinInfoBox type0 active">'+ num +'원</div>';
+
+              for (var i = 0; i < positions.length; i ++) {
+                var customOverlay = new kakao.maps.CustomOverlay({
+                  map: map,
+                  position: positions[i].latlng,
+                  content: content
+                });
+              }
+
+              var activePosition = new kakao.maps.LatLng(33.491862, 126.486671);
+              var activeCustomOverlay = new kakao.maps.CustomOverlay({
+                map: map,
+                position: activePosition,
+                content: activeContent
+              });
+
+              activeCustomOverlay.setMap(map);
+          </script>
+
+          <% if(state !== 'mapViewNewOnly') { %>
+            <div class="footerBtnWrap">
+              <button type="button" class="nearBtn">이 숙소 주변</button>
+              <button type="button" class="reloadBtn">여기에서 재탐색</button>
+            </div>
+
+            <!-- 숙소주변 -->
+            <div id="nearContent" class="itemsWrap nearContent" role="dialog" aria-modal="false">
+              <button class="btnClose">주변정보 닫기</button>
+              <div class="tabMenu">
+                <% ['숙소', '액티비티', '관광지', '맛집'].forEach(e => { %>
+                  <span><button type="button"><%= e %></button></span>
+                <% }); %>
+              </div>
+
+              <div class="mapSliderWrap slide1">
+                <div class="mapSlider">
+                  <% for (var i = 0; i < 5; i++) { %>
+                    <div class="item">
+                      <div class="infoWrap">
+                        <a href="#" target="_blank">
+                          <p class="tit">반얀트리 클럽 앤 스파 서울</p>
+                          <div class="priceWrap">
+                            <span class="price">173,399원</span>
+                            <span class="percent">5%</span>
+                          </div>
+                          <div class="scoreWrap">
+                            <span class="star">
+                              <i class="starRate" data-star-rate="3"><span class="blind">별점 3</span></i>
+                            </span>
+
+                            <span class="review">
+                              <span class="blind">리뷰</span><em>53</em>
+                            </span>
+                          </div>
+                        </a>
+                      </div>
+                      <span class="imgWrap">
+                        <%- include('_searchDibs'); %>
+                        <img src="/data/images/pages/checkinnow/popups/product_100x100.jpg" alt="샘플이미지">
+                      </span>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="mapSliderWrap slide2">
+                <div class="mapSlider">
+                  <% for (var i = 0; i < 6; i++) { %>
+                    <div class="item">
+                      <div class="infoWrap">
+                        <a href="#" target="_blank">
+                          <p class="tit">반얀트리 클럽 앤 스파 서울</p>
+                          <div class="priceWrap">
+                            <span class="price">28,700원</span>
+                            <span class="percent">20%</span>
+                          </div>
+                          <div class="scoreWrap">
+                            <span class="star">
+                              <i class="starRate" data-star-rate="4.5"><span class="blind">별점 4.5</span></i>
+                            </span>
+
+                            <span class="review">
+                              <span class="blind">리뷰</span><em>632</em>
+                            </span>
+                          </div>
+                        </a>
+                      </div>
+
+                      <span class="imgWrap">
+                        <%- include('_searchDibs'); %>
+                        <img src="/data/images/pages/checkinnow/popups/product_100x100.jpg" alt="샘플이미지">
+                      </span>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="mapSliderWrap slide3">
+                <div class="mapSlider">
+                  <% for (var i = 0; i < 3; i++) { %>
+                    <div class="item">
+                      <div class="infoWrap">
+                        <a href="#" target="_blank">
+                          <p class="tit">더 아일랜드</p>
+                          <p class="subText">관광·랜드마크</p>
+
+                          <div class="scoreWrap">
+                            <span class="star">
+                              <i class="starRate" data-star-rate="3.5"><span class="blind">별점 3.5</span></i>
+                            </span>
+
+                            <span class="review">
+                              <span class="blind">리뷰</span><em>5,233</em>
+                            </span>
+                          </div>
+
+                          <p class="spotState">영업중</p>
+                        </a>
+                      </div>
+                      <span class="imgWrap">
+                        <%- include('_searchDibs'); %>
+                        <img src="/data/images/pages/checkinnow/popups/product_100x100.jpg" alt="샘플이미지">
+                      </span>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+              <div class="mapSliderWrap slide4">
+                <div class="mapSlider">
+                  <% for (var i = 0; i < 2; i++) { %>
+                    <div class="item">
+                      <div class="infoWrap">
+                        <a href="#" target="_blank">
+                          <p class="tit">푸드더즈메터</p>
+                          <p class="subText">음식점</p>
+
+                          <div class="scoreWrap">
+                            <span class="star">
+                              <i class="starRate" data-star-rate="5"><span class="blind">별점 5</span></i>
+                            </span>
+
+                            <span class="review">
+                              <span class="blind">리뷰</span><em>7,263</em>
+                            </span>
+                          </div>
+
+                          <p class="spotState">영업중</p>
+                        </a>
+                      </div>
+                      <span class="imgWrap">
+                        <%- include('_searchDibs'); %>
+                        <img src="/data/images/pages/checkinnow/popups/product_100x100.jpg" alt="샘플이미지">
+                      </span>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

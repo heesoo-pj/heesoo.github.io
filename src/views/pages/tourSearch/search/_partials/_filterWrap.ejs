@@ -1,0 +1,109 @@
+<div class="filterWrap">
+  <div class="filterHeader">
+    <h2 class="tit">필터</h2>
+    <button type="button" class="btnFilterReset"><span class="blind">필터</span>초기화</button>
+  </div>
+
+  <div class="filterContent">
+    <dl class="progressFilter">
+      <dt>가격대</dt>
+      <dd class="range" data-range_min="10000" data-range_max="3000000" data-cur_min="500000" data-cur_max="1500000">
+        <div class="bar"></div>
+        <button class="min" type="button" aria-label="최소 가격 범위"></button>
+        <button class="max" type="button" aria-label="최대 가격 범위"></button>
+      </dd>
+      <dd class="rangeInp">
+        <input type="text" class="minPrice" aria-label="최소 가격">
+        <input type="text" class="maxPrice" aria-label="최대 가격">
+      </dd>
+    </dl>
+
+    <dl class="chkFilter">
+      <dt><button type="button" class="filterTit" aria-expanded="true" aria-controls="<%= popup ? 'pop' : '' %>filterContent1">숙소유형</button></dt>
+      <dd id="<%= popup ? 'pop' : '' %>filterContent1">
+        <ul id="<%= popup ? 'pop' : '' %>filterList1" class="filterContent typeContent">
+          <% ['호텔', '모텔', '게스트하우스', '펜션', '부티크', '리조트'].forEach((e, idx) => { %>
+            <li>
+              <label>
+                <input type="checkbox" <%= (idx === 0) || (idx === 1) ? 'disabled': '' %> <%= idx === 0 ? 'checked': '' %>>
+                <p><span class="checkBox"></span><%= e %><span>(434)</span></p>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+      </dd>
+    </dl>
+    <dl class="chkFilter">
+      <dt><button type="button" class="filterTit" aria-expanded="true" aria-controls="<%= popup ? 'pop' : '' %>filterContent2">서비스</button></dt>
+      <dd id="<%= popup ? 'pop' : '' %>filterContent2">
+        <ul id="<%= popup ? 'pop' : '' %>filterList2" class="filterContent">
+          <% ['노래방', '키즈', '자전거', '찜질방', '볼링', '탁구장', '피트니스 센터', '라운지', 'BAR'].forEach(e => { %>
+            <li>
+              <label>
+                <input type="checkbox">
+                <p><span class="checkBox"></span><%= e %></p>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+        <button type="button" class="btnListMore" aria-expanded="false" aria-controls="<%= popup ? 'pop' : '' %>filterList2">
+          <span class="blind">서비스</span>더보기
+        </button>
+      </dd>
+    </dl>
+    <dl class="chkFilter">
+      <dt><button type="button" class="filterTit" aria-expanded="true" aria-controls="<%= popup ? 'pop' : '' %>filterContent3">예약옵션</button></dt>
+      <dd id="<%= popup ? 'pop' : '' %>filterContent3" >
+        <ul id="<%= popup ? 'pop' : '' %>filterList3" class="filterContent">
+          <% ['확정예약', 'Early check-in', 'Late check-out', 'Late check-in'].forEach(e => { %>
+            <li>
+              <label>
+                <input type="checkbox">
+                <p><span class="checkBox"></span><%= e %></p>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+        <button type="button" class="btnListMore" aria-expanded="false" aria-controls="<%= popup ? 'pop' : '' %>filterList3">
+          <span class="blind">예약옵션</span>더보기
+        </button>
+      </dd>
+    </dl>
+    <dl class="chkFilter">
+      <dt><button type="button" class="filterTit" aria-expanded="true" aria-controls="<%= popup ? 'pop' : '' %>filterContent4">전망</button></dt>
+      <dd id="<%= popup ? 'pop' : '' %>filterContent4">
+        <ul id="<%= popup ? 'pop' : '' %>filterList4" class="filterContent">
+          <% ['일반전망', '산전망', '바다전망', '강전망', '가든전망', '호수전망', '도시전망'].forEach(e => { %>
+            <li>
+              <label>
+                <input type="checkbox">
+                <p><span class="checkBox"></span><%= e %></p>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+        <button type="button" class="btnListMore" aria-expanded="false" aria-controls="<%= popup ? 'pop' : '' %>filterList4">
+          <span class="blind">전망</span>더보기
+        </button>
+      </dd>
+    </dl>
+    <dl class="chkFilter">
+      <dt><button type="button" class="filterTit" aria-expanded="true" aria-controls="<%= popup ? 'pop' : '' %>filterContent5">성급</button></dt>
+      <dd  id="<%= popup ? 'pop' : '' %>filterContent5">
+        <ul id="<%= popup ? 'pop' : '' %>filterList5" class="filterContent">
+          <% ['5성급/1특1급', '4성급/1급', '3성급/특2급', '2성급/2급', '1성급/3급'].forEach(e => { %>
+            <li>
+              <label>
+                <input type="checkbox">
+                <p><span class="checkBox"></span><%= e %></p>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+        <button type="button" class="btnListMore" aria-expanded="false" aria-controls="<%= popup ? 'pop' : '' %>filterList5">
+          <span class="blind">성급</span>더보기
+        </button>
+      </dd>
+    </dl>
+  </div>
+</div>

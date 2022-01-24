@@ -1,0 +1,60 @@
+<%
+  if (typeof adBanner === 'undefined') adBanner = true;
+%>
+
+<% if (adBanner && cateData.adBanner) { %>
+  <div class="adBannerWrap">
+    <% cateData.adBanner.forEach(function($adBanner) { %>
+      <div class="banner">
+        <a href="<%= $adBanner.link %>">
+          <img src="<%= $adBanner.img %>" alt="<%= $adBanner.label %>">
+        </a>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<div class="customerCenterWrap">
+  <div class="centerWrap">
+    <dl class="centerNumber">
+      <dt>
+        <h2>고객센터</h2>
+        <% if (cateData.class === 'useTicket') { %>
+          <span class="subTitle">이용권</span>
+        <% } %>
+      </dt>
+      <dd>
+        <a href="tel:02-3479-4240">02-3479-4240</a>
+      </dd>
+    </dl>
+    <dl class="operatingHour">
+      <%
+        var time = cateData.class === 'useTicket' ? '휴무' : '09:00~16:00';
+      %>
+      <dt>평일</dt>
+      <dd>09:00~17:00</dd>
+      <dt>주말</dt>
+      <dd><%= time %></dd>
+      <dt>공휴일</dt>
+      <dd><%= time %></dd>
+      <dt>점심시간</dt>
+      <dd>12:00~13:00</dd>
+    </dl>
+  </div>
+</div>
+
+<% if(typeof useInfo === 'undefined') { %>
+  <div class="useInfoAreaWrap">
+    <ul>
+      <li class="tourBulter">
+        <a href="#">여행톡집사</a>
+      </li>
+      <li class="stayInquiry">
+        <a href="#">단체/장기숙박문의</a>
+      </li>
+      <li class="faq">
+        <a href="#">자주 문는 질문</a>
+      </li>
+    </ul>
+  </div>
+<% } %>

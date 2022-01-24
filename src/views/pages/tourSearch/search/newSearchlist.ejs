@@ -1,0 +1,138 @@
+---
+pageName: 검색리스트
+title: 검색리스트
+pageId: search
+indexGroup: tourSearch
+styles:
+  - /styles/pages/tourSearch/search/newSearchlist.css
+scripts:
+  - /scripts/plugins/bxslider/jquery.bxslider.js
+  - /scripts/plugins/nstSlider/jquery.nstSlider.min.js
+  - /scripts/pages/tourSearch/mapViewNew.js
+  - /scripts/pages/tourSearch/searchBox.js
+  - /scripts/pages/tourSearch/layerPopup.js
+  - /scripts/pages/tourSearch/btnDibs.js
+  - /scripts/pages/tourSearch/search.js
+data:
+  - /data/texts/pages/tourSearch/searchList.json
+
+state:
+  default: 검색리스트
+  filtered: 검색창 지역선택
+  empty: 결과없음
+  emptyLoading: 로딩중
+base: /images
+---
+
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <title><%= (page.title ? page.title + ' - ' : '') + site.siteName %></title>
+  <meta charset="<%= page.charset || 'utf-8' %>">
+  <meta name="description" content="<%= $.truncate((page.description || site.description), 150) %>">
+  <meta name="author" content="INTERPARK">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="/images/icons/favicon.ico">
+  <link rel="stylesheet" href="/styles/common/common.css">
+
+  <% if (typeof page.styles !== 'undefined' && page.styles instanceof Array) { %>
+    <% page.styles.forEach(function(cssPath) { %>
+      <link rel="stylesheet" href="<%= cssPath %>">
+    <% }) %>
+  <% } %>
+
+  <script src="/scripts/libs/jquery/jquery.min.js"></script>
+
+</head>
+
+<body id="<%= page.pageId %>">
+  <div id="container">
+    <div class="housingCateWrapper">
+      <!-- 검색 S -->
+      <div class="searchHeader">
+        <div class="searchBoxWrap">
+          <% if(state === 'filtered') { %>
+            <%- include('../_partials/_searchBox', {filtered: true, thin: true }); %>
+          <% } else { %>
+            <%- include('../_partials/_searchBox', { thin: true }); %>
+          <% } %>
+
+        </div>
+      </div>
+      <!-- 검색 E -->
+
+      <% if (!state.includes('empty')) { %>
+        <div class="container">
+          <div class="colLeft">
+            <button class="mapViewBtn openLayerBtn" aria-controls="mapViewNew"><span>지도보기</span></button>
+
+            <div class="searchWrapper mainFilter">
+              <%- include('./_partials/_filterWrap', {popup: false}); %>
+            </div>
+          </div>
+
+          <div class="colRight">
+            <div class="sortMenuInTab">
+              <p class="tit">'<em>제주도</em>' 검색결과<span>490</span></p>
+
+              <div class="sort">
+                <ul>
+                  <% ['인기순', '높은 평점순', '낮은 평점순', '리뷰 많은 순'].forEach((e, idx) => { %>
+                    <li><button class="<%= !idx ? 'active' : '' %>"><%= e %></button></li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 상품리스트 S -->
+            <div class="section regionGoodsBlock">
+              <div class="searchList">
+                <%- include('_partials/_searchList'); %>
+
+                <div class="paging">
+                  <a class="firstBtn" href="#">처음으로</a>
+                  <a class="prevBtn" href="#">이전</a>
+                  <span class="index">
+                    <a href="#" class="current" aria-current="page">1</a>
+                    <% for (let idx = 2; idx <= 10; idx++) { %>
+                      <a href="#"><%= idx %></a>
+                    <% } %>
+                  </span>
+                  <a class="nextBtn" href="#">다음</a>
+                  <a class="lastBtn" href="#">마지막으로</a>
+                </div>
+              </div>
+            </div>
+            <!-- 상품리스트 E -->
+          </div>
+        </div>
+      <% } else { %>
+        <% if(state === 'empty') {  %>
+          <div class="emptyBox">
+            <div class="wrap">
+              <h3>'<em>제e</em>' 대한 검색결과가 없습니다.</h3>
+              <p>다시 검색해 주세요.</p>
+            </div>
+          </div>
+        <% } %>
+
+        <% if(state === 'emptyLoading') {  %>
+          <div class="emptyBox">
+            <div class="wrap">
+              <img class="iconLoading" src="<%= page.base %>/pages/checkinnow/housing/common/loading.gif" alt="로딩중">
+            </div>
+          </div>
+        <% } %>
+
+      <% } %>
+    </div>
+
+    <!-- 팝업 S -->
+    <%- include('/pages/tourSearch/search/_partials/_mapViewNew', {id: 'mapViewNew'}); %>
+    <!-- 팝업 E -->
+  </div>
+
+  <%- include('/components/_scripts'); %>
+</body>
+</html>

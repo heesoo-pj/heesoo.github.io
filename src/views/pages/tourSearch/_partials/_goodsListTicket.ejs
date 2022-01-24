@@ -1,0 +1,176 @@
+<%
+  var paging;
+  if (typeof paging === 'undefined') paging = false;
+
+  var data = [
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/18000097_01b.jpg",
+      "tag": ["단체할인", "즉시할인"],
+      "tit": "더 카라(KARA)뷔페 (JS 호텔분당)",
+      "tip": "매일 신선한 지중해식 시그니처 명품요리!",
+      "addr": "서울특별시 중구 장충동 2가",
+      "distance": 0.17,
+      "category": "뷔페/레스토랑",
+      "price": 109331,
+      "hasCoupon": true,
+      "score": 9.6,
+      "reviews": 176
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/18000255_01b.jpg",
+      "tag": ["단체할인", "즉시할인"],
+      "tit": "프로방스 스파 바이 록시땅 (JW 메리어트 동대문 스퀘어 서울)",
+      "tip": "프로방스의 자연과 힐링을 느껴 보세요!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "category": "스파/테라피",
+      "promo": "쿠폰적용가",
+      "price": 109331,
+      "exPrice": 140000,
+      "discount": "4%",
+      "hasCoupon": true,
+      "score": 8.3,
+      "reviews": 1176
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/16000567_01b.jpg",
+      "tag": ["단체할인"],
+      "tit": "아쿠아리스 스파 (쉐라톤 서울 디큐브시티 호텔)",
+      "tip": "아름다운 도심의 전망과 전문적인 테크닉!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "category": "스파/테라피",
+      "price": 99330,
+      "hasCoupon": false,
+      "score": 9.6,
+      "reviews": 1176
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/16000525_01b.jpg",
+      "tit": "반얀트리 스파 (반얀트리클럽앤스파서울)",
+      "tip": "스파 트리트먼트의 정수, \"반얀트리 스파\"",
+      "addr": "서울특별시 마포구 도화동",
+      "distance": 0.17,
+      "category": "스파/테라피",
+      "price": 79331,
+      "hasCoupon": true,
+      "score": 9.6,
+      "reviews": 0
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/18000151_01b.jpg",
+      "tag": ["단체할인", "즉시할인"],
+      "tit": "달팡 시그니처 스파 (르 메르디앙 서울) (구) 리츠칼튼 서울)",
+      "tip": "완벽한 휴식을 위한 달팡 시그니처 스파!",
+      "addr": "서울특별시 용산구 청파로20길 83",
+      "distance": 0.17,
+      "category": "스파/테라피",
+      "promo": "쿠폰적용가",
+      "price": 109331,
+      "exPrice": 140000,
+      "discount": "4%",
+      "hasCoupon": false,
+      "score": 5,
+      "reviews": 1234
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/16000581_01b.jpg",
+      "tag": ["단체할인", "즉시할인"],
+      "tit": "송골매 패러글라이딩(신규)",
+      "tip": "하늘을 날며 스트레스를 날릴수 있는곳!",
+      "addr": "서울특별시 마포구 도화동",
+      "distance": 0.17,
+      "category": "관광지/레저",
+      "promo": "쿠폰적용가",
+      "price": 89331,
+      "exPrice": 102000,
+      "discount": "5%",
+      "hasCoupon": false,
+      "score": 7.6,
+      "reviews": 23
+    },
+    {
+      "img": "/data/images/pages/checkinnow/useTicket_img/17000739_01b.jpg",
+      "tit": "(제주) 요트투어샹그릴라",
+      "tip": "바다위 별장 요트 여행의 진수!",
+      "addr": "서울특별시 마포구 도화동",
+      "distance": 0.17,
+      "category": "유람선/요트",
+      "price": 89331,
+      "hasCoupon": false,
+      "score": 7.6,
+      "reviews": 23
+    }
+  ];
+%>
+
+<ul class="goodsList">
+  <% data.forEach(function($item) { %>
+    <li>
+      <div class="col photo">
+        <span class="img">
+          <img src="<%= $item.img %>" alt="">
+        </span>
+      </div>
+      <div class="col data">
+        <div data-row>
+          <div class="titArea" data-cell>
+            <div class="tagSpot">
+              <% if ($item.tag) { %>
+                <% for (var $val of $item.tag) { %>
+                  <span class="tag"><%= $val %></span>
+                <% } %>
+              <% } %>
+            </div>
+            <a href="#" title="상세페이지로 이동">
+              <strong class="tit"><%= $item.tit %></strong>
+              <span class="tip"><%= $item.tip %></span>
+            </a>
+          </div>
+          <div class="priceArea" data-cell="sub">
+            <span class="promo"><% if ($item.promo) { %><%= $item.promo %><% } %></span>
+            <strong class="price"><%= $.withCommas($item.price) %>원</strong>
+            <% if ($item.discount) { %>
+              <span class="discount">
+                <del><%= $item.exPrice %></del>
+                <span class="rate"><%= $item.discount %></span>
+              </span>
+            <% } %>
+            <% if ($item.hasCoupon) { %>
+              <button class="cpDownBtn" type="button">쿠폰받기</button>
+            <% } %>
+          </div>
+        </div>
+        <div data-row>
+          <div class="infoArea" data-cell>
+            <span><%= $item.addr %> <button class="mapBtn" type="button">지도보기</button></span>
+            <span>내 위치(으)로부터 <%= $item.distance %>km</span>
+            <span class="cate"><%= $item.category %></span>
+          </div>
+          <div class="ratingArea" data-cell="sub">
+            <span class="score">평점 <span class="num"><%= $item.score %></span></span>
+            <span class="reviews"><span class="num"><%= $.withCommas($item.reviews) %>개</span>의 이용후기</span>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% }) %>
+</ul>
+
+<% if (paging) { %>
+  <div class="paging">
+    <a class="firstBtn" href="#">처음</a>
+    <a class="prevBtn" href="#">이전</a>
+    <span class="index">
+      <a class="current" href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">7</a>
+    </span>
+    <a class="nextBtn" href="#">다음</a>
+    <a class="lastBtn" href="#">마지막</a>
+  </div>
+<% } %>

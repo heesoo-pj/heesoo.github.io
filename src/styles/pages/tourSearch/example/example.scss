@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import "base/variables";
+@import "../_partials/housingVariables";
+@import "../_partials/searchBox";
+@import "../_partials/btnDibs";
+@import "../_partials/uiRadio";
+
+.exampleWrapper {
+    width: 1280px;
+    margin: 0 auto 100px;
+
+    .guide {
+        margin-top: 80px;
+
+        &Title {
+            font-size: 20px;
+            margin-bottom: 15px;
+
+            &::before {
+                content: "🔎 ";
+            }
+
+            ~ div {
+                margin-bottom: 40px;
+
+                h2 {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        &SubTitle {
+            margin-bottom: 20px;
+
+            &::before {
+                content: "";
+            }
+        }
+    }
+
+    input,
+    button {
+        border: none;
+    }
+
+    .dibsWrapper {
+        @include btnDibs(10);
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+    }
+
+    .noImageWrapper {
+        @include noImage(9rem);
+        width: 230px;
+        height: 230px;
+    }
+
+    .starRate {
+        @include starRate();
+
+        &.big {
+            @include starRate(32px, 30px, 7px);
+        }
+    }
+}

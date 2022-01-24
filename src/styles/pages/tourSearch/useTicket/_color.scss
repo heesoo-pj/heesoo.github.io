@@ -1,0 +1,27 @@
+// Font Color
+$fColor_red: #ef3f43;
+$fColor_darkGray: #333;
+$fColor_midGray: #666;
+$fColor_gray: #999;
+
+// Line Color
+$lColor_darkGray: #333;
+$lColor_lightGray: #dde4ec;
+$lColor_gray: #b5bcc6;
+
+// Bg Color
+$bColor_darkGray: #333;
+$bColor_grayish: #f5f6fa;
+$bColor_gray: #b2b2b2;
+$bColor_red: #ef3f43;
+
+// 클릭요소 active 상태에 적용
+@function color-shade($color, $amount: 5%) {
+    $lightness: lightness($color); //밝기 체크
+    $shade: #fff; //어두운색이라면 하얀색으로,
+    @if ($lightness > 50) { //밝은색이라면
+        $shade: #000; //어두운색으로 아래에서 믹싱한 컬러값을 리턴합니다.
+    }
+
+    @return mix($shade, $color, $amount);
+}

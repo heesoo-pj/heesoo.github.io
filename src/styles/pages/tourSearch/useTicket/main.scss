@@ -1,0 +1,862 @@
+@charset "utf-8";
+@import "color";
+@import "components/checkinnow/select"; //셀렉트
+@import "base/variables";
+
+@mixin blind {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    font-size: 10px;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+@mixin truncate {
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin checkbox {
+    .custom {
+        display: none;
+    }
+
+    label {
+        position: relative;
+        display: block;
+        height: 16px;
+        padding-left: 22px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozMUIwRjZFMzhFRUIxMUU4OTBCOUEwMDA1NERFOTA3MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozMUIwRjZFNDhFRUIxMUU4OTBCOUEwMDA1NERFOTA3MyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjMxQjBGNkUxOEVFQjExRTg5MEI5QTAwMDU0REU5MDczIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjMxQjBGNkUyOEVFQjExRTg5MEI5QTAwMDU0REU5MDczIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+oa1oiwAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=");
+            pointer-events: none;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            border: 1px solid $lColor_gray;
+            box-sizing: border-box;
+            background: $bColor_grayish;
+        }
+
+        &:active {
+            &:before {
+                background: $bColor_grayish;
+                z-index: -1;
+            }
+        }
+    }
+
+    &.checked {
+        label {
+            &:after {
+                background-image: url("#{$base}/pages/checkinnow/housing/common/icon_chk_b.png");
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+}
+
+@mixin section {
+    width: 980px;
+    margin: 0 auto;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    padding: 0;
+    font-family: inherit;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+input {
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.ticketMainWrapper {
+    @import "pages/checkinnow/housing/_partials/_mainComponents";
+    position: relative;
+    padding-bottom: 86px;
+    line-height: 1.2;
+}
+
+.mainTopBanner {
+    @include section;
+    margin-top: 15px;
+    margin-bottom: 21px;
+    font-size: 0;
+
+    .secTitle {
+        @include blind;
+    }
+
+    .bn {
+        overflow: hidden;
+        display: inline-block;
+        width: 485px;
+        height: 132px;
+        background: $bColor_grayish;
+
+        ~ .bn {
+            margin-left: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+        }
+    }
+}
+
+.ticketBestSection {
+    @include section;
+    position: relative;
+    height: 160px;
+    margin-bottom: 38px;
+    font-size: 0;
+
+    .secTitle {
+        margin-bottom: 4px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .titleArea {
+        display: inline-block;
+        width: 210px;
+        height: 100%;
+        padding-top: 6px;
+        vertical-align: top;
+        box-sizing: border-box;
+
+        .subTxt {
+            color: $fColor_gray;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    }
+
+    .bestListView {
+        overflow: hidden;
+        display: inline-block;
+        width: 770px;
+        height: 100%;
+        vertical-align: top;
+
+        .bx-wrapper {
+            height: 100%;
+        }
+
+        .bx-viewport {
+            height: 100%;
+        }
+
+        .bx-controls {
+            position: absolute;
+            left: 1px;
+            bottom: 10px;
+            height: 26px;
+
+            .bx-pager {
+                padding-left: 62px;
+                color: $fColor_gray;
+                font-size: 13px;
+                font-weight: 300;
+                line-height: 25px;
+            }
+
+            .bx-controls-direction {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+
+                .bx-prev,
+                .bx-next {
+                    position: relative;
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid $lColor_lightGray;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 5px;
+                        height: 7px;
+                        margin: auto;
+                        background: url("#{$base}/pages/checkinnow/housing/common/asset_paging.png") no-repeat 0 -40px;
+                    }
+
+                    &:hover {
+                        border-color: $lColor_gray;
+                        z-index: 1;
+                    }
+
+                    &.disabled {
+                        background: $bColor_grayish;
+                        cursor: initial;
+
+                        &:hover {
+                            border-color: $lColor_lightGray;
+                        }
+                    }
+                }
+
+                .bx-prev {
+                    margin-right: -1px;
+
+                    &:before {
+                        background-position-x: -10px;
+                    }
+                }
+
+                .bx-next {
+                    &:before {
+                        background-position-x: -30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .bestList {
+        height: 100%;
+        white-space: nowrap;
+
+        & > li {
+            display: inline-block;
+            width: 185px;
+            height: 100%;
+            margin-right: 10px;
+            text-align: center;
+            border: 1px solid $lColor_lightGray;
+            box-sizing: border-box;
+            vertical-align: top;
+
+            &:hover {
+                border-color: $lColor_gray;
+            }
+
+            a {
+                display: block;
+                height: 100%;
+                padding: 13px 10px 12px;
+                box-sizing: border-box;
+
+                &:active {
+                    background: color-shade(#fff);
+                }
+            }
+        }
+
+        .img {
+            overflow: hidden;
+            display: block;
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 8px;
+            border-radius: 100%;
+            background: $bColor_grayish;
+
+            img {
+                width: 100%;
+                height: 100%;
+                min-width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .subTit {
+            @include truncate;
+            margin-bottom: 1px;
+            color: $fColor_gray;
+            font-size: 13px;
+        }
+
+        .tit {
+            @include truncate;
+            color: $fColor_midGray;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}
+
+.mainSearch {
+    @include section;
+    margin-bottom: 40px;
+
+    .secTitle {
+        margin-bottom: 10px;
+        padding-left: 8px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .schForm {
+        display: table;
+        width: 100%;
+        padding: 30px;
+        border-top: 2px solid $lColor_darkGray;
+        border-bottom: 1px solid $lColor_lightGray;
+        box-sizing: border-box;
+        background: $bColor_grayish;
+
+        .asset {
+            display: table-cell;
+            font-size: 0;
+            vertical-align: middle;
+        }
+
+        .schInput {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+
+            .iePlaceholder {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0 11px;
+                color: $fColor_gray;
+                font-size: 14px;
+                line-height: 40px;
+
+                &.hidden {
+                    display: none;
+                }
+            }
+
+            input {
+                width: 572px;
+                height: 40px;
+                padding: 0 10px;
+                font-size: 14px;
+                line-height: 38px;
+                border: 1px solid $lColor_gray;
+                box-sizing: border-box;
+            }
+
+            .autoComList {
+                overflow-y: auto;
+                position: absolute;
+                top: 100%;
+                width: 100%;
+                max-height: 527px;
+                margin-top: 10px;
+                box-sizing: border-box;
+                font-size: 14px;
+                border: 1px solid $lColor_darkGray;
+                background: #fff;
+                box-shadow: 4px 4px 8px 0 rgba(#999, .3);
+                z-index: 10;
+
+                &.hidden {
+                    display: none;
+                }
+
+                .optGroup {
+                    padding: 17px 15px 20px;
+
+                    ~ .optGroup {
+                        border-top: 1px solid $lColor_lightGray;
+                    }
+
+                    .cate {
+                        padding-left: 1px;
+                        color: $fColor_gray;
+                        font-size: 12px;
+                        font-weight: 300;
+                    }
+
+                    ul {
+                        margin-top: 12px;
+                    }
+
+                    li {
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+
+                        ~ li {
+                            margin-top: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .chkBox {
+            @include checkbox;
+            display: inline-block;
+            margin-left: 20px;
+            vertical-align: middle;
+
+            label {
+                color: $fColor_midGray;
+
+                &:after {
+                    background: #fff;
+                }
+            }
+
+            &.checked {
+                label {
+                    color: $fColor_darkGray;
+                }
+            }
+        }
+
+        .btn {
+            display: table-cell;
+
+            button {
+                width: 156px;
+                height: 40px;
+                color: #fff;
+                font-size: 16px;
+                border-radius: 2px;
+                background: $bColor_darkGray;
+                font-weight: bold;
+
+                &:active {
+                    background-color: color-shade($bColor_darkGray);
+                }
+            }
+        }
+    }
+}
+
+.ticketGoodsSection {
+    @include section;
+
+    .secTitle {
+        padding-left: 8px;
+        font-size: 20px;
+        font-weight: 500;
+
+        .name {
+            &:before {
+                content: "'";
+            }
+
+            &:after {
+                content: "'";
+            }
+        }
+
+        .num {
+            color: $fColor_midGray;
+            font-size: 16px;
+            font-weight: 300;
+
+            &:before {
+                content: "(";
+            }
+
+            &:after {
+                content: ")";
+            }
+        }
+    }
+
+    .titleBlock {
+        position: relative;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $lColor_darkGray;
+
+        .select {
+            @include select;
+            position: absolute;
+            top: -6px;
+            right: 0;
+            width: 200px;
+            font-size: 14px;
+
+            ul {
+                max-height: 200px;
+            }
+        }
+    }
+
+    .contentsColView {
+        &:after {
+            content: "";
+            display: block;
+            width: 100%;
+            clear: both;
+        }
+    }
+
+    .colLeft {
+        float: left;
+        width: 260px;
+        margin-right: 22px;
+        padding-top: 30px;
+
+        .mapBtn {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            border: 1px solid $bColor_darkGray;
+            border-radius: 2px;
+
+            &:active {
+                background-color: color-shade(#fff);
+            }
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 17px;
+                height: 15px;
+                vertical-align: middle;
+                background: url("#{$base}/pages/checkinnow/housing/search/icon_map.png") no-repeat;
+            }
+
+            span {
+                display: inline-block;
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    @import "pages/checkinnow/housing/useTicket/_partials/filterBox";
+
+    .adBannerWrap {
+        margin-bottom: -1px;
+        border: 1px solid $lColor_lightGray;
+        background-color: $bColor_grayish;
+
+        .banner {
+            + .banner {
+                padding-top: 1px;
+                background: url("#{$base}/pages/checkinnow/housing/common/line_dotted.png") repeat-x 0 0;
+            }
+
+            a {
+                display: block;
+                height: 55px;
+                background-color: $bColor_grayish;
+                overflow: hidden;
+
+                img {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .customerCenterWrap {
+        margin-top: 10px;
+        padding: 4px;
+        background: url("#{$base}/pages/checkinnow/housing/common/pattern_bg.png") repeat 0 0;
+
+        .centerWrap {
+            padding: 16px 16px 15px;
+            background-color: #fff;
+
+            dl {
+                + dl {
+                    margin-top: 11px;
+                    padding-top: 11px;
+                    border-top: 1px solid #e4e4e4;
+                }
+
+                &.centerNumber {
+                    font-weight: 500;
+
+                    dt {
+                        padding-bottom: 2px;
+                        color: $fColor_darkGray;
+
+                        h2 {
+                            display: inline-block;
+                            font-size: 17px;
+                        }
+
+                        .subTitle {
+                            position: relative;
+                            margin-left: 3px;
+                            padding-left: 7px;
+                            font-size: 14px;
+                            color: #888;
+
+                            &:after {
+                                content: "";
+                                position: absolute;
+                                top: 1px;
+                                left: 0;
+                                display: block;
+                                width: 1px;
+                                height: 14px;
+                                background-color: #888;
+                            }
+                        }
+                    }
+
+                    dd {
+                        font-size: 23px;
+                        white-space: nowrap;
+
+                        a {
+                            color: $fColor_red;
+                            cursor: default;
+                            pointer-events: none;
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                &.operatingHour {
+                    line-height: 22px;
+                    overflow: hidden;
+
+                    dt,
+                    dd {
+                        float: left;
+                        margin-top: 6px;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: $fColor_midGray;
+
+                        &:first-child {
+                            margin-top: 0;
+
+                            + dd {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+
+                    dt {
+                        font-weight: 500;
+                        clear: both;
+                    }
+
+                    dd {
+                        margin-left: 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    .useInfoAreaWrap {
+        margin-top: 10px;
+
+        ul {
+            li {
+                border: 1px solid #d9d9d9;
+
+                + li {
+                    margin-top: 4px;
+                }
+
+                a {
+                    display: block;
+                    padding: 16px 0 16px 55px;
+                    font-size: 14px;
+                    background-repeat: no-repeat;
+                    background-position: 13px 50%;
+                    color: $fColor_midGray;
+
+                    &:hover {
+                        background-color: #f9f9f9;
+                        color: $fColor_darkGray;
+                        text-decoration: none;
+                    }
+                }
+
+                &.tourBulter {
+                    a {
+                        background-image: url("#{$base}/pages/checkinnow/housing/common/icons_butler.png");
+                    }
+                }
+
+                &.stayInquiry {
+                    a {
+                        background-image: url("#{$base}/pages/checkinnow/housing/common/icons_inquiry.png");
+                    }
+                }
+
+                &.faq {
+                    a {
+                        background-image: url("#{$base}/pages/checkinnow/housing/common/icons_faq.png");
+                    }
+                }
+            }
+        }
+    }
+
+    .colRight {
+        float: left;
+        width: 698px;
+        @import "pages/checkinnow/housing/_partials/goodsList";
+
+        .goodsList {
+            .col {
+                &.photo {
+                    padding-left: 0;
+                    width: 160px;
+
+                    .img {
+                        height: 160px;
+                    }
+                }
+
+                &.data {
+                    padding-right: 0;
+                }
+
+                .titArea {
+                    height: 108px;
+                }
+
+                .infoArea {
+                    height: 52px;
+                    padding-bottom: 0;
+                    vertical-align: bottom;
+
+                    .cate {
+                        color: $fColor_midGray;
+                    }
+                }
+
+                .ratingArea {
+                    vertical-align: bottom;
+                }
+
+                .cpDownBtn {
+                    display: inline-block;
+                    height: 21px;
+                    padding: 0 5px;
+                    font-size: 12px;
+                    color: $fColor_midGray;
+                    border: 1px solid $lColor_gray;
+
+                    &:after {
+                        content: "";
+                        display: inline-block;
+                        width: 11px;
+                        height: 100%;
+                        margin-left: 3px;
+                        vertical-align: top;
+                        background: url("#{$base}/pages/checkinnow/detail/housing/icon-down.png") no-repeat center;
+                    }
+
+                    &:active {
+                        background: color-shade(#fff);
+                    }
+                }
+            }
+        }
+
+        .emptyBox {
+            width: 100%;
+            height: 373px;
+            margin: 30px auto;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0;
+            background: #f4f6f9;
+
+            &:after {
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+                content: "";
+            }
+
+            .wrap {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 1;
+                white-space: normal;
+
+                &:before {
+                    display: inline-block;
+                    width: 48px;
+                    height: 45px;
+                    background: url("#{$base}/pages/checkinnow/housing/search/icon_empty.png") no-repeat;
+                    content: "";
+                }
+            }
+
+            h3 {
+                margin: 13px 0 26px;
+                font-weight: 500;
+                font-size: 22px;
+                color: #000;
+            }
+
+            p {
+                margin-bottom: 10px;
+                line-height: 1.2;
+                font-size: 16px;
+                color: #000;
+            }
+
+            a {
+                display: block;
+                line-height: 1.4;
+                font-weight: 300;
+                font-size: 14px;
+                color: #999;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+        }
+    }
+}
+
+// 탑버튼
+@import "components/checkinnow/goToTheTop";
+
+// 예약호텔 기준보기
+@import "pages/checkinnow/popups/_partials/bookedHotelList";
+
+// 지도보기
+$filterCategory: "useTicket";
+@import "pages/checkinnow/popups/_partials/mapView";
+
+// 방문일선택
+@import "pages/checkinnow/popups/_partials/visitDaySelect";

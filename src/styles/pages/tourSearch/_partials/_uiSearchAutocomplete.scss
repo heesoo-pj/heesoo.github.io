@@ -1,0 +1,68 @@
+.uiSearchStrong {
+    li {
+        border-top: 1px solid #eee;
+
+        &:first-child {
+            margin-top: 0;
+            border-top: none;
+
+            a {
+                padding-top: 0;
+            }
+        }
+
+        &.typeAccom {
+            &:first-child a {
+                padding-top: 0;
+            }
+
+            a {
+                padding: 10px 0 10px 35px;
+            }
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 16px 0 16px 35px;
+            padding-left: 35px;
+            color: #000;
+            box-sizing: border-box;
+
+            p {
+                position: relative;
+                font-size: 14px;
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: -35px;
+                    content: "";
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                strong {
+                    color: $housingBlue;
+                }
+            }
+
+            span {
+                display: inline-block;
+                margin-top: 6px;
+                font-size: 13px;
+                color: #999;
+            }
+        }
+
+        $types: ("Location", "Accom", "Traffic", "Sights");
+        @each $type in $types {
+            $i: index($types, $type);
+
+            &.type#{$type} p::before {
+                background: url("//openimage.interpark.com/tour-mobile/pages/checkinnow/search/icon-search-type#{$i}.svg") no-repeat center center;
+            }
+        }
+    }
+}

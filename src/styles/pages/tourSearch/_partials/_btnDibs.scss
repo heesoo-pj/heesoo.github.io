@@ -1,0 +1,36 @@
+$dibsPath: $base + "/common/fit/btnDibs";
+
+@mixin btnDibs($top, $right: $top) {
+    position: relative;
+
+    .btnDibs {
+        position: absolute;
+        top: $top + px;
+        right: $right + px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 9;
+
+        &.active img {
+            &:first-child {
+                display: none;
+            }
+
+            &:last-child {
+                display: inline-block;
+            }
+        }
+
+        img {
+            display: block;
+            width: 26px;
+            height: auto;
+            border-radius: 0;
+
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+}

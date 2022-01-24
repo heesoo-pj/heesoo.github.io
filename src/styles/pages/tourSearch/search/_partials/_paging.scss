@@ -1,0 +1,91 @@
+
+.paging {
+    margin-top: 50px;
+    font-size: 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        width: 43px;
+        height: 43px;
+        font-size: 14px;
+        line-height: 43px;
+        vertical-align: top;
+        border: 1px solid #b6bdc7;
+
+        &:active {
+            background-color: color-shade(#fff);
+        }
+
+        &.prevBtn,
+        &.nextBtn,
+        &.firstBtn,
+        &.lastBtn {
+            overflow: hidden;
+            position: relative;
+            text-indent: 100%;
+            white-space: nowrap;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 7px;
+                height: 13px;
+                margin-top: -6px;
+                margin-left: -4px;
+                background: url("#{$base}/pages/checkinnow/housing/common/asset_paging.png") no-repeat -10px -10px;
+            }
+        }
+
+        &.nextBtn {
+            &:before {
+                margin-left: -2px;
+                background-position-x: -30px;
+            }
+        }
+
+        &.firstBtn,
+        &.lastBtn {
+            &:before {
+                width: 16px;
+                margin-left: -9px;
+            }
+        }
+
+        &.firstBtn {
+            margin-right: -1px;
+
+            &:before {
+                background-position-x: -50px;
+            }
+        }
+
+        &.lastBtn {
+            margin-left: -1px;
+
+            &:before {
+                background-position-x: -80px;
+                margin-left: -7px;
+            }
+        }
+    }
+
+    .index {
+        margin: 0 10px;
+
+        a {
+            ~ a {
+                margin-left: -1px;
+            }
+
+            &.current {
+                position: relative;
+                color: #fff;
+                border-color: #333;
+                background: #333;
+            }
+        }
+    }
+}

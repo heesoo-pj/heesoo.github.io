@@ -1,0 +1,97 @@
+---
+pageName: 국내숙박 예제
+title: 국내숙박 예제
+pageId: example
+indexGroup: housing
+styles:
+  - /styles/pages/checkinnow/housing/example/example.css
+scripts:
+  - /scripts/pages/checkinnow/housing/layerPopup.js
+  - /scripts/pages/checkinnow/housing/btnDibs.js
+  - /scripts/pages/checkinnow/housing/searchBox.js
+state:
+  default: 기본
+base: /images
+---
+
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <%- include('/components/common/_head'); %>
+</head>
+
+<body id="<%= page.pageId %>">
+  <div id="dHead">
+    <%- include('/components/common/_header'); %>
+
+    <div class="gate-cover">
+      <div id="gateSection" class="ui-gate-section">
+        <%- include('/components/common/_gnb_category'); %>
+        <%- include('/components/common/_location_old', {d2: '팝업'}); %>
+      </div>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="exampleWrapper">
+      <div class="guide">
+        <h1 class="guideTitle">검색하기</h1>
+        <h2 class="guideSubTitle">메인 - 검색어 없음</h2>
+        <%- include('../_partials/_searchBox'); %>
+
+        <h2 class="guideSubTitle">검색</h2>
+        <%- include('../_partials/_searchBox', { filtered: true, thin: true }); %>
+      </div>
+
+      <div class="guide">
+        <h1 class="guideTitle">찜하기</h1>
+        <div class="dibsWrapper">
+          <%- include('../_partials/_btnDibs'); %>
+        </div>
+      </div>
+
+      <div class="guide">
+        <h1 class="guideTitle">노이미지</h1>
+        <div class="noImageWrapper"></div>
+      </div>
+
+      <div class="guide">
+        <h1 class="guideTitle">별점</h1>
+        <div class="guideItem">
+          <div>
+          <% for (var i = 0, iLength = 5; i <= iLength; i++) { %>
+          <i class="starRate" data-star-rate="<%= i %>"><%= i %></i>
+          <%   if (i !== 5) { %>
+          <i class="starRate" data-star-rate="<%= i %>.5"><%= i %>.3</i>
+          <% } } %>
+          </div>
+
+          <div>
+          <% for (var i = 0, iLength = 5; i <= iLength; i++) { %>
+          <i class="starRate big" data-star-rate="<%= i %>"><%= i %></i>
+          <%   if (i !== 5) { %>
+          <i class="starRate big" data-star-rate="<%= i %>.5"><%= i %>.3</i>
+          <% } } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide">
+        <h1 class="guideTitle">라디오 버튼</h1>
+        <div class="radioWrap">
+          <span class="radioItem">
+            <input id="choice1" type="radio" name="radioSort" checked>
+            <label for="choice1">선택 1</label>
+          </span>
+          <span class="radioItem">
+            <input id="choice2" type="radio" name="radioSort">
+            <label for="choice2">선택 2</label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('/components/common/_footer'); %>
+  <%- include('/components/_scripts'); %>
+</body>
+</html>

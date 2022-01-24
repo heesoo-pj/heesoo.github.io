@@ -1,0 +1,550 @@
+<%
+  var paging;   // 페이징
+  if (typeof paging === 'undefined') paging = false;
+  var banner;   //배너
+  if (typeof banner === 'undefined') banner = false;
+  var calendar; //달력
+  if (typeof calendar === 'undefined') calendar = false;
+  var combined; //결합상품
+  if (typeof combined === 'undefined') combined = false;
+  var moreSearch; // 추가상품
+  if (typeof moreSearch === 'undefined') moreSearch = false;
+  var secretPrice; // 시크릿특가
+  if (typeof secretPrice === 'undefined') secretPrice = false;
+  var loading; // 로딩바
+  if (typeof loading === 'undefined') loading = false;
+  var adBox; //광고 플래그
+  if (typeof adBox === 'undefined') adBox = false;
+
+  var data = [
+    {
+      "img": "/common/noimg_160.jpg",
+      "tag": ["당일특가", "단독", "땡처리", "쿠폰"],
+      "tagKTO": "인증",
+      "tit": "서울 신라호텔",
+      "tip": "어번아일랜드(야외수영장) 특가 진행 중!",
+      "addr": "서울특별시 중구 장충동 2가",
+      "distance": 0.17,
+      "data": ["5성급", "가족호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_spa.png",
+          "alt": "스파"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_pool.png",
+          "alt": "수영장"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_wifi.png",
+          "alt": "와이파이"
+        }
+      ],
+      "promo": "오늘의 특가",
+      "price": 109331,
+      "lefts": "당일 잔여 10 객실",
+      "score": 9.6,
+      "reviews": 176,
+      "combined": {
+        "name": "금도끼 패키지 객실",
+        "list": [
+          {
+            "img": "/data/images/pages/checkinnow/hotel_img/09000012_01bb.jpg",
+            "product": "9월 가족팩 디럭스 온더플레이트",
+            "info": ["디럭스/오션뷰/더블", "마감임박! 잔여 5객실"],
+            "price": "109,331원",
+            "discount": "140,000"
+          },
+          {
+            "img": "/data/images/pages/checkinnow/hotel_img/042028_01bb.jpg",
+            "product": "얼리버드 친구소개 패키지",
+            "info": ["디럭스/오션뷰/더블", "마감임박! 잔여 5객실"],
+            "price": "109,331원",
+            "discount": "140,000"
+          }
+        ]
+      },
+      "ad": false
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/042028_01bb.jpg",
+      "tag": ["금도끼", "단독", "땡처리", "쿠폰"],
+      "tit": "신라스테이 광화문",
+      "tip": "숨은 비경 히든 트레일_압권!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "data": ["3성급", "비즈니스호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_spa.png",
+          "alt": "스파"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_wifi.png",
+          "alt": "와이파이"
+        }
+      ],
+      "promo": "쿠폰적용가",
+      "price": 109331,
+      "exPrice": 140000,
+      "discount": "4%",
+      "lefts": "마감임박! 잔여 5객실",
+      "score": 8.3,
+      "reviews": 1176,
+      "combined": {
+        "name": "결합상품",
+        "list": [
+          {
+            "img": "/data/images/pages/checkinnow/hotel_img/09000012_01bb.jpg",
+            "product": "금도끼 이용권 렌터카 패키지",
+            "info": ["[객실]+[렌터카]+[이용권]구성", "마감임박! 잔여 5객실"],
+            "price": "199,331원",
+            "discount": "240,000"
+          },
+          {
+            "img": "/data/images/pages/checkinnow/hotel_img/042028_01bb.jpg",
+            "product": "얼리버드 렌터카 패키지",
+            "info": ["[객실]+[렌터카]+[이용권]구성", "마감임박! 잔여 2객실"],
+            "price": "109,331원",
+            "discount": "240,000"
+          }
+        ]
+      },
+      "ad": true
+    },
+    {
+      "oneBanner": {
+        "img": "/data/images/pages/checkinnow/housing/category/banner.jpg",
+        "link": "#"
+      }
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/11000125_01bb.jpg",
+      "tag": ["박람회", "단독", "땡처리", "쿠폰"],
+      "tit": "노보텔 스위트 앰배서더 서울 용산 - 서울 용산",
+      "tip": "용산역 연결! 온라인박람회 용인형 제공!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "data": ["3성급", "비즈니스호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        }
+      ],
+      "secretPrice": true,
+      "secretPriceTit": "요금확인",
+      "secretPriceTxt": "시크릿특가! \n 지금 로그인하세요.",
+      "price": 99330,
+      "lefts": "당일 잔여 10 객실",
+      "score": 9.6,
+      "reviews": 1176,
+      "ad": true
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/11000125_01bb.jpg",
+      "tag": ["박람회", "단독", "땡처리", "쿠폰"],
+      "tit": "노보텔 스위트 앰배서더 서울 용산 - 서울 용산",
+      "tip": "용산역 연결! 온라인박람회 용인형 제공!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "data": ["3성급", "비즈니스호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        }
+      ],
+      "secretPrice": true,
+      "secretPriceTit": "객실마감",
+      "secretPriceTxt": "모든객실이 \n 마감되었어요!",
+      "price": 99330,
+      "lefts": "당일 잔여 10 객실",
+      "score": 9.6,
+      "reviews": 1176,
+      "ad": false
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/11000125_01bb.jpg",
+      "tag": ["박람회", "단독", "땡처리", "쿠폰"],
+      "tit": "노보텔 스위트 앰배서더 서울 용산 - 서울 용산",
+      "tip": "용산역 연결! 온라인박람회 용인형 제공!",
+      "addr": "서울특별시 종로구 수송동",
+      "distance": 0.17,
+      "data": ["3성급", "비즈니스호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        }
+      ],
+      "": true,
+      "price": 99330,
+      "lefts": "당일 잔여 10 객실",
+      "score": 9.6,
+      "reviews": 1176,
+      "ad": false
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/08000156_01bb.jpg",
+      "tit": "신라스테이 마포",
+      "tip": "룸업그레이드 프로모션 진행중",
+      "addr": "서울특별시 마포구 도화동",
+      "distance": 0.17,
+      "data": ["3성급", "가족호텔"],
+      "breakfast": false,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_spa.png",
+          "alt": "스파"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_wifi.png",
+          "alt": "와이파이"
+        }
+      ],
+      "price": 79331,
+      "lefts": "당일 잔여 10 객실",
+      "score": 9.6,
+      "reviews": 0,
+      "calendar": {
+        "icon": ["일반"],
+        "title": "[Hot sale] 디럭스 더블",
+        "front": {
+          "date": "6/17",
+          "price": "72,320원~"
+        }
+      },
+      "moreSearch": {
+        "titTag": "<strong>다음주</strong>에는 아직 잔여 객실이 많아요!",
+        "class": "remainingRoom",
+        "btn": ["7.8(일) ~ 7.9(월)", "7.10(화) ~ 7.11(수)", "7.12(목) ~ 7.13(금)"]
+      },
+      "ad": false
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/17000300_01bb.jpg",
+      "tag": ["핫세일", "쿠폰"],
+      "tit": "이비스 스타일 앰배서더 서울 용산",
+      "tip": "숨은 비경 히든 트레일_압권!",
+      "addr": "서울특별시 용산구 청파로20길 83",
+      "distance": 0.17,
+      "data": ["3성급", "가족호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_diner.png",
+          "alt": "레스토랑"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_gym.png",
+          "alt": "헬스장"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_wifi.png",
+          "alt": "와이파이"
+        }
+      ],
+      "promo": "쿠폰적용가",
+      "price": 109331,
+      "exPrice": 140000,
+      "discount": "4%",
+      "lefts": "마감임박! 잔여 4객실",
+      "score": 5,
+      "reviews": 1234,
+      "ad": false
+    },
+    {
+      "img": "/data/images/pages/checkinnow/hotel_img/16000354_01bb.jpg",
+      "tag": ["금도끼"],
+      "tit": "베스트웨스턴프리미어 서울가든호텔",
+      "tip": "어번아일랜드(야외수영장) 특가 진행 중!",
+      "addr": "서울특별시 마포구 도화동",
+      "distance": 0.17,
+      "data": ["3성급", "가족호텔"],
+      "breakfast": true,
+      "icon": [
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_park.png",
+          "alt": "주차가능"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_smoke.png",
+          "alt": "금연"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_business.png",
+          "alt": "비즈니스시설"
+        },
+        {
+          "img": "/data/images/pages/checkinnow/housing/category/icon_ame_wifi.png",
+          "alt": "와이파이"
+        }
+      ],
+      "promo": "쿠폰적용가",
+      "price": 89331,
+      "exPrice": 102000,
+      "discount": "5%",
+      "lefts": "마감임박! 잔여 2객실",
+      "score": 7.6,
+      "reviews": 23,
+      "moreSearch": {
+        "titTag": "서울의 <strong>인기지역</strong>을 검색해보세요!",
+        "class": "popularArea",
+        "btn": ["명동", "광화문", "신촌"]
+      },
+      "ad": false
+    }
+  ];
+%>
+
+<ul class="goodsList">
+  <% data.forEach(function($item) { %>
+    <% if ($item.img) { %>
+      <!-- 기본 상품리스트 -->
+      <li<% if (loading) { %> class="loading"<%}%>>
+        <div class="col photo">
+          <a href="#" title="상세페이지로 이동">
+            <span class="img">
+              <img src="<%= $item.img %>" alt="">
+            </span>
+          </a>
+          <% if(adBox && $item.ad) { %>
+          <div class="adBox">
+            <a href="#" class="adOver">광고<i class="adIcon">?</i></a>
+            <div class="adLayer">
+              <div class="LayerBox">
+                <span>광고 구매한 숙박상품으로 연관도와 입찰가,<br>
+                  광고 품질 등의 기준으로 노출됩니다.</span>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <div class="col data">
+          <div data-row>
+            <div class="titArea" data-cell>
+              <div class="tagSpot">
+                <% if ($item.tag) { %>
+                  <% for (var $val of $item.tag) { %>
+                    <span class="tag"><%= $val %></span>
+                  <% } %>
+                <% } %>
+                <% if ($item.tagKTO) { %>
+                  <span class="tag KTO"><%= $item.tagKTO %></span>
+                <% } %>
+              </div>
+              <a href="#" title="상세페이지로 이동">
+                <strong class="tit"><%= $item.tit %></strong>
+                <span class="tip"><%= $item.tip %></span>
+              </a>
+            </div>
+            <div class="priceArea" data-cell="sub">
+              <span class="promo"><% if ($item.promo) { %><%= $item.promo %><% } %></span>
+              <% if ($item.secretPrice && secretPrice) { %>
+                <strong class="secretPrice"><%= $item.secretPriceTit %></strong>
+                <p class="secretPriceTxt"><%- $.nl2br($item.secretPriceTxt) %></p>
+              <% } else { %>
+                <strong class="price"><%= $.withCommas($item.price) %>원</strong>
+              <% } %>
+              <% if ($item.discount) { %>
+                <span class="discount">
+                  <del><%= $item.exPrice %></del>
+                  <span class="rate"><%= $item.discount %></span>
+                </span>
+              <% } %>
+              <span class="lefts"><%= $item.lefts %></span>
+            </div>
+          </div>
+          <div data-row>
+            <div class="infoArea" data-cell>
+              <span><%= $item.addr %> <button class="mapBtn" type="button">지도보기</button></span>
+              <span>내 위치(으)로부터 <%= $item.distance %>km</span>
+              <span class="inline">
+                <% for (var $val of $item.data) { %>
+                  <span><%= $val %></span>
+                <% } %>
+                <% if ($item.breakfast) { %>
+                  <span class="emph">조식무료</span>
+                <% } %>
+              </span>
+            </div>
+          </div>
+          <div data-row>
+            <div class="amenities" data-cell>
+              <ul class="iconList">
+                <% for (var $val of $item.icon) { %>
+                  <li>
+                    <img src="<%= $val.img %>" alt="<%= $val.alt %>">
+                  </li>
+                <% } %>
+              </ul>
+            </div>
+            <div class="ratingArea" data-cell="sub">
+              <span class="score">평점 <span class="num"><%= $item.score %></span></span>
+              <span class="reviews"><span class="num"><%= $.withCommas($item.reviews) %>개</span>의 이용후기</span>
+            </div>
+          </div>
+          <% if (calendar && $item.calendar) { %>
+            <!-- 달력 -->
+            <div data-row>
+              <div class="calWrap" data-cell>
+                <div class="fullWrap">
+                  <div class="infoWrap">
+                    <span class="titWrap">
+                      <i>일반</i><strong class="tit">[Hot sale] 디럭스 더블</strong>
+                    </span>
+                    <span class="date">6/17</span>
+                    <em class="price">72,320원~</em>
+                    <button class="calToggleBtn" onclick="$(this).parents('.calWrap').eq(0).toggleClass('active');">달력열기</button>
+                  </div>
+                  <div class="calBlock">
+                    <%- include('/pages/checkinnow/housing/_partials/_calendar'); %>
+                  </div>
+                  <div class="infoWrap">
+                    <span class="titWrap">
+                      <i>일반</i><strong class="tit">[Hot sale] 디럭스 더블</strong>
+                    </span>
+                    <span class="date">6/17</span>
+                    <em class="price">72,320원~</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% } %>
+          <% if (combined && $item.combined) { %>
+            <!-- 결합상품 -->
+            <div data-row>
+              <!-- 결합상품 -->
+              <div class="combinedWrap" data-cell>
+                <p class="combinedTit"><%= $item.combined.name %></p>
+                <% $item.combined.list.forEach(function($combined) { %>
+                  <a href="#" class="combinedItem" title="결합상품 바로가기">
+                    <img class="visualImg" src="<%= $combined.img %>" alt="<%= $combined.product %>">
+                    <strong class="tit"><%= $combined.product %></strong>
+                    <% for(var i = 0; i < $combined.info.length; i++) { %>
+                      <p class="info"><%= $combined.info[i] %></p>
+                    <% } %>
+                    <strong class="price"><%= $combined.price %></strong>
+                    <span class="discount"><del><%= $combined.discount %></del></span>
+                    </a>
+                <% }) %>
+              </div>
+            </div>
+          <% } %>
+          <% if (moreSearch && $item.moreSearch) { %>
+            <!-- 추가 상품 -->
+            <div data-row>
+              <div class="moreSearchWrap <%- $item.moreSearch.class %>" data-cell>
+                <div class="fullWrap">
+                  <p class="tit"><%- $item.moreSearch.titTag %></p>
+                  <div class="btnWrap">
+                    <% for (var i = 0; i < $item.moreSearch.btn.length; i++) { %>
+                      <button><%= $item.moreSearch.btn[i] %></button>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </li>
+    <% } else if (banner && $item.oneBanner) { %>
+      <!-- 배너 -->
+      <li>
+        <a class="oneBanner" href="<%= $item.oneBanner.link %>">
+          <img src="<%= $item.oneBanner.img %>" alt="이벤트 상세페이지 바로가기">
+        </a>
+      </li>
+    <% } %>
+  <% }) %>
+</ul>
+
+<% if (paging) { %>
+  <div class="paging">
+    <a class="prevBtn" href="#">이전</a>
+    <span class="index">
+      <a class="current" href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">7</a>
+    </span>
+    <a class="nextBtn" href="#">다음</a>
+  </div>
+<% } %>

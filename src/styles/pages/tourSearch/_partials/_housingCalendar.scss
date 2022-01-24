@@ -1,0 +1,284 @@
+
+// 클릭요소 active 상태에 적용
+@function color-shade($color, $amount: 5%) {
+    $lightness: lightness($color);
+    $shade: #fff;
+    @if ($lightness > 50) {
+        $shade: #000;
+    }
+
+    @return mix($shade, $color, $amount);
+}
+
+button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.screenOut {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    font-size: 10px;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+.calBlock {
+    font-size: 0;
+    text-align: center;
+}
+
+.calBox {
+    display: inline-block;
+    width: 266px;
+    text-align: center;
+
+    ~ .calBox {
+        margin-left: 20px;
+    }
+
+    .monArea {
+        position: relative;
+        margin-bottom: 12px;
+
+        .month {
+            color: #000;
+            font-size: 16px;
+        }
+
+        .prevBtn,
+        .nextBtn {
+            position: absolute;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            background: url("#{$base}/pages/checkinnow/housing/icon_arrow.png") no-repeat 0 0;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &:before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+
+            }
+
+            &.disabled {
+                background-position-y: bottom;
+            }
+
+            &:active {
+                background-color: color-shade(#fff);
+            }
+        }
+
+        $arrowspace: 56px;
+
+        .prevBtn {
+            left: $arrowspace;
+        }
+
+        .nextBtn {
+            right: $arrowspace;
+            transform: rotate(180deg);
+        }
+    }
+
+    .calendar {
+        width: 100%;
+        table-layout: fixed;
+
+        td,
+        th {
+            height: 28px;
+            vertical-align: middle;
+        }
+
+        $theadBackground: #f4f6f9;
+
+        thead {
+            position: relative;
+
+            tr {
+                position: relative;
+                width: 100%;
+                background: $theadBackground;
+            }
+
+            th {
+                font-size: 12px;
+                background: $theadBackground;
+
+                &:first-child {
+                    border-top-left-radius: 13px;
+                    border-bottom-left-radius: 13px;
+                }
+
+                &:last-child {
+                    border-top-right-radius: 13px;
+                    border-bottom-right-radius: 13px;
+                }
+            }
+        }
+
+        td {
+            position: relative;
+            color: #999;
+            font-size: 16px;
+            background-clip: padding-box;
+            height: 35px;
+
+            &:first-child,
+            &.off {
+                .day,
+                button {
+                    color: #ef3f43;
+
+                    &.disabled,
+                    &.soldout {
+                        color: #ffbec0;
+
+                        .day {
+                            color: #ffbec0;
+                        }
+                    }
+                }
+            }
+
+            .day {
+                font-size: 14px;
+                display: block;
+                color: #000;
+                font-weight: $boldWeight;
+
+                &.disabled {
+                    color: #ccc;
+                }
+            }
+
+            .soldout {
+                font-size: 10px;
+                line-height: 12px;
+                color: #999;
+            }
+
+            button {
+                display: block;
+                width: 32px;
+                height: 32px;
+                margin: 0 auto;
+                background: #fff;
+
+                &.disabled,
+                &.soldout {
+                    background-color: transparent;
+
+                    .day {
+                        color: #ccc;
+                    }
+                }
+
+                .soldout {
+                    top: 22px;
+                }
+
+                &:active {
+                    background: color-shade(#fff);
+                }
+
+                &.selected {
+                    color: #fff;
+                    background: #ef3f43;
+
+                    .day {
+                        color: #fff;
+                    }
+                }
+
+                &.from,
+                &.to {
+                    border-radius: 50%;
+
+                    &:before {
+                        position: absolute;
+                        top: 2px;
+                        content: "";
+                        display: block;
+                        width: calc(50% + 3px);
+                        height: 32px;
+                        background: #fbb9ba;
+                        border-radius: 0;
+                        z-index: -1;
+                    }
+                }
+
+                &.from {
+                    color: #fff;
+                    background: #ef3f43;
+
+                    &:before {
+                        right: -3px;
+                    }
+
+                    .day {
+                        color: #fff;
+                    }
+                }
+
+                &.mid {
+                    width: 100%;
+                    color: #fff;
+                    background: #fbb9ba;
+
+                    .day {
+                        color: #fff;
+                    }
+                }
+
+                &.to {
+                    color: #fff;
+                    background: #ef3f43;
+
+                    &:before {
+                        left: -3px;
+                    }
+
+                    .day {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        &Date {
+            td {
+                .day {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+}
+
+.searchLayerButton {
+    width: 92px;
+    height: 35px;
+    line-height: 33px;
+    border-radius: 6px;
+    font-weight: $boldWeight;
+    background: #333;
+    border: 1px solid #333;
+    color: #fff;
+
+    &Box {
+        @include clearfix();
+        display: table;
+        margin: 20px auto 0;
+    }
+}

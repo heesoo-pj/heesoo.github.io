@@ -1,0 +1,66 @@
+$categories: "hotel", "resort", "pension", "useTicket", "travelInfo", "topSearch";
+
+.tabContentsWrap {
+    padding-top: 10px;
+
+    .categoryTabWrap {
+        text-align: center;
+
+        ul {
+            overflow: hidden;
+            font-size: 0;
+
+            li {
+                display: inline-block;
+
+                + li {
+                    position: relative;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        display: block;
+                        width: 1px;
+                        height: 15px;
+                        margin: auto 0;
+                        background-color: #e2e2e2;
+                    }
+                }
+
+                a {
+                    display: block;
+                    padding: 7px 25px;
+                    font-size: 19px;
+                    font-weight: bold;
+                    color: #444;
+
+                    span {
+                        padding-left: 42px;
+                    }
+
+                    &:hover {
+                        color: #222;
+                        text-decoration: none;
+                    }
+                }
+
+                @each $name in $categories {
+                    &.#{$name} {
+                        background: url("#{$base}/pages/checkinnow/housing/common/icons_#{$name}.png") no-repeat 25px 0;
+                    }
+                }
+
+                &.current {
+                    background-position: 25px 100%;
+
+                    a {
+                        color: $point-red-color;
+                    }
+                }
+            }
+        }
+    }
+}

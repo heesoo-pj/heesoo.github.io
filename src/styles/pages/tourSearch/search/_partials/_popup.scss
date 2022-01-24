@@ -1,0 +1,220 @@
+@charset "utf-8";
+@import "../../base/variables";
+
+// $popupImgPath_ui: "/images/pages/checkinnow/popup";
+$popupLoad: "false" !default;
+$popupPadding: 20px;
+$headerHeight: 50px;
+$footerHeight: 70px;
+$popupBorderColor: #333;
+
+// 클릭요소 active 상태에 적용
+@function color-shade($color, $amount: 5%) {
+    $lightness: lightness($color); //밝기 체크
+    $shade: #fff; //어두운색이라면 하얀색으로,
+    @if ($lightness > 50) { //밝은색이라면
+        $shade: #000; //어두운색으로 아래에서 믹싱한 컬러값을 리턴합니다.
+    }
+
+    @return mix($shade, $color, $amount);
+}
+
+@if ($popupLoad != "complete") {
+    .popup {
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+        padding: $popupPadding;
+        font-size: 0;
+        white-space: nowrap;
+        text-align: center;
+
+        input,
+        button,
+        select,
+        textarea {
+            font-size: inherit;
+        }
+
+        &.hasHeader {
+            .popupPosition {
+                &:before {
+                    top: -$headerHeight;
+                }
+            }
+        }
+
+        &.hasFooter {
+            .popupPosition {
+                &:before {
+                    bottom: -$footerHeight - $popupPadding;
+                }
+            }
+
+            .popupFooter {
+                padding-top: $popupPadding;
+            }
+        }
+
+        &.open {
+            display: block;
+        }
+
+        &:before {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            content: "";
+        }
+
+        &::selection {
+            background: 0;
+        }
+
+        .popupPosition {
+            z-index: 2;
+            position: relative;
+            display: inline-block;
+            max-height: 100%;
+            text-align: left;
+            border: 1px solid $popupBorderColor;
+            border-radius: 0 0 10px 10px;
+            font-size: 15px;
+            white-space: normal;
+            vertical-align: middle;
+            background: #fff;
+
+            &:before {
+                z-index: -1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, .4);
+                border-radius: 0 0 10px;
+                content: "";
+            }
+        }
+
+        .popupContents {
+            z-index: 1;
+            position: relative;
+            overflow: auto;
+            max-width: 100%;
+            max-height: 100%;
+            margin-top: -2px;
+            padding-top: 2px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .popupHeader {
+            z-index: 2;
+            position: absolute;
+            top: -($headerHeight + 2);
+            left: -1px;
+            width: 100%;
+            height: $headerHeight;
+            border: 1px solid $popupBorderColor;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 1px solid #dde4ec;
+            background: #fff;
+
+            .popupTitle {
+                padding: 0 60px 0 16px;
+                font-size: 16px;
+                line-height: $headerHeight;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .popupCloseBtn {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: $headerHeight;
+                height: $headerHeight;
+                border: 0;
+                text-indent: -9999px;
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAARCAYAAADQWvz5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA25pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5MDI3OTk0Yi0yYjI1LTJlNGMtYTQ4YS1iYzA2NDRkMGIzMzIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzM1QTQyNDQ4NjUzMTFFOEI5NjNFOUIwNEYxNTk1NTciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzM1QTQyNDM4NjUzMTFFOEI5NjNFOUIwNEYxNTk1NTciIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTY5MUEwNTc4MzRDMTFFOEJCQkVFNDlFQTgyRDk0RkYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTY5MUEwNTg4MzRDMTFFOEJCQkVFNDlFQTgyRDk0RkYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6WSLqQAAABB0lEQVR42pySaaqFMAyFmzrgNgWnDSnOrlNE8zhCoLe1vdfXP9WkOfky0DAMTESqLEtS/ziIx03MrKZpYtxVVb0Sm+f5jgOEhgEfMMDxhkRE8K/FUdc1neepxnHkX0gEQGw3iXlQpv3I9iNh0zQffm0/lDKXZXHIQHtdlyPySGQGwYeSpSdRFKmiKB5JvUISrLVWoMCKhKaqQ00FDRL9shpBIWl8lmWqbdvgNL2l2Uu6bRvv+/7YaC9R3/f3dMxy8jwn9Mm3Zw6RLJtvOvDbSRwiTAmPfCKSAGTSP0cImb6N2Fza4zjUuq78URp6EsdxkOTpdF3HSZLcwoSxpmn6WsQUQ/yfAAMAl6XEeJIUMXAAAAAASUVORK5CYII=") no-repeat center;
+                cursor: pointer;
+
+                &:active {
+                    background-color: color-shade(#fff);
+                }
+            }
+        }
+
+        .popupFooter {
+            z-index: 2;
+            position: absolute;
+            left: -1px;
+            top: 100%;
+            width: 100%;
+            // height: $footerHeight;
+            padding-bottom: 30px;
+            text-align: center;
+            font-size: 0;
+            border: 1px solid $popupBorderColor;
+            border-top: 0;
+            border-radius: 0 0 10px 10px;
+            background: #fff;
+            overflow: hidden;
+
+            button {
+                display: inline-block;
+                font-size: 16px;
+                min-width: 140px;
+                min-height: 40px;
+                margin-left: 10px;
+                font-size: 16px;
+                line-height: 36px;
+                border: 0;
+                border-radius: 2px;
+                background: 0;
+
+                & + button {
+                    margin-left: 10px;
+                }
+
+                &.popupConfirm {
+                    color: #fff;
+                    background: #323232;
+                    font-weight: bold;
+                }
+
+                &.popupReserve {
+                    font-weight: bold;
+                    color: #fff;
+                    background: #ef3e43;
+                }
+
+                &.popupCancel {
+                    color: #000;
+                    border: 1px solid #000;
+
+                    &:active {
+                        background: color-shade(#fff);
+                    }
+                }
+            }
+        }
+
+        .popupDim {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            //background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjZERDY1MjUzODY1MzExRThCRDY3RjRDQkUyNjVEMzc3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjZERDY1MjU0ODY1MzExRThCRDY3RjRDQkUyNjVEMzc3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkRENjUyNTE4NjUzMTFFOEJENjdGNENCRTI2NUQzNzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkRENjUyNTI4NjUzMTFFOEJENjdGNENCRTI2NUQzNzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5OnGDiAAAAD0lEQVR42mJgYGDwBQgwAABSAE5RZV5PAAAAAElFTkSuQmCC");
+        }
+    }
+}
+
+$popupLoad: "complete";

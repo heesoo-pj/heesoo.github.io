@@ -1,0 +1,1024 @@
+<%
+  var $gnb_menu = [
+      {
+      "label": "인터파크 국내여행",
+      "title": "국내",
+      "class": "domestic",
+      "list": [
+        {
+          "label": "인터파크 국내항공",
+          "title": "항공",
+          "class": "dAir",
+          "link": "#",
+          "part": [
+            [
+              {
+                "emphasisName": "국내실시간 항공 예약",
+                "new": true
+              },
+              {
+                "emphasisName": "땡처리 할인 항공권"
+              },
+              {
+                "emphasisName": "제주 여행만들기",
+                "link": "#"
+              },
+              {
+                "emphasisName": "제주 렌터카",
+                "link": "#"
+              }
+            ],
+            [
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_dAir.jpg",
+                  "alt": "제주항공권 1만원대~"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 국내숙박",
+          "title": "숙박",
+          "link": "#",
+          "new": true,
+          "class": "dAccommo",
+          "part": [
+            [
+              {
+                "groupName": "호텔"
+              },
+              {
+                "normalName": "신규숙박지",
+                "new": true
+              },
+              {
+                "normalName": "서울"
+              },
+              {
+                "normalName": "제주"
+              },
+              {
+                "normalName": "부산"
+              },
+              {
+                "normalName": "강원"
+              },
+              {
+                "normalName": "인천"
+              },
+              {
+                "normalName": "전라"
+              },
+              {
+                "groupName": "리조트"
+              },
+              {
+                "normalName": "서울"
+              },
+              {
+                "normalName": "제주"
+              },
+              {
+                "normalName": "부산"
+              },
+              {
+                "normalName": "강원"
+              },
+              {
+                "normalName": "인천"
+              },
+              {
+                "normalName": "전라"
+              }
+            ],
+            [
+              {
+                "groupName": "펜션"
+              },
+              {
+                "normalName": "서울"
+              },
+              {
+                "normalName": "제주"
+              },
+              {
+                "normalName": "부산"
+              },
+              {
+                "normalName": "강원"
+              },
+              {
+                "normalName": "인천"
+              },
+              {
+                "normalName": "전라"
+              },
+              {
+                "groupName": "액티비티"
+              },
+              {
+                "normalName": "서울"
+              },
+              {
+                "normalName": "제주"
+              },
+              {
+                "normalName": "부산"
+              },
+              {
+                "normalName": "강원"
+              },
+              {
+                "normalName": "인천"
+              },
+              {
+                "normalName": "전라"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_dAccommo.jpg",
+                  "alt": "대한민국 숙박대전 전국편"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 제주도",
+          "title": "제주도",
+          "class": "dJeju",
+          "link": "#",
+          "part": [
+            [
+              {
+                "groupName": "개별예약"
+              },
+              {
+                "normalName": "제주 여행만들기",
+                "new": true,
+                "link": "/views/pages/jejuMake/intro.html"
+              },
+              {
+                "normalName": "국내 항공권"
+              },
+              {
+                "normalName": "국내 숙박"
+              },
+              {
+                "normalName": "제주 실시간 렌터카",
+                "new": true
+              },
+              {
+                "groupName": "스페셜 테마"
+              },
+              {
+                "normalName": "신규숙박지",
+                "new": true
+              },
+              {
+                "normalName": "뷔페/액티비티/입장권"
+              }
+            ],
+            [
+              {
+                "groupName": "패키지 예약"
+              },
+              {
+                "normalName": "황금연휴/제주PASS",
+                "new": true
+              },
+              {
+                "normalName": "항공+숙박"
+              },
+              {
+                "normalName": "숙박+렌터카"
+              },
+              {
+                "normalName": "버스관광 패키지"
+              },
+              {
+                "normalName": "골프"
+              },
+              {
+                "normalName": "허니문"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_dJeju.jpg",
+                  "alt": "제주항공권 1만원대~"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 국내여행",
+          "title": "국내여행",
+          "class": "dTravel",
+          "link": "#",
+          "part": [
+            [
+              {
+                "emphasisName": "금주 출발 확정",
+                "new": true,
+                "link": "#"
+              },
+              {
+                "emphasisName": "추천여행",
+                "link": "#"
+              },
+              {
+                "emphasisName": "당일여행",
+                "link": "#"
+              },
+              {
+                "emphasisName": "숙박여행",
+                "link": "#"
+              },
+              {
+                "emphasisName": "섬여행",
+                "link": "#"
+              },
+              {
+                "emphasisName": "비행기타고 국내여행",
+                "new": true
+              },
+              {
+                "emphasisName": "부산출발 국내여행",
+                "new": true
+              }
+            ],
+            [
+              {
+                "emphasisName": "예술여행 대표도시 광주",
+                "new": true
+              },
+              {
+                "emphasisName": "내륙 실시간 렌터카"
+              },
+              {
+                "emphasisName": "골프"
+              },
+              {
+                "emphasisName": "대한민국 테마여행 10선",
+                "new": true
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_dTravel.jpg",
+                  "alt": "대한민국 테마여행 10선"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 액티비티",
+          "title": "액티비티",
+          "class": "dActivity",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "label": "인터파크 해외항공",
+      "title": "해외",
+      "class": "overseas",
+      "list": [
+        {
+          "label": "인터파크 해외항공",
+          "title": "항공",
+          "class": "oAir",
+          "link": "#",
+          "part": [
+            [
+              {
+                "groupName": "스페셜 프라이스"
+                <!-- ,"new": true 추가 시 뉴아이콘 생성 -->
+              },
+              {
+                "normalName": "주요도시 할인항공권"
+              },
+              {
+                "normalName": "오늘의 항공특가"
+              },
+              {
+                "normalName": "땡처리 항공권"
+              },
+              {
+                "normalName": "모바일 항공권"
+              },
+              {
+                "normalName": "부산출발 항공권"
+              },
+              {
+                "groupName": "맞춤 항공권"
+              },
+              {
+                "normalName": "학생할인 항공권"
+              },
+              {
+                "normalName": "지방출발 항공권"
+              },
+              {
+                "normalName": "비지니스 클래스"
+              }
+            ],
+            [
+              {
+                "emphasisName": "항공+호텔"
+              },
+              {
+                "emphasisName": "단체호텔문의",
+                "link": "#"
+              },
+              {
+                "emphasisName": "캐리어 보관/배송"
+              },
+              {
+                "emphasisName": "해외렌터카"
+              },
+              {
+                "emphasisName": "해외비자신청",
+                "new": true
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_oAir.jpg",
+                  "alt": "제주항공권 1만원대~"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 해외호텔",
+          "title": "호텔",
+          "class": "oHotel",
+          "part": [
+            [
+              {
+                "emphasisName": "해외호텔 지역별 랭킹"
+              },
+              {
+                "groupName": "핫이슈! 지역별"
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "싱가포르"
+                    },
+                    {
+                      "normalName": "세부"
+                    },
+                    {
+                      "normalName": "방콕"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "푸켓"
+                    },
+                    {
+                      "normalName": "발리"
+                    },
+                    {
+                      "normalName": "괌"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "하와이(호놀룰루)"
+                    },
+                    {
+                      "normalName": "뉴욕"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "로스앤젤레스"
+                    },
+                    {
+                      "normalName": "라스베가스"
+                    }
+                  ]
+                }
+              },
+              {
+                "normalName": "샌프란시스코"
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "파리"
+                    },
+                    {
+                      "normalName": "런던"
+                    },
+                    {
+                      "normalName": "바르셀로나"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "로마"
+                    },
+                    {
+                      "normalName": "프라하"
+                    },
+                    {
+                      "normalName": "인터라켄"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "홍콩"
+                    },
+                    {
+                      "normalName": "마카오"
+                    },
+                    {
+                      "normalName": "타이페이"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "도쿄"
+                    },
+                    {
+                      "normalName": "오사카"
+                    },
+                    {
+                      "normalName": "후쿠오카"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "쿄토"
+                    },
+                    {
+                      "normalName": "삿포로"
+                    },
+                    {
+                      "normalName": "오키나와"
+                    }
+                  ]
+                }
+              },
+              {
+                "groupName": "관광서비스"
+              },
+              {
+                "normalName": "해외랜터카"
+              },
+              {
+                "normalName": "캐리어 보관/배송"
+              }
+            ],
+            [
+              {
+                "groupName": "테마별"
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "1박 무료 호텔"
+                    },
+                    {
+                      "normalName": "일본료칸"
+                    }
+                  ]
+                }
+              },
+              {
+                "partName": {
+                  "list": [
+                    {
+                      "normalName": "허니문"
+                    },
+                    {
+                      "normalName": "럭셔리호텔 유럽"
+                    }
+                  ]
+                }
+              },
+              {
+                "normalName": "럭셔리호텔 동남아"
+              },
+              {
+                "normalName": "스페셜 칸쿤리조트"
+              },
+              {
+                "normalName": "크루즈"
+              },
+              {
+                "groupName": "해외호텔 전용 혜택"
+              },
+              {
+                "normalName": "10박하면 1박 무료!"
+              },
+              {
+                "emphasisName": "항공+호텔"
+              },
+              {
+                "emphasisName": "NOTICE(공지사항)"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_oHotel.jpg",
+                  "alt": "지금 핫한 허니문리조트!"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 해외여행",
+          "title": "해외여행",
+          "class": "oPackage",
+          "link": "/views/pages/package/index.html",
+          "part": [
+            [
+              {
+                "groupName": "동남아"
+              },
+              {
+                "normalName": "태국(방콕,푸켓,치앙마이)",
+                "link": "#"
+              },
+              {
+                "normalName": "베트남(푸꾸옥,나트랑,다낭)"
+              },
+              {
+                "normalName": "필리핀(보라카이,세부,보홀)"
+              },
+              {
+                "normalName": "싱가포르/코타키나발루/발리"
+              },
+              {
+                "normalName": "홍콩/마카오/대만"
+              },
+              {
+                "groupName": "남태평양"
+              },
+              {
+                "normalName": "괌/사이판"
+              },
+              {
+                "normalName": "호주/뉴질랜드"
+              },
+              {
+                "groupName": "극동러시아/중국"
+              },
+              {
+                "normalName": "블라디보스톡/중국"
+              },
+              {
+                "groupName": "일본"
+              },
+              {
+                "normalName": "북해도/오사카/큐슈/동경"
+              },
+              {
+                "groupName": "부산출발"
+              },
+              {
+                "normalName": "부산출발 패키지"
+              },
+              {
+                "normalName": "대구출발 패키지"
+              }
+            ],
+            [
+              {
+                "groupName": "유럽"
+              },
+              {
+                "normalName": "서유럽"
+              },
+              {
+                "normalName": "동유럽/발칸"
+              },
+              {
+                "normalName": "스페인/포르투갈/모로코"
+              },
+              {
+                "normalName": "터키/그리스/이집트/두바이"
+              },
+              {
+                "normalName": "북유럽/러시아/발틱/특수지역"
+              },
+              {
+                "normalName": "테마/축제/DAY투어"
+              },
+              {
+                "groupName": "미국/캐나다/중남미"
+              },
+              {
+                "normalName": "미국/하와이/캐나다/중남미"
+              },
+              {
+                "groupName": "얼린 여행"
+              },
+              {
+                "normalName": "얼린 항공권"
+              },
+              {
+                "normalName": "얼린 호텔/리조트"
+              },
+              {
+                "normalName": "얼린 패키지"
+              },
+              {
+                "normalName": "얼린 허니문"
+              },
+              {
+                "groupName": "다시 설램 황금연휴"
+              },
+              {
+                "normalName": "황금연휴"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_oPackage.jpg",
+                  "alt": "롯데홈쇼핑 2만명의 선택"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 자유여행",
+          "title": "자유여행",
+          "class": "oFree",
+          "link": "#",
+          "part": [
+            [
+              {
+                "groupName": "동남아"
+              },
+              {
+                "normalName": "방콕/푸켓/카오락/치앙마이"
+              },
+              {
+                "normalName": "베트남/라오스/캄보디아"
+              },
+              {
+                "normalName": "필리핀(보라카이,세부,보홀)"
+              },
+              {
+                "normalName": "싱가포르"
+              },
+              {
+                "normalName": "발리/코타키나발루"
+              },
+              {
+                "normalName": "홍콩/마카오/대만"
+              },
+              {
+                "groupName": "남태평양"
+              },
+              {
+                "normalName": "괌/사이판"
+              },
+              {
+                "normalName": "호주/뉴질랜드"
+              },
+              {
+                "groupName": "극동러시아/중국"
+              },
+              {
+                "normalName": "블라디보스톡/중국"
+              },
+              {
+                "groupName": "일본"
+              },
+              {
+                "normalName": "북해도/오사카/큐슈/동경"
+              },
+              {
+                "groupName": "부산출발"
+              },
+              {
+                "normalName": "부산출발 자유여행"
+              },
+            ],
+            [
+              {
+                "groupName": "유럽/두바이"
+              },
+              {
+                "normalName": "유럽/두바이"
+              },
+              {
+                "groupName": "미국/캐나다/중남미"
+              },
+              {
+                "normalName": "미동서부/캐나다/중남미<br>하와이"
+              },
+              {
+                "groupName": "몰디브/모리셔스/칸쿤/타히티"
+              },
+              {
+                "normalName": "몰디브/모리셔스/칸쿤/타히티"
+              },
+              {
+                "groupName": "리조트"
+              },
+              {
+                "normalName": "풀빌라 자유여행"
+              },
+              {
+                "normalName": "클럽메드"
+              },
+              {
+                "normalName": "PIC"
+              },
+              {
+                "groupName": "해외여행 서비스"
+              },
+              {
+                "normalName": "해외렌터카"
+              },
+              {
+                "normalName": "캐리어 보관/배송"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_oFree.jpg",
+                  "alt": "트립부스터 선정 싱가포르 GO!"
+                }
+              }
+            ]
+          ]
+        },
+        {
+          "label": "인터파크 테마여행",
+          "title": "테마여행",
+          "new": false,
+          "class": "oTheme",
+          "link": "#",
+          "part": [
+            [
+              {
+                "groupName": "인생투어"
+              },
+              {
+                "normalName": "이색여행/테마여행",
+                "new": true
+              },
+              {
+                "normalName": "골프"
+              },
+              {
+                "normalName": "크루즈/남극탐험"
+              },
+              {
+                "normalName": "오로라"
+              },
+              {
+                "normalName": "허니문"
+              },
+              {
+                "groupName": "리조트/료칸"
+              },
+              {
+                "normalName": "클럽메드"
+              },
+              {
+                "normalName": "PIC"
+              },
+              {
+                "normalName": "일본료칸"
+              },
+              {
+                "normalName": "럭셔리 브랜드 리조트"
+              },
+              {
+                "groupName": "해외여행 서비스"
+              },
+              {
+                "normalName": "캐리어 보관/배송"
+              }
+            ],
+            [
+              {
+                "groupName": "지역별 전문몰"
+              },
+              {
+                "normalName": "베트남"
+              },
+              {
+                "normalName": "캐나다"
+              },
+              {
+                "normalName": "마카오"
+              },
+              {
+                "normalName": "호주"
+              },
+              {
+                "normalName": "두바이"
+              },
+              {
+                "normalName": "싱가포르"
+              },
+              {
+                "normalName": "하와이"
+              },
+              {
+                "normalName": "몰디브"
+              },
+              {
+                "normalName": "모리셔스/세이셸"
+              },
+              {
+                "banner": {
+                  "src": "/data/images/common/header/banner_oTheme.jpg",
+                  "alt": "가격은 동결 얼린허니문"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "label": "인터파크 이벤트혜택존",
+      "title": "이벤트혜택존",
+      "class": "event",
+      "hidden": true,
+      "list": [
+        {
+          "label": "이벤트 혜택존",
+          "title": "이벤트혜택존",
+          "class": "eBenefit",
+          "link": "#"
+        }
+      ]
+    }
+  ];
+%>
+
+
+<!-- GN 상단영역 -->
+<div class="tour-header">
+  <div class="search-area">
+    <h1 class="logo-box">
+      <a href="#" class="tour" title="인터파크 투어 메인 바로가기"><span>인터파크 투어</span></a>
+      <a href="#" class="interpark" title="인터파크 메인 바로가기"><span>인터파크</span></a>
+    </h1>
+
+    <form class="search-box" action="#" role="search">
+      <h2 class="blind">검색</h2>
+      <fieldset>
+        <legend class="blind">검색영역</legend>
+        <label class="search-wrap"><input type="search" id="SearchGNBText" autocomplete="off" aria-label="검색어 입력란"/></label>
+
+        <!-- 자동완성 및 최근인기검색어 -->
+        <%- include('./_header_autocom'); %>
+
+        <button class="search-btn" onclick="autoCom(this)" type="button">검색</button>
+        <button class="recent-btn" onclick="recent_btn(this)" title="최근검색어 열기" type="button">최근검색어 열기</button>
+        <!--
+          <button class="recent-btn active">최근검색어 닫기</button>
+        -->
+      </fieldset>
+    </form>
+
+    <!-- <div class="banner-box" onmouseover="headerRoll._boxIn()" onmouseleave="headerRoll._boxOut()"> -->
+    <div class="banner-box">
+      <h2 class="blind">자동재생 롤링배너영역</h2>
+      <!-- slide -->
+      <button class="switch" title="일시정지" type="button"><span>일시정지</span></button>
+      <ul class="sld">
+        <li class="item">
+          <a href="#" aria-label="1번째 슬라이드">
+            <img src="/data/images/common/header/top_right_bn01.jpg" alt="제주신화월드">
+          </a>
+        </li>
+        <li class="item">
+          <a href="#" aria-label="2번째 슬라이드">
+            <img src="/data/images/common/header/top_right_bn02.jpg" alt="지금 투어앱 출첵하면 매일매일 포인트 바로 지급!">
+          </a>
+        </li>
+        <li class="item">
+          <a href="#" aria-label="3번째 슬라이드">
+            <img src="/data/images/common/header/top_right_bn03.jpg" alt="제주신화월드">
+          </a>
+        </li>
+        <li class="item">
+          <a href="#" aria-label="4번째 슬라이드">
+            <img src="/data/images/common/header/top_right_bn04.jpg" alt="지금 투어앱 출첵하면 매일매일 포인트 바로 지급!">
+          </a>
+        </li>
+        <li class="item">
+          <a href="#" aria-label="5번째 슬라이드">
+            <img src="/data/images/common/header/top_right_bn05.jpg" alt="제주신화월드">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="left-side-banner">
+      <a href="#" title="이벤트 보기">
+        <img src="/data/images/common/header/yearOfDog.gif" alt="2018 새해 DOG한 특가" title="2018 새해 DOG한 특가 바로가기">
+      </a>
+    </div>
+  </div>
+  <div class="menu-area">
+    <h2 class="blind"><a href="#" id="mainMenu">메뉴</a></h2>
+    <% $gnb_menu.forEach(function($gnb_menu) { %>
+      <div class="gnb-box <%- $gnb_menu.class %>">
+        <dl class="gnb-grid">
+          <dt <% if($gnb_menu.hidden === true){%> aria-hidden="true" <%}%>><h3><%- $gnb_menu.title %></h3></dt>
+          <% $gnb_menu.list.forEach(function($list) { %>
+            <% if($list.part !== undefined){%>
+              <dd aria-haspopup="true" onmouseover="hoverMenu(this)" onmouseleave="outMenu(this)" class="<%- $list.class %>" <% if($list.new === true){%>data-alert="true" <%}%>>
+                <h4><a href="<%= $list.link %>" title="<%= $list.title %> 바로가기" onfocus="focusMenu(this)"><%= $list.title %></a></h4>
+            <% } else { %>
+              <dd aria-haspopup="false" class="<%- $list.class %>">
+                <h4><a href="<%= $list.link %>" title="<%= $list.title %> 바로가기"><%= $list.title %></a></h4>
+            <% } %>
+              <% if($list.part !== undefined) { %>
+                <div class="sub-menu" aria-hidden="true">
+                  <h5><%= $list.label %></h5>
+                  <% for(var i = 0; i < $list.part.length; i++) { %>
+                    <div class="menu">
+                      <% $list.part[i].forEach(function($part, idx) { %>
+                        <% if($part.groupName !== undefined){ %>
+                          <!-- 링크 타이틀 -->
+                          <p class="emphasis">
+                            <strong <% if($part.new === true) {%>data-alert="true"<% } %>><%- $part.groupName %></strong>
+                          </p>
+                        <% } %>
+                        <% if($part.partName !== undefined) {%>
+                          <!-- 나뉜 링크 -->
+                          <p class="normal" <% if($part.partName.new === true) {%>data-alert="true"<% } %>>
+                            <% $part.partName.list.forEach(function($parts) { %>
+                              <a href="<%= $parts.link %>" <% if($parts.new === true) {%>data-alert="true"<% } %>><span><%- $parts.normalName %></span></a>
+                            <% }) %>
+                          </p>
+                        <% } %>
+                        <% if($part.normalName !== undefined) {%>
+                          <!-- 기본 링크 -->
+                          <p class="normal">
+                            <a href="<%= $part.link %>" <% if($part.new === true) {%>data-alert="true"<% } %>><span><%- $part.normalName %></span></a>
+                          </p>
+                        <% } %>
+                        <% if($part.emphasisName !== undefined) {%>
+                          <!-- 강조된 링크 -->
+                          <p class="emphasis">
+                            <a href="<%= $part.link %>" <% if($part.new === true) {%>data-alert="true"<% } %>><strong><%- $part.emphasisName %></strong></a>
+                          </p>
+                        <% } %>
+                        <% if($part.banner !== undefined) {%>
+                          <!-- 배너 -->
+                          <div>
+                            <a href="<%= $part.banner.link %>" class="banner"><img src="<%- $part.banner.src %>" alt="<%- $part.banner.alt %>"></a>
+                          </div>
+                        <% } %>
+                      <% }) %>
+                    </div>
+                  <% } %>
+                </div>
+              <% } %>
+            </dd>
+          <% }) %>
+        </dl>
+      </div>
+    <% }) %>
+  </div>
+</div>
